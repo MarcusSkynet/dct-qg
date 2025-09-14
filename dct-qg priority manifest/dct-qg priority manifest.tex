@@ -1,0 +1,569 @@
+% =======================================================================
+% DCT–QG Priority Compilation (Cheatsheet-Style Overview) — Expanded v1.1
+% Author: Marcus (Marek Hubka)
+% Date: \today
+% License: CC BY 4.0 (adjust as desired)
+% NOTE: Abstract, Introduction, and Summary/Outlook preserved verbatim.
+% =======================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{amssymb,amsmath,mathtools,mathrsfs}
+\usepackage{graphicx,xcolor}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{comment}
+\usepackage{orcidlink}
+\usepackage{todonotes}
+\usepackage{csquotes}
+
+\geometry{margin=1in}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+% --------------------------- Macros & Notation ----------------------------
+\newcommand{\Lag}{\mathscr{L}}      % Lagrangian density
+\newcommand{\LL}{\mathcal{L}}       % ledger surface
+\newcommand{\atL}{\big|_{\LL}}      % evaluation at ledger
+\newcommand{\IH}{\mathcal{I}}       % dimensionless invariant
+\newcommand{\Icrit}{\mathcal{I}_{\mathrm{crit}}}
+% \newcommand{\aH}{\alpha_{\mathrm H}}
+\newcommand{\aH}{\mathcal T}
+\newcommand{\RS}{R_{\mathrm S}}
+\newcommand{\lp}{\ell_{\mathrm P}}
+\newcommand{\rL}{r_{\mathcal L}}
+\newcommand{\RRm}{R_{abcd}R^{abcd}} % Kretschmann
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Lie}[1]{\pounds_{#1}}      % Lie derivative
+\newcommand{\bk}{\bar{k}}           % background
+%\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\dd}{\mathrm d}
+
+% Numerical anchors (nats)
+\newcommand{\numaH}{0.36067376}     % 1/(4 ln 2)
+\newcommand{\sqrtaH}{0.60056120}    % sqrt(alpha_H)
+\newcommand{\numIcrit}{33.27106467}      % 48 ln 2
+
+% Figure placeholder box macro
+\newcommand{\figplaceholder}[2]{%
+  \fbox{\parbox[c][#1]{0.92\linewidth}{\centering \vspace*{0.35#1}%
+  \textit{#2}\vspace*{0.35#1}}}%
+}
+
+% Small helpers
+\newcommand{\grad}{\nabla}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\Vol}{\operatorname{Vol}}
+
+
+
+\title{
+    \LARGE \bfseries An IR complete framework for Quantum Gravity \\[4pt] 
+    \large in n-Dimensions
+}
+
+\author{
+    Marek Hubka\, \orcidlink{0009-0003-2476-9017}
+    \thanks{
+        Independent Researcher, Czech Republic. \\
+        Website: \href{http://www.tidesofuncertainty.com}{tidesofuncertainty.com}.
+        Email: \href{mailto:marek@tidesofuncertainty.com}{marek@tidesofuncertainty.com}.
+    }
+}
+
+\date{\today}
+
+\begin{document}
+\allowdisplaybreaks
+\maketitle
+\begin{abstract}
+\noindent
+We compile a high-level but specific overview of a quantum-gravity framework in which spacetime undergoes localized, entropy-triggered dimensional reduction \( D\to D-2 \). The transition occurs on internal surfaces (\enquote{ledgers} \( \LL \)) where a \emph{dimensionless} curvature invariant \( \IH \) reaches a universal threshold \( \Icrit=12/\aH=48\ln 2 \), while the Law of Transdimensional Thermodynamics (TDT) balances payload against capacity: \( \dd S_\LL = \dd S_{\mathrm{info}}\), implying an area-per-bit quantum \( \Delta A=4\ln 2\,\lp^2 \). In the Schwarzschild family, \( \IH=r^{4}K \) with \( K=\RRm \) places the ledger at \( \rL=\sqrt{\aH}\,\RS \). Across a snap, Null--Pair Removal (NPR) deletes a null two-plane, while the Law of Transdimensional Thermodynamics (TDT) balances payload against capacity: \( \mathrm dS_{\mathrm{ledger}}=\aH^{-1}\mathrm dS_{\mathrm{info}} \), implying an area-per-bit quantum \( \Delta A=4\ln 2\,\lp^{2} \) consistent with black-hole thermodynamics \cite{Bekenstein1973,Hawking1975}. Each ledger tile stores a minimal reversible record (\enquote{Infinity Bits}): \( \{{\mathrm br},X,Y,Z\} \), built from boost-invariant combinations of orientation, shear alignment, and normal-bundle twist \cite{Ashtekar2000,Booth2005}. Between snaps, \( \LL \) supports a worldvolume EFT; coarse-graining yields a master equation and a master path integral that sum over snap insertions. Phenomenology includes inner-boundary conditions for perturbations (gravitational-wave echoes) \cite{ReggeWheeler1957,PressTeukolsky1973,Cardoso2016}, Hawking-flux bookkeeping \cite{Hawking1975}, and the sequestering of a would-be radion fifth force in 4D. Dark matter is attributed to stabilized remnant black holes (capacity protection and mode-gap kinematics), while the coarse-grained ledger sector provides a nearly constant dark-energy-like component with \( w\simeq -1 \). This note fixes definitions, equations, and claims for priority; detailed derivations appear in modular follow-ups.
+\end{abstract}
+
+\tableofcontents
+
+\clearpage
+
+% ------------------------------ INTRODUCTION ------------------------------
+\section*{Introduction}
+\label{sec:intro}
+Black-hole thermodynamics \cite{Bekenstein1973,Hawking1975} and the focusing of null congruences via the Raychaudhuri equation \cite{Raychaudhuri1955,PoissonToolkit} suggest that information and geometry are tightly coupled at horizons and caustics. We posit a concrete, IR-complete mechanism: when a \emph{dimensionless} curvature invariant \( \IH \) reaches a universal threshold \( \Icrit \), spacetime locally loses two dimensions across an internal surface \( \LL \). The deleted directions are null, and the surviving \( (D-2) \)-surface stores a minimal reversible record of the update. The local geometry on \( \LL \) is characterized by the induced metric \( h_{ab} \), null expansions \( \theta_{\pm} \), shears \( \sigma^{(\pm)}_{ab} \), the H\'aj\'\i{}cek one-form \( \omega_{a} \), and its curvature \( \mathcal F_{ab}=\nabla_{a}\omega_{b}-\nabla_{b}\omega_{a} \) \cite{Ashtekar2000,Booth2005}. 
+
+The global bookkeeping is governed by the Law of Transdimensional Thermodynamics (TDT), which links \emph{irreversible} payload to a geometric capacity increase of the ledger area. This yields a fixed area-per-bit \( \Delta A=4\ln 2\,\lp^{2} \), dovetailing with the Bekenstein--Hawking area law \cite{Bekenstein1973,Hawking1975}. Between snaps, \( \LL \) supports an intrinsic EFT and imposes inner boundary conditions on perturbations, producing ringdown echoes in black-hole mergers \cite{ReggeWheeler1957,PressTeukolsky1973,Cardoso2016}. A master equation (coarse-grained) and a master path integral (microscopic) summarize the dynamics, while a focused ``junction'' view keeps Raychaudhuri classical between snaps and enforces NPR+TDT only at threshold crossings. Cosmologically, the coarse-grained ledger sector behaves as a smooth component with \( w\simeq -1 \), and evaporation halts in a Planckish remnant window---natural cold dark-matter candidates. 
+
+A key result of this framework is the derivation of a new, universal transdimensional constant of nature, \( \aH = 1/(4\ln2)\). This dimensionless constant is not a free parameter, but is fixed by the information-theoretic structure of a single "snap" event. We show that \(\aH\) acts as a fundamental coupling constant that connects geometry, thermodynamics, and quantum information, setting the scale for the ledger's location, its information capacity, and the very trigger for dimensional collapse.
+
+We now state the concrete pieces used throughout the framework. \footnote{For notation and conventions see Appendix \ref{app:notation}}
+
+% --------------------------- 0) ANCHORS & PLACEMENT -----------------------
+\section{Numerical anchors, invariant, placement}
+\label{sec:anchors}
+
+\subsection{Dimensionless trigger and scaling}
+Define the invariant
+\[
+\IH \equiv L^{4} K, \qquad K \equiv \RRm,
+\]
+with \( L \) set by the symmetry family (e.g.\ \( L=r \) for spherically symmetric spacetimes). In \( D=4 \) Schwarzschild,
+\[
+K=\frac{48M^{2}}{r^{6}},\qquad \IH(r)=r^{4}K=12\left(\frac{\RS}{r}\right)^{2}.
+\]
+The choice of a \emph{dimensionless} scalar ensures gauge/coordinate independence of the snap condition.
+
+\subsection{Threshold and constants}
+The constant \(\aH\) is fixed by the theory's information-payload structure (a 1-in-4 bit ratio, normalized by \(\ln 2\) for thermodynamic consistency). The key numerical anchors are:
+\[
+\aH=\frac{1}{4\ln 2}\approx \numaH,\qquad 
+\sqrt{\aH}\approx \sqrtaH,\qquad
+\Icrit=\frac{12}{\aH}=48\ln 2 \approx \numIcrit .
+\]
+These set the universal level set \( \IH=\Icrit \) for ledger placement.
+
+\subsection{Ledger placement: spherical and axisymmetric}
+For Schwarzschild,
+\[
+\IH\big|_{\LL}=\Icrit \quad \Longrightarrow \quad \rL=\sqrt{\aH}\,\RS .
+\]
+In axisymmetry (Kerr/Kerr--Newman), choose \( L^{4}K(r,\theta) \) with the standard Boyer--Lindquist curvature invariants; \( r_{\mathcal L}(\theta) \) then solves
+\[
+\IH(r,\theta)=\Icrit,\qquad A(\LL)=\int_{0}^{2\pi}\!\int_{0}^{\pi}\sqrt{\det h_{ab}(r_{\mathcal L}(\theta),\theta)}\,\dd\theta\,\dd\phi.
+\]
+The ratio \( S_{\LL}/S_{\mathrm{BH}} \) remains \( \aH \) for stationary families under these conventions.
+
+% --------------------------- 1) DCT TRIGGER & LADDER ----------------------
+\section{DCT (Dimensional Collapse Theory): trigger and ladder}
+\label{sec:dct}
+
+\subsection{Snap definition}
+A localized transition \( D \to d \) occurs across surfaces \( \LL \) where
+\[
+\IH\big|_{\LL}=\Icrit,
+\]
+and the removed directions are null. The \( d \)-dimensional \( \LL \) is the \emph{ledger} carrying the minimal reversible record.
+
+\subsection{Ladder and frozen ground}
+Iterating snaps in even \( D \) yields a ladder \( \cdots \to 8\to 6\to 4\to 2 \). In \( D=2 \) (two-dimensional ground), there are no local bulk propagating modes; evolution is topological/edge-like.
+
+\subsection{Why dimensionless and geometric}
+Because \( \IH \) is a scalar constructed from \( K \) with a fixed length scale \( L \), the trigger is independent of coordinates and local boosts; it is also insensitive to rescalings of affine parameters.
+
+% --------------------------- 2) NPR: WHAT DELETES -------------------------
+\section{NPR (Null--Pair Removal): what a snap deletes}
+\label{sec:npr}
+
+Having established the geometric condition for a snap, we must now define precisely what spacetime structures are removed in the process. This is the role of Null-Pair Removal (NPR).
+
+\subsection{Projector algebra and gauge}
+Pick null directors \( n_{\pm}^{A} \) with \( n_{\pm}\!\cdot n_{\pm}=0 \), \( n_{+}\!\cdot n_{-}=1 \). Define
+\[
+P^{A}{}_{B}=\delta^{A}{}_{B}-n_{+}^{A}n^{-}_{B}-n_{-}^{A}n^{+}_{B}.
+\]
+Then \( P^{A}{}_{C}P^{C}{}_{B}=P^{A}{}_{B} \) (idempotent), \( P^{A}{}_{B}n_{\pm}^{B}=0 \), and \( \Tr P = d \). Under \( SO(1,1) \) boosts \( n_{\pm}\to e^{\pm\lambda}n_{\pm} \), the projector is invariant.
+
+\subsection{Action on fields}
+For a vector \( V^{A} \), write \( V^{A}=V_{\parallel}^{A}+V_{\perp}^{A} \) with \( V_{\parallel}^{A}=\alpha n_{+}^{A}+\beta n_{-}^{A} \), \( V_{\perp}^{A}=P^{A}{}_{B}V^{B} \). NPR deletes \( V_{\parallel} \). For tensors, apply \( P \) on each index. The pullback to \( \LL \) uses \( h_{ab}=g_{ab}-n_{+\,a}n_{-\,b}-n_{-\,a}n_{+\,b} \).
+
+\subsection{Transport rule}
+Transport across \( \LL \) is permitted only during writes (snaps). Between snaps, \( \LL \) acts as an inner boundary determined by a kernel (Sec. \ref{sec:mastereq}).
+
+% --------------------------- 3) TDT: CAPACITY VS PAYLOAD ------------------
+\section{TDT (Law of Transdimensional Thermodynamics): \\ capacity vs payload}
+\label{sec:tdt}
+
+While NPR describes the geometric deletion, the Laws of Transdimensional Thermodynamics (TDT) govern the information and entropy bookkeeping of the process, ensuring consistency with established horizon thermodynamics.
+
+\subsection{Capacity law and one-bit quantum}
+Ledger capacity obeys
+\[
+S_{\LL}=\frac{A(\LL)}{4\,\lp^{2}},\qquad
+\Delta A_{\text{one bit}}=4\ln 2\,\lp^{2},\qquad
+\Delta S_{\LL}=\ln 2.
+\]
+The one-bit area is universal and matches the Bekenstein--Hawking logic \cite{Bekenstein1973,Hawking1975}.
+
+\subsection{Payload--capacity balance and current form}
+At a snap,
+\[
+\mathrm d S_{\LL}=\mathrm d S_{\mathrm{info}}.
+\]
+Equivalently, in a local covariant form with a surface entropy current \( s^{a} \) intrinsic to \( \LL \),
+\[
+\nabla_{a}s^{a}=\Phi_{S},
+\]
+where \( \Phi_{S} \) is a scalar source localized on the snap hypersurface (delta-supported); between snaps \( \nabla_{a}s^{a}=0 \).
+
+\subsection{Consistency checks}
+(i) \emph{Additivity}: disjoint snap patches add capacities and payloads linearly. (ii) \emph{Locality}: \( \Phi_{S} \) is delta-supported on the snap hypersurface. (iii) \emph{Second law}: irreversible bits increase \( S_{\mathrm{ledger}} \) monotonically.
+
+% --------------------------- 4) INFINITY BITS -----------------------------
+\section{Infinity Bits: minimal reversible record per tile}
+\label{sec:infinitybits}
+
+For the dimensional reduction to be fundamentally reversible (up to gauge freedom), the ledger must store a minimal set of geometric metadata. We define this record as the four boost-invariant Infinity Bits.
+
+\subsection{Definition and invariances}
+Per tile, store
+\[
+\{\, {\mathrm br},\, X,\, Y,\, Z \,\}.
+\]
+\( {\mathrm br} \) is the payload/branch bit. Geometric bits:
+\[
+X=\sgn\bigl(\varepsilon_{ABCD}\,e_{1}^{A}e_{2}^{B}n_{+}^{C}n_{-}^{D}\bigr),\quad
+Y=\sgn\bigl(\sigma^{(+)}_{ab}\sigma^{(-)ab}\bigr),\quad
+Z=\sgn\bigl(\epsilon^{ab}\mathcal F_{ab}\bigr),
+\]
+with \( \mathcal F_{ab}=\nabla_{a}\omega_{b}-\nabla_{b}\omega_{a} \). All are invariant under \( SO(1,1) \) boosts.
+
+\subsection{Degeneracies and tie-breakers}
+On measure-zero sets (e.g.\ \( \sigma^{(+)}_{ab}\sigma^{(-)ab}=0 \) or \( \epsilon^{ab}\mathcal F_{ab}=0 \)), adopt fixed local conventions (lexicographic frame choice or infinitesimal regulator) to maintain reversibility.
+
+\subsection{Sufficiency for reversibility}
+Given \( \{{\mathrm br},X,Y,Z\} \) and smoothness, NPR can be inverted up to diffeomorphisms and boost gauge to re-embed the patch.
+
+% --------------------------- 5) FOCUSED RAYCHAUDHURI ----------------------
+\section{Focused Raychaudhuri \& junction picture}
+\label{sec:raychaudhuri}
+
+With the rules of the snap established, we now place them within the context of classical spacetime dynamics, showing how the ledger acts as a regulated junction that replaces the classical singularity predicted by the Raychaudhuri equation.
+
+\subsection{Classical focusing between snaps}
+Let \( k^{a} \) be a null generator, \( \theta=\nabla_{a}k^{a} \), shear \( \sigma_{ab} \), twist \( \omega_{ab} \). Then
+\[
+\frac{\mathrm d\theta}{\mathrm d\lambda}
+=-\frac{1}{2}\theta^{2}-\sigma_{ab}\sigma^{ab}
++\omega_{ab}\omega^{ab}-R_{ab}k^{a}k^{b}.
+\]
+Under standard energy conditions and vanishing twist, focusing drives congruences toward caustics \cite{Raychaudhuri1955,PoissonToolkit}.
+
+\subsection{Junction at the snap}
+The snap is triggered by \( \IH=\Icrit \), not by \( \theta\to -\infty \). Across \( \LL \):
+\begin{itemize}[leftmargin=1.4em]
+  \item Apply NPR (\( P^{A}{}_{B} \)) on fields; keep the induced \( h_{ab} \) continuous.
+  \item Update capacity via TDT; payload \( {\mathrm br} \) fixed by the branch predicate.
+  \item Impose inner boundary conditions for perturbations (Robin-type) set by a kernel on \( \LL \).
+\end{itemize}
+This is analogous in spirit to null-shell junctions \cite{BarrabesIsrael1991} but with NPR/TDT structure and no sustained NEC violation.
+
+% --------------------------- 6) ENTROPY MAPPING ---------------------------
+\section{Proper vs.\ ``apparent'' entropy (ledger vs.\ horizon)}
+\label{sec:entropy}
+
+The placement and thermodynamics of the ledger create a direct mapping between its own proper entropy and the Bekenstein-Hawking entropy of the encompassing event horizon, which we now make explicit.
+
+\subsection{Definitions and mapping}
+\[
+S_{\mathrm{proper}}=S_{\LL}=\frac{A(\LL)}{4\,\lp^{2}}, \qquad
+S_{\mathrm{apparent}}=S_{\mathrm{BH}}=\frac{A_{\mathrm H}}{4\,\lp^{2}}.
+\]
+For Schwarzschild,
+\[
+S_{\LL}=\aH\,S_{\mathrm{BH}}, \qquad \rL=\sqrt{\aH}\,\RS .
+\]
+
+\subsection{Axisymmetric computation}
+Let \( \LL: r=r_{\mathcal L}(\theta) \) in Boyer--Lindquist-like coordinates. With induced \( h_{ab} \) on the angular 2-surface,
+\[
+A(\LL)=\int \sqrt{\det h_{ab}(r_{\mathcal L}(\theta),\theta)}\,\dd\theta\,\dd\phi.
+\]
+The ratio \( A(\LL)/A_{\mathrm H}=\aH \) fixes normalization conventions across families.
+
+% --------------------------- 7) IR QG EFT & MASTERS -----------------------
+\section{IR QG EFT: master equation and path integral (arbitrary \texorpdfstring{\( D \))}{D}}
+\label{sec:mastereq}
+To describe the full quantum dynamics, we synthesize these principles into a complete effective field theory, formulating the ledger’s behavior as boundary conditions within a master equation and, more fundamentally, as localized insertions in a master path integral.
+
+% ---------------- Ledger EFT (microscopic, between snaps) ----------------
+\subsection{Ledger EFT (microscopic, between snaps)}
+\[
+\begin{aligned}
+{}^{(d)}\!S_{\mathrm{led}}[h,\phi]
+&= \int_{\LL}\!\dd^{\,d}\xi\,\sqrt{|h|}\;\Big[
+-\tfrac12\,Z_{D}\!\big({}^{(d)}\!R,\,K_{ab}K^{ab},\,K^{2},\dots\big)\;
+h^{ab}(\nabla_{a}\phi)(\nabla_{b}\phi)
+\\[2pt]
+&\qquad\qquad\qquad\qquad
+-\tfrac12\,m_{D}^{2}\phi^{2}
+\;+\;\beta_{D}\,\phi\,\psi\big\rvert_{\LL}
+\;+\;\cdots \Big].
+\end{aligned}
+\]
+\noindent
+Here \( d=D-2 \), \( h_{ab} \) is the induced metric on \( \LL \), \( \nabla \) the intrinsic covariant derivative, and \( K_{ab} \) the extrinsic curvature of \( \LL \). The mixing term \( \beta_{D}\,\phi\,\psi\big\rvert_{\LL} \) couples a representative bulk perturbation \( \psi \) pulled back to \( \LL \). In late-time 4D, \( m_{4}\!\gtrsim\!M_{\mathrm P} \) sequesters \( \phi \) (no long-range fifth force).
+
+% ---------------- Inner boundary kernel and Robin data ----------------
+\subsection{Inner boundary kernel and Robin data (effective)}
+\[
+\big(\partial_{n}\psi\big)\big\rvert_{\LL}=\mathsf B\,\psi\big\rvert_{\LL},
+\qquad
+\mathsf R(\omega)=\frac{\mathsf B-i\omega}{\mathsf B+i\omega}\,e^{2i\varphi(\omega)}.
+\]
+At quadratic order, integrating out \( \phi \) in \( {}^{(d)}\!S_{\mathrm{led}} \) induces the effective boundary action
+\[
+{}^{(d)}\!S_{\partial}[\psi]=\tfrac12\!\int_{\LL}\!\dd^{\,d}\xi\,\sqrt{|h|}\;\psi\,\mathsf S\,\psi,
+\quad\text{with}\quad \mathsf B\simeq \mathsf S \ \text{(locally)}.
+\]
+
+% ---------------- Master equation (coarse-grained) ----------------
+\subsection{Master equation (coarse-grained)}
+\[
+\partial_{t}\rho
+=-\,\mathrm i\,[\,H_{\mathrm{bulk}}+H_{\mathrm{led}}+H_{\mathrm{BC}},\,\rho\,]
++\sum_{i}\,\mathsf J_{i}[\rho]\,\delta(\Sigma_{i}),
+\]
+where \( \mathsf J_{i} \) are CPTP snap instruments supported on the snap hypersurfaces \( \Sigma_{i} \).
+
+% ---------------- Master path integral (microscopic, episodic snaps) ----------------
+\subsection{Master path integral (microscopic, with episodic snaps)}
+\[
+\begin{aligned}
+\mathcal Z
+&=\int \mathcal D g\,\mathcal D\Psi\,\mathcal D\psi\,\mathcal D\phi\;
+\exp\!\Big\{ i\big[\,{}^{(D)}\!S_{\mathrm{EH}}[g]
++{}^{(D)}\!S_{\mathrm{matter}}[g,\Psi]
++{}^{(d)}\!S_{\partial}[\psi]\big]\Big\}
+\\[-2pt]
+&\hspace{6.1cm}
+\;\prod_{i}\exp\!\Big\{ i\,{}^{(d)}\!S_{\mathrm{snap}}^{(i)}\!\big[g;\,P,\,\IH=\Icrit\big] \Big\}.
+\end{aligned}
+\]
+If no hypersurface satisfies \( \IH=\Icrit \), the product is empty and one recovers standard GR\(+\)QFT.
+
+% --------------------------- 8) PHENOMENOLOGY -----------------------------
+\section[Phenomenology: echoes, Hawking, radion]{Phenomenology: gravitons, echoes, Hawking bookkeeping, radion}
+
+\label{sec:phenomenology}
+
+The formal structure of the EFT leads directly to a set of concrete, falsifiable predictions. We now outline the primary phenomenological signatures of the framework.
+
+\subsection{Graviton sector and energy flux}
+Linearized \( h_{AB} \) exists for \( D\ge 4 \). In 4D, two TT polarizations; wave-zone flux from Isaacson stress tensor. Inner boundary at \( \LL \) modifies ingoing/outgoing mode mixing.
+
+\subsection{Echo cavity and spacing}
+With tortoise coordinate \( r_{*} \), define the travel time
+\[
+T(r)=\int^{r}\!\frac{\dd r'}{f(r')},\quad \text{family-dependent } f,
+\]
+so the cavity spacing is
+\[
+\Delta t \approx 2\,[\,T(r_{\mathrm{barrier}})-T(\rL)\,],\qquad
+\Delta f=\frac{1}{\Delta t},
+\]
+with amplitude/phase set by \( \mathsf R(\omega),\varphi(\omega) \) \cite{ReggeWheeler1957,PressTeukolsky1973,Cardoso2016}.
+
+\subsection{Hawking bookkeeping}
+Leading flux remains Hawking-like \cite{Hawking1975}; snaps correlate the outgoing state episodically, preserving global unitarity while avoiding information loss. No late-time explosive bursts if remnants persist (Sec.\,9).
+
+\subsection{Radion and fifth force}
+On the \( 2{+}1 \)-dimensional ledger in 4D, the radion \( \phi \) is heavy/constraint-like (range \( \ell_{\mathrm{rad}}\!\lesssim\!\ell_{\mathrm P} \)); boundary couplings are contact-like between snaps. Hence no detectable long-range fifth force in 4D.
+
+% --------------------------- 9) DARK SECTOR -------------------------------
+\section[Dark Sector: remnants (DM) and DE]{Dark sector: stabilized remnants (DM) \& smooth component (DE)}
+\label{sec:darksector}
+
+Beyond local tests, the theory's thermodynamic principles have profound consequences on cosmological scales, offering a unified physical origin for the entire dark sector.
+
+\subsection{Capacity-protection floor}
+In Planck units,
+\[
+S_{\mathrm{rem}}(M)=\frac{A(\LL)}{4\lp^{2}}=\aH\,S_{\mathrm{BH}}(M)=4\pi \aH\,M^{2},
+\qquad
+\Delta A=4\ln 2\,\lp^{2},
+\]
+so with \( N_{\mathrm{irr}} \) irreversible bits already written,
+
+\[
+M_{\mathrm{rem}}(N_{\mathrm{irr}})\;\ge\;
+\frac{\ln 2}{\sqrt{\pi}}\;\sqrt{N_{\mathrm{irr}}}\;M_{\mathrm P}
+\;\gtrsim\; 0.3911\sqrt{N_{\mathrm{irr}}}\,M_{\mathrm P} \quad (N_{\mathrm{irr}}\ge 1).
+\]
+
+\subsection{Mode-gap bound}
+With \( \Delta t(M) \) from the cavity,
+\[
+k_{\mathrm B}T_{\mathrm H}\lesssim \hbar\pi/\Delta t(M) \Rightarrow
+M_{\mathrm{rem}} \gtrsim C_{\mathrm{kin}}(\aH,\mathsf R,\varphi)\,M_{\mathrm P}.
+\]
+A Planckish remnant window follows from two independent mechanisms.
+
+\subsection{DE as coarse-grained ledger sector}
+\[
+w_{\LL} \equiv \frac{p_{\LL}}{\rho_{\LL}} \approx -1 + \delta w(z), \qquad |\delta w|\ll 1,
+\]
+originating from episodic updates. Zeroth order \( w_{\LL}\simeq -1 \). Dedicated fits (SNe+BAO+CMB) will constrain \( \delta w(z) \).
+
+% --------------------------- 10) FALSIFIABILITY ---------------------------
+\section{Falsifiability \& near-term tests}
+\label{sec:falsifiability}
+
+A viable physical theory must be falsifiable. We conclude by compiling a concise list of clear, near-term observational tests that could either support or rule out this framework.
+
+\begin{itemize}[leftmargin=1.6em]
+  \item \textbf{Echo comb:} non-detection at predicted \( \Delta f=1/\Delta t \) across high-SNR mergers disfavours reflective \( \LL \) at \( \rL \).
+  \item \textbf{Ledger radius:} independent inference of \( \rL/\RS \) inconsistent with \( \sqrt{\aH} \).
+  \item \textbf{Cosmology:} joint SNe+BAO+CMB constraints exclude all \( \delta w(z) \) compatible with episodic updates.
+  \item \textbf{Stars:} a static-star configuration saturating \( \IH\ge \Icrit \) under standard energy conditions.
+  \item \textbf{Remnants:} absence of terminal Hawking bursts and compatibility with microlensing/structure constraints for Planckish remnants.
+\end{itemize}
+
+% --------------------------- 11) PRIORITY CLAIMS --------------------------
+\section{Priority claims (compact)}
+\label{sec:claims}
+
+\begin{itemize}
+    \item \textbf{C1} The universal transdimensional constant, \( \aH = 1/(4\ln2) \), from a fundamental information-payload ratio.
+    \item \textbf{C2} \( \IH=\Icrit \) with \( \aH=1/(4\ln 2) \), \( \Icrit=48\ln 2 \).\quad
+    \item \textbf{C3} \( \rL=\sqrt{\aH}\,\RS \); axisym: \( \IH(r,\theta)=\Icrit \).\quad
+    \item \textbf{C4} \( \mathrm d S_{\LL}=\mathrm d S_{\mathrm{info}} \); one bit \( \Rightarrow \Delta A=4\ln 2\,\lp^{2} \).\quad
+    \item \textbf{C5} Infinity Bits \( \{{\mathrm br},X,Y,Z\} \) (boost-invariant geometry bits).\quad
+    \item \textbf{C6} Focused junction: classical Raychaudhuri between snaps; NPR+TDT at thresholds.\quad
+    \item \textbf{C7} \( S_{\LL}=\aH\,S_{\mathrm{BH}} \) for stationary families.\quad
+    \item \textbf{C8} Master equation with snap superoperators; master path integral summing snaps.\quad
+    \item \textbf{C9} Echo spacing rule \( \Delta t \approx 2[\,T(r_{\mathrm{barrier}})-T(\rL)\,] \); radion sequestering (no 4D fifth force).\quad
+    \item \textbf{C10} Dark sector: stabilized Planckish remnants (DM) and a smooth \( w_{\mathrm{led}}\simeq -1 \) component (DE).
+\end{itemize}
+
+% --------------------------- SUMMARY / OUTLOOK ----------------------------
+\section{Summary and Outlook}
+\label{sec:summary}
+We proposed a concrete, testable program for quantum gravity in which localized, thresholded dimensional reduction implements information-preserving updates on \( \LL \). The key inputs are (i) a dimensionless trigger \( \IH=\Icrit \) fixing ledger placement, (ii) NPR as the minimal geometric deletion with a reversible metadata set (Infinity Bits), and (iii) TDT linking payload to capacity with a universal area-per-bit. Between snaps, \( \LL \) hosts an intrinsic EFT and supplies boundary conditions for perturbations. Phenomenology spans gravitational-wave echoes, Hawking-flux bookkeeping, non-observation of a 4D fifth force (radion sequestering), stabilized Planckish remnants as DM, and a smooth \( w\simeq -1 \) sector as DE. Immediate priorities include: deriving axisymmetric placement and echo transfer functions, formalizing the snap superoperators in the master equation, quantifying \( \delta w(z) \) in cosmology, and mapping remnant abundance against observational bounds. The claims above are concise enough to establish priority while leaving room for detailed papers.
+
+\vspace{0.75em}
+\hrule
+\vspace{0.5em}
+\noindent\footnotesize
+\textbf{Release \& provenance:} Archive source and PDF in a public Git repository with a signed tag; mint a DOI (e.g.\ via Zenodo). Include SHA-256 of PDF and commit hash in release notes.
+
+\clearpage
+
+\appendix
+
+% =====================================
+% Notation and Conventions (universal)
+% =====================================
+\section{Notation and Conventions}
+\label{app:notation}
+\paragraph{Units and signature.}
+We use natural units \( c=\hbar=k_{B}=1 \). Planck length \( \ell_{\mathrm P} \) is kept explicit. Unless stated, \( G \) is explicit in geometric identities and set to 1 in back-of-the-envelope estimates. Metric signature is \( (-,+,+,+) \) in 4D, and \( (-,+,\dots,+) \) in \( D \) dimensions. Curvature conventions:
+\[
+R^{a}{}_{bcd} = \partial_{c}\Gamma^{a}_{bd} - \partial_{d}\Gamma^{a}_{bc}
+                 + \Gamma^{a}_{ce}\Gamma^{e}_{bd} - \Gamma^{a}_{de}\Gamma^{e}_{bc}, \qquad
+R_{ab}=R^{c}{}_{acb}.
+\]
+
+\paragraph{Dimensional tags.}
+We mark the dimension of geometric objects with \emph{left} superscripts in parentheses:
+\[
+{}^{(D)}G_{AB},\quad {}^{(D)}\nabla,\quad {}^{(D)}\Box, \quad {}^{(d)}R_{ab},\quad {}^{(2)}\epsilon_{\perp\,ab}.
+\]
+Here \( D \) is the ambient spacetime dimension and \( d:=D-2 \) is the ledger dimension. Indices \( A,B,\dots \) are ambient; \( a,b,\dots \) live on the ledger \( \mathcal L \); the normal two-plane is denoted by \( {}^{(2)}(\cdot) \). Right superscripts are reserved for powers, perturbative orders, or labels unrelated to dimension.
+
+\paragraph{DCT triad and invariants.}
+We use the calligraphic triad \( (\mathcal L,\mathcal I,\mathcal T) \):
+\[
+\mathcal L \ \text{(ledger surface)}, \qquad
+\mathcal I(r) \equiv r^{4} K(r), \ \ K=R_{abcd}R^{abcd}, \qquad
+\mathcal T = \frac{1}{4\ln 2}.
+\]
+The universal snap threshold is
+\[
+\mathcal I_{\mathrm{crit}} = 48\ln 2 = \frac{12}{\mathcal T},
+\]
+fixing, for Schwarzschild, the ledger placement \( r_{\mathcal L} = \sqrt{\mathcal T}\,R_S \) (axisymmetric generalizations use the canonical slice).
+
+\paragraph{Thermodynamics and information.}
+All entropies are in \emph{nats}. Ledger entropy \( S_{\mathrm{ledger}}=A/(4\ell_{\mathrm P}^{2}) \). At a snap, the capacity–payload equality holds,
+\[
+\delta S_{\mathrm{ledger}} = \delta S_{\mathrm{info}},
+\]
+and one \emph{irreversible payload bit} costs
+\[
+\Delta A_{\text{one bit}} = 4\ln 2\,\ell_{\mathrm P}^{2}.
+\]
+Reversible geometric metadata \((X,Y,Z)\) (the \emph{Infinity Bits}) do not change von Neumann entropy. We summarize this ethos as: \emph{no record without area}.
+
+\paragraph{Mechanism and dynamics.}
+Snaps are \emph{Null–Pair Removal} (NPR) events: if \( n^{A}_{\pm} \) span the deleted null 2-plane with \( n_{+}\!\cdot n_{-}=1 \),
+\[
+P^{A}{}_{B} = \delta^{A}{}_{B} - n_{+}^{A}n^{-}_{B} - n_{-}^{A}n^{+}_{B}
+\]
+projects to the ledger-orthogonal data; local \( SO(1,1) \) boosts in the deleted plane are gauge. Transport across \( \mathcal L \) is permitted only during snaps. Between snaps, the ledger imposes a \emph{real} Robin boundary (lossless, \( \lvert \mathsf R \rvert = 1 \)), so evolution is unitary. At a snap, the open system updates via a localized CP–TP instrument and writes the irreversible payload bit to \( \mathcal L \).
+
+\paragraph{Bits vs. nats.}
+We write information in nats; \( 1 \) bit \( = \ln 2 \) nats. When convenient, we annotate payload in bits and convert via \( \ln 2 \).
+
+\paragraph{Default dimension.}
+Unless a left superscript is shown, quantities are \( D=4 \). We tag \( {}^{(D)}(\cdot) \), \( {}^{(d)}(\cdot) \), or \( {}^{(2)}(\cdot) \) only when comparing across dimensions or when a quantity lives intrinsically on \( \mathcal L \) or on the normal two-plane.
+
+% --------------------------- BIBLIOGRAPHY ---------------------------------
+\begin{thebibliography}{99}
+
+\bibitem{Bekenstein1973}
+J. D. Bekenstein,
+\newblock Black holes and entropy,
+\newblock \emph{Phys. Rev. D} \textbf{7}, 2333--2346 (1973).
+
+\bibitem{Hawking1975}
+S. W. Hawking,
+\newblock Particle Creation by Black Holes,
+\newblock \emph{Commun. Math. Phys.} \textbf{43}, 199--220 (1975).
+
+\bibitem{Raychaudhuri1955}
+A. Raychaudhuri,
+\newblock Relativistic cosmology. I,
+\newblock \emph{Phys. Rev.} \textbf{98}, 1123--1126 (1955).
+
+\bibitem{PoissonToolkit}
+E. Poisson,
+\newblock \emph{A Relativist's Toolkit: The Mathematics of Black-Hole Mechanics},
+\newblock Cambridge University Press (2004).
+
+\bibitem{Ashtekar2000}
+A. Ashtekar, C. Beetle, and S. Fairhurst,
+\newblock Isolated horizons: A generalization of black hole mechanics,
+\newblock \emph{Class. Quantum Grav.} \textbf{17}, 253--298 (2000).
+
+\bibitem{Booth2005}
+I. Booth,
+\newblock Black-hole boundaries,
+\newblock \emph{Can. J. Phys.} \textbf{83}, 1073--1099 (2005).
+
+\bibitem{ReggeWheeler1957}
+T. Regge and J. A. Wheeler,
+\newblock Stability of a Schwarzschild singularity,
+\newblock \emph{Phys. Rev.} \textbf{108}, 1063--1069 (1957).
+
+\bibitem{PressTeukolsky1973}
+W. H. Press and S. A. Teukolsky,
+\newblock Perturbations of a rotating black hole. II. Dynamical stability of the Kerr metric,
+\newblock \emph{Astrophys. J.} \textbf{185}, 649--673 (1973).
+
+\bibitem{Cardoso2016}
+V. Cardoso, E. Franzin, and P. Pani,
+\newblock Is the gravitational-wave ringdown a probe of the event horizon?,
+\newblock \emph{Phys. Rev. Lett.} \textbf{116}, 171101 (2016).
+
+\bibitem{Donoghue1994}
+J. F. Donoghue,
+\newblock General relativity as an effective field theory: The leading quantum corrections,
+\newblock \emph{Phys. Rev. D} \textbf{50}, 3874--3888 (1994).
+
+\bibitem{BarrabesIsrael1991}
+C. Barrab\`es and W. Israel,
+\newblock Thin shells in general relativity and cosmology: The lightlike limit,
+\newblock \emph{Phys. Rev. D} \textbf{43}, 1129--1142 (1991).
+
+\end{thebibliography}
+
+\end{document}
