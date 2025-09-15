@@ -1,7 +1,7 @@
 # An IR complete framework for Quantum Gravity in D-dimensions
 
 **Author:** Marek Hubka  
-**Version:** 0.1 (September 2025)  
+**Version:** 1.0 (September 2025)  
 
 [https://doi.org/DOI-TO-BE-ASSIGNED](https://doi.org/DOI-TO-BE-ASSIGNED)
 ![License](https://img.shields.io/badge/docs-CC--BY--NC--ND%204.0-lightgrey.svg)
@@ -29,17 +29,17 @@ Think of the thesis as the seed and this series as the full-grown tree.
 | 0. Manifest | ✅ Released | /manifest/priority_manifest.pdf |
 | 1. Trigger  | ⏳ Draft    | (coming soon) |
 | 2. NPR      | ⏳ Draft    | (coming soon) |
-| 3. TDT      | ⏳ Draft    | (coming soon) |
-| 4. Infinity Bits | ⏳ Draft | (coming soon) |
-| 5. Focused Raychaudhuri | ⏳ Draft | (coming soon) |
-| 6. EFT/Master Eq. | ⏳ Draft | (coming soon) |
-| 7. Tensor Networks | ⏳ Draft | (coming soon) |
-| 8. Phenomenology | ⏳ Draft | (coming soon) |
-| 9. DM Remnants | ⏳ Draft | (coming soon) |
-| 10. DE Ledger | ⏳ Draft | (coming soon) |
-| 11. Radion | ⏳ Draft | (coming soon) |
-| 12. UV Roadmap | ⏳ Draft | (coming soon) |
-| 13. Kill Tests | ⏳ Draft | (coming soon) |
+| 3. TDT      | ⏳ Draft    | (queued) |
+| 4. Infinity Bits | ⏳ Draft | (queued) |
+| 5. Focused Raychaudhuri | ⏳ Draft | (queued) |
+| 6. EFT/Master Eq. | ⏳ Draft | (queued) |
+| 7. Tensor Networks | ⏳ Draft | (queued) |
+| 8. Phenomenology | ⏳ Draft | (queued) |
+| 9. DM Remnants | ⏳ Draft | (queued) |
+| 10. DE Ledger | ⏳ Draft | (queued) |
+| 11. Radion | ⏳ Draft | (queued) |
+| 12. UV Roadmap | ⏳ Draft | (queued) |
+| 13. Kill Tests | ⏳ Draft | (queued) |
 
 ---
 
@@ -112,7 +112,7 @@ If those four lines make sense, you’re already 80% of the way there.
 - What it answers: effective $w \approx -1$ with small drift; what to look for in data.
 
 **11. Radion/ Fifth Force**
-- Title: *Why It’s There in $D>4$ and Why You Don’t See It in 4D*
+- Title: *Why It’s There in* $D>4$ *and Why You Don’t See It in 4D*
 - What it answers: sequestering by mass and boundary conditions; lab constraints; astrophysical knobs.
 
 **12. UV-Completion Roadmap**
