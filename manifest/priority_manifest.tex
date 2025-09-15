@@ -20,7 +20,6 @@
 \usepackage{tikz}
 \usepackage{comment}
 \usepackage{orcidlink}
-\usepackage{todonotes}
 \usepackage{csquotes}
 
 \geometry{margin=1in}
@@ -37,8 +36,7 @@
 \newcommand{\atL}{\big|_{\LL}}      % evaluation at ledger
 \newcommand{\IH}{\mathcal{I}}       % dimensionless invariant
 \newcommand{\Icrit}{\mathcal{I}_{\mathrm{crit}}}
-% \newcommand{\aH}{\alpha_{\mathrm H}}
-\newcommand{\aH}{\mathcal T}
+\newcommand{\T}{\mathcal T}
 \newcommand{\RS}{R_{\mathrm S}}
 \newcommand{\lp}{\ell_{\mathrm P}}
 \newcommand{\rL}{r_{\mathcal L}}
@@ -89,7 +87,7 @@
 \maketitle
 \begin{abstract}
 \noindent
-We compile a high-level but specific overview of a quantum-gravity framework in which spacetime undergoes localized, entropy-triggered dimensional reduction \( D\to D-2 \). The transition occurs on internal surfaces (\enquote{ledgers} \( \LL \)) where a \emph{dimensionless} curvature invariant \( \IH \) reaches a universal threshold \( \Icrit=12/\aH=48\ln 2 \), while the Law of Transdimensional Thermodynamics (TDT) balances payload against capacity: \( \dd S_\LL = \dd S_{\mathrm{info}}\), implying an area-per-bit quantum \( \Delta A=4\ln 2\,\lp^2 \). In the Schwarzschild family, \( \IH=r^{4}K \) with \( K=\RRm \) places the ledger at \( \rL=\sqrt{\aH}\,\RS \). Across a snap, Null--Pair Removal (NPR) deletes a null two-plane, while the Law of Transdimensional Thermodynamics (TDT) balances payload against capacity: \( \mathrm dS_{\mathrm{ledger}}=\aH^{-1}\mathrm dS_{\mathrm{info}} \), implying an area-per-bit quantum \( \Delta A=4\ln 2\,\lp^{2} \) consistent with black-hole thermodynamics \cite{Bekenstein1973,Hawking1975}. Each ledger tile stores a minimal reversible record (\enquote{Infinity Bits}): \( \{{\mathrm br},X,Y,Z\} \), built from boost-invariant combinations of orientation, shear alignment, and normal-bundle twist \cite{Ashtekar2000,Booth2005}. Between snaps, \( \LL \) supports a worldvolume EFT; coarse-graining yields a master equation and a master path integral that sum over snap insertions. Phenomenology includes inner-boundary conditions for perturbations (gravitational-wave echoes) \cite{ReggeWheeler1957,PressTeukolsky1973,Cardoso2016}, Hawking-flux bookkeeping \cite{Hawking1975}, and the sequestering of a would-be radion fifth force in 4D. Dark matter is attributed to stabilized remnant black holes (capacity protection and mode-gap kinematics), while the coarse-grained ledger sector provides a nearly constant dark-energy-like component with \( w\simeq -1 \). This note fixes definitions, equations, and claims for priority; detailed derivations appear in modular follow-ups.
+We compile a high-level but specific overview of a quantum-gravity framework in which spacetime undergoes localized, entropy-triggered dimensional reduction \( D\to D-2 \). The transition occurs on internal surfaces (\enquote{ledgers} \( \LL \)) where a \emph{dimensionless} curvature invariant \( \IH \) reaches a universal threshold \( \Icrit=12/\T=48\ln 2 \), while the Law of Transdimensional Thermodynamics (TDT) balances payload against capacity: \( \dd S_\LL = \dd S_{\mathrm{info}}\), implying an area-per-bit quantum \( \Delta A=4\ln 2\,\lp^2 \). In the Schwarzschild family, \( \IH=r^{4}K \) with \( K=\RRm \) places the ledger at \( \rL=\sqrt{\T}\,\RS \). Across a snap, Null--Pair Removal (NPR) deletes a null two-plane, while the Law of Transdimensional Thermodynamics (TDT) balances payload against capacity: \( \mathrm dS_{\mathrm{ledger}}=\T^{-1}\mathrm dS_{\mathrm{info}} \), implying an area-per-bit quantum \( \Delta A=4\ln 2\,\lp^{2} \) consistent with black-hole thermodynamics \cite{Bekenstein1973,Hawking1975}. Each ledger tile stores a minimal reversible record (\enquote{Infinity Bits}): \( \{{\mathrm br},X,Y,Z\} \), built from boost-invariant combinations of orientation, shear alignment, and normal-bundle twist \cite{Ashtekar2000,Booth2005}. Between snaps, \( \LL \) supports a worldvolume EFT; coarse-graining yields a master equation and a master path integral that sum over snap insertions. Phenomenology includes inner-boundary conditions for perturbations (gravitational-wave echoes) \cite{ReggeWheeler1957,PressTeukolsky1973,Cardoso2016}, Hawking-flux bookkeeping \cite{Hawking1975}, and the sequestering of a would-be radion fifth force in 4D. Dark matter is attributed to stabilized remnant black holes (capacity protection and mode-gap kinematics), while the coarse-grained ledger sector provides a nearly constant dark-energy-like component with \( w\simeq -1 \). This note fixes definitions, equations, and claims for priority; detailed derivations appear in modular follow-ups.
 \end{abstract}
 
 \tableofcontents
@@ -103,7 +101,7 @@ Black-hole thermodynamics \cite{Bekenstein1973,Hawking1975} and the focusing of 
 
 The global bookkeeping is governed by the Law of Transdimensional Thermodynamics (TDT), which links \emph{irreversible} payload to a geometric capacity increase of the ledger area. This yields a fixed area-per-bit \( \Delta A=4\ln 2\,\lp^{2} \), dovetailing with the Bekenstein--Hawking area law \cite{Bekenstein1973,Hawking1975}. Between snaps, \( \LL \) supports an intrinsic EFT and imposes inner boundary conditions on perturbations, producing ringdown echoes in black-hole mergers \cite{ReggeWheeler1957,PressTeukolsky1973,Cardoso2016}. A master equation (coarse-grained) and a master path integral (microscopic) summarize the dynamics, while a focused ``junction'' view keeps Raychaudhuri classical between snaps and enforces NPR+TDT only at threshold crossings. Cosmologically, the coarse-grained ledger sector behaves as a smooth component with \( w\simeq -1 \), and evaporation halts in a Planckish remnant window---natural cold dark-matter candidates. 
 
-A key result of this framework is the derivation of a new, universal transdimensional constant of nature, \( \aH = 1/(4\ln2)\). This dimensionless constant is not a free parameter, but is fixed by the information-theoretic structure of a single "snap" event. We show that \(\aH\) acts as a fundamental coupling constant that connects geometry, thermodynamics, and quantum information, setting the scale for the ledger's location, its information capacity, and the very trigger for dimensional collapse.
+A key result of this framework is the derivation of a new, universal transdimensional constant of nature, \( \T = 1/(4\ln2)\). This dimensionless constant is not a free parameter, but is fixed by the information-theoretic structure of a single "snap" event. We show that \(\T\) acts as a fundamental coupling constant that connects geometry, thermodynamics, and quantum information, setting the scale for the ledger's location, its information capacity, and the very trigger for dimensional collapse.
 
 We now state the concrete pieces used throughout the framework. \footnote{For notation and conventions see Appendix \ref{app:notation}}
 
@@ -123,27 +121,27 @@ K=\frac{48M^{2}}{r^{6}},\qquad \IH(r)=r^{4}K=12\left(\frac{\RS}{r}\right)^{2}.
 The choice of a \emph{dimensionless} scalar ensures gauge/coordinate independence of the snap condition.
 
 \subsection{Threshold and constants}
-The constant \(\aH\) is fixed by the theory's information-payload structure (a 1-in-4 bit ratio, normalized by \(\ln 2\) for thermodynamic consistency). The key numerical anchors are:
+The constant \(\T\) is fixed by the theory's information-payload structure (a 1-in-4 bit ratio, normalized by \(\ln 2\) for thermodynamic consistency). The key numerical anchors are:
 \[
-\aH=\frac{1}{4\ln 2}\approx \numaH,\qquad 
-\sqrt{\aH}\approx \sqrtaH,\qquad
-\Icrit=\frac{12}{\aH}=48\ln 2 \approx \numIcrit .
+\T=\frac{1}{4\ln 2}\approx \numaH,\qquad 
+\sqrt{\T}\approx \sqrtaH,\qquad
+\Icrit=\frac{12}{\T}=48\ln 2 \approx \numIcrit .
 \]
 These set the universal level set \( \IH=\Icrit \) for ledger placement.
 
 \subsection{Ledger placement: spherical and axisymmetric}
 For Schwarzschild,
 \[
-\IH\big|_{\LL}=\Icrit \quad \Longrightarrow \quad \rL=\sqrt{\aH}\,\RS .
+\IH\big|_{\LL}=\Icrit \quad \Longrightarrow \quad \rL=\sqrt{\T}\,\RS .
 \]
 In axisymmetry (Kerr/Kerr--Newman), choose \( L^{4}K(r,\theta) \) with the standard Boyer--Lindquist curvature invariants; \( r_{\mathcal L}(\theta) \) then solves
 \[
 \IH(r,\theta)=\Icrit,\qquad A(\LL)=\int_{0}^{2\pi}\!\int_{0}^{\pi}\sqrt{\det h_{ab}(r_{\mathcal L}(\theta),\theta)}\,\dd\theta\,\dd\phi.
 \]
-The ratio \( S_{\LL}/S_{\mathrm{BH}} \) remains \( \aH \) for stationary families under these conventions.
+The ratio \( S_{\LL}/S_{\mathrm{BH}} \) remains \( \T \) for stationary families under these conventions.
 
 % --------------------------- 1) DCT TRIGGER & LADDER ----------------------
-\section{DCT (Dimensional Collapse Theory): trigger and ladder}
+\section[Dimensional Collapse Theory (DCT): trigger and ladder]{Dimensional Collapse Theory (DCT): trigger and ladder}
 \label{sec:dct}
 
 \subsection{Snap definition}
@@ -160,7 +158,7 @@ Iterating snaps in even \( D \) yields a ladder \( \cdots \to 8\to 6\to 4\to 2 \
 Because \( \IH \) is a scalar constructed from \( K \) with a fixed length scale \( L \), the trigger is independent of coordinates and local boosts; it is also insensitive to rescalings of affine parameters.
 
 % --------------------------- 2) NPR: WHAT DELETES -------------------------
-\section{NPR (Null--Pair Removal): what a snap deletes}
+\section{Null--Pair Removal (NPR): what a snap deletes}
 \label{sec:npr}
 
 Having established the geometric condition for a snap, we must now define precisely what spacetime structures are removed in the process. This is the role of Null-Pair Removal (NPR).
@@ -179,7 +177,7 @@ For a vector \( V^{A} \), write \( V^{A}=V_{\parallel}^{A}+V_{\perp}^{A} \) with
 Transport across \( \LL \) is permitted only during writes (snaps). Between snaps, \( \LL \) acts as an inner boundary determined by a kernel (Sec. \ref{sec:mastereq}).
 
 % --------------------------- 3) TDT: CAPACITY VS PAYLOAD ------------------
-\section{TDT (Law of Transdimensional Thermodynamics): \\ capacity vs payload}
+\section[Law of Transdimensional Thermodynamics (TDT): capacity vs payload]{Law of Transdimensional Thermodynamics (TDT): \\ capacity vs payload}
 \label{sec:tdt}
 
 While NPR describes the geometric deletion, the Laws of Transdimensional Thermodynamics (TDT) govern the information and entropy bookkeeping of the process, ensuring consistency with established horizon thermodynamics.
@@ -269,7 +267,7 @@ S_{\mathrm{apparent}}=S_{\mathrm{BH}}=\frac{A_{\mathrm H}}{4\,\lp^{2}}.
 \]
 For Schwarzschild,
 \[
-S_{\LL}=\aH\,S_{\mathrm{BH}}, \qquad \rL=\sqrt{\aH}\,\RS .
+S_{\LL}=\T\,S_{\mathrm{BH}}, \qquad \rL=\sqrt{\T}\,\RS .
 \]
 
 \subsection{Axisymmetric computation}
@@ -277,7 +275,7 @@ Let \( \LL: r=r_{\mathcal L}(\theta) \) in Boyer--Lindquist-like coordinates. Wi
 \[
 A(\LL)=\int \sqrt{\det h_{ab}(r_{\mathcal L}(\theta),\theta)}\,\dd\theta\,\dd\phi.
 \]
-The ratio \( A(\LL)/A_{\mathrm H}=\aH \) fixes normalization conventions across families.
+The ratio \( A(\LL)/A_{\mathrm H}=\T \) fixes normalization conventions across families.
 
 % --------------------------- 7) IR QG EFT & MASTERS -----------------------
 \section{IR QG EFT: master equation and path integral (arbitrary \texorpdfstring{\( D \))}{D}}
@@ -377,7 +375,7 @@ Beyond local tests, the theory's thermodynamic principles have profound conseque
 \subsection{Capacity-protection floor}
 In Planck units,
 \[
-S_{\mathrm{rem}}(M)=\frac{A(\LL)}{4\lp^{2}}=\aH\,S_{\mathrm{BH}}(M)=4\pi \aH\,M^{2},
+S_{\mathrm{rem}}(M)=\frac{A(\LL)}{4\lp^{2}}=\T\,S_{\mathrm{BH}}(M)=4\pi \T\,M^{2},
 \qquad
 \Delta A=4\ln 2\,\lp^{2},
 \]
@@ -393,7 +391,7 @@ M_{\mathrm{rem}}(N_{\mathrm{irr}})\;\ge\;
 With \( \Delta t(M) \) from the cavity,
 \[
 k_{\mathrm B}T_{\mathrm H}\lesssim \hbar\pi/\Delta t(M) \Rightarrow
-M_{\mathrm{rem}} \gtrsim C_{\mathrm{kin}}(\aH,\mathsf R,\varphi)\,M_{\mathrm P}.
+M_{\mathrm{rem}} \gtrsim C_{\mathrm{kin}}(\T,\mathsf R,\varphi)\,M_{\mathrm P}.
 \]
 A Planckish remnant window follows from two independent mechanisms.
 
@@ -411,7 +409,7 @@ A viable physical theory must be falsifiable. We conclude by compiling a concise
 
 \begin{itemize}[leftmargin=1.6em]
   \item \textbf{Echo comb:} non-detection at predicted \( \Delta f=1/\Delta t \) across high-SNR mergers disfavours reflective \( \LL \) at \( \rL \).
-  \item \textbf{Ledger radius:} independent inference of \( \rL/\RS \) inconsistent with \( \sqrt{\aH} \).
+  \item \textbf{Ledger radius:} independent inference of \( \rL/\RS \) inconsistent with \( \sqrt{\T} \).
   \item \textbf{Cosmology:} joint SNe+BAO+CMB constraints exclude all \( \delta w(z) \) compatible with episodic updates.
   \item \textbf{Stars:} a static-star configuration saturating \( \IH\ge \Icrit \) under standard energy conditions.
   \item \textbf{Remnants:} absence of terminal Hawking bursts and compatibility with microlensing/structure constraints for Planckish remnants.
@@ -422,13 +420,13 @@ A viable physical theory must be falsifiable. We conclude by compiling a concise
 \label{sec:claims}
 
 \begin{itemize}
-    \item \textbf{C1} The universal transdimensional constant, \( \aH = 1/(4\ln2) \), from a fundamental information-payload ratio.
-    \item \textbf{C2} \( \IH=\Icrit \) with \( \aH=1/(4\ln 2) \), \( \Icrit=48\ln 2 \).\quad
-    \item \textbf{C3} \( \rL=\sqrt{\aH}\,\RS \); axisym: \( \IH(r,\theta)=\Icrit \).\quad
+    \item \textbf{C1} The universal transdimensional constant, \( \T = 1/(4\ln2) \), from a fundamental information-payload ratio.
+    \item \textbf{C2} \( \IH=\Icrit \) with \( \T=1/(4\ln 2) \), \( \Icrit=48\ln 2 \).\quad
+    \item \textbf{C3} \( \rL=\sqrt{\T}\,\RS \); axisym: \( \IH(r,\theta)=\Icrit \).\quad
     \item \textbf{C4} \( \mathrm d S_{\LL}=\mathrm d S_{\mathrm{info}} \); one bit \( \Rightarrow \Delta A=4\ln 2\,\lp^{2} \).\quad
     \item \textbf{C5} Infinity Bits \( \{{\mathrm br},X,Y,Z\} \) (boost-invariant geometry bits).\quad
     \item \textbf{C6} Focused junction: classical Raychaudhuri between snaps; NPR+TDT at thresholds.\quad
-    \item \textbf{C7} \( S_{\LL}=\aH\,S_{\mathrm{BH}} \) for stationary families.\quad
+    \item \textbf{C7} \( S_{\LL}=\T\,S_{\mathrm{BH}} \) for stationary families.\quad
     \item \textbf{C8} Master equation with snap superoperators; master path integral summing snaps.\quad
     \item \textbf{C9} Echo spacing rule \( \Delta t \approx 2[\,T(r_{\mathrm{barrier}})-T(\rL)\,] \); radion sequestering (no 4D fifth force).\quad
     \item \textbf{C10} Dark sector: stabilized Planckish remnants (DM) and a smooth \( w_{\mathrm{led}}\simeq -1 \) component (DE).
@@ -438,12 +436,6 @@ A viable physical theory must be falsifiable. We conclude by compiling a concise
 \section{Summary and Outlook}
 \label{sec:summary}
 We proposed a concrete, testable program for quantum gravity in which localized, thresholded dimensional reduction implements information-preserving updates on \( \LL \). The key inputs are (i) a dimensionless trigger \( \IH=\Icrit \) fixing ledger placement, (ii) NPR as the minimal geometric deletion with a reversible metadata set (Infinity Bits), and (iii) TDT linking payload to capacity with a universal area-per-bit. Between snaps, \( \LL \) hosts an intrinsic EFT and supplies boundary conditions for perturbations. Phenomenology spans gravitational-wave echoes, Hawking-flux bookkeeping, non-observation of a 4D fifth force (radion sequestering), stabilized Planckish remnants as DM, and a smooth \( w\simeq -1 \) sector as DE. Immediate priorities include: deriving axisymmetric placement and echo transfer functions, formalizing the snap superoperators in the master equation, quantifying \( \delta w(z) \) in cosmology, and mapping remnant abundance against observational bounds. The claims above are concise enough to establish priority while leaving room for detailed papers.
-
-\vspace{0.75em}
-\hrule
-\vspace{0.5em}
-\noindent\footnotesize
-\textbf{Release \& provenance:} Archive source and PDF in a public Git repository with a signed tag; mint a DOI (e.g.\ via Zenodo). Include SHA-256 of PDF and commit hash in release notes.
 
 \clearpage
 
@@ -483,9 +475,9 @@ The universal snap threshold is
 fixing, for Schwarzschild, the ledger placement \( r_{\mathcal L} = \sqrt{\mathcal T}\,R_S \) (axisymmetric generalizations use the canonical slice).
 
 \paragraph{Thermodynamics and information.}
-All entropies are in \emph{nats}. Ledger entropy \( S_{\mathrm{ledger}}=A/(4\ell_{\mathrm P}^{2}) \). At a snap, the capacity–payload equality holds,
+All entropies are in \emph{nats}. Ledger entropy \( S_{\LL}=A/(4\ell_{\mathrm P}^{2}) \). At a snap, the capacity–payload equality holds,
 \[
-\delta S_{\mathrm{ledger}} = \delta S_{\mathrm{info}},
+\delta S_{\LL} = \delta S_{\mathrm{info}},
 \]
 and one \emph{irreversible payload bit} costs
 \[
