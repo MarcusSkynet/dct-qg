@@ -61,7 +61,7 @@ Reversible geometric metadata $(X,Y,Z)$ (the *Infinity Bits*) do not change von 
 We summarize this ethos as: *no record without area*.
 
 ### Mechanism and dynamics
-Snaps are *Null–Pair Removal* (NPR) events: if $n^{A}_{\pm}$ span the deleted null 2-plane with $n_{+}\!\cdot n_{-}=1$,
+Snaps are *Null–Pair Removal* (NPR) events: if $n_{\pm}^{A}$ span the deleted null 2-plane with $n_{+} \cdot n_{-} = 1$,
 
 $$
 P^{A}{}_{B} = \delta^{A}{}_{B} - n_{+}^{A}n^{-}_{B} - n_{-}^{A}n^{+}_{B}
@@ -78,5 +78,5 @@ We write information in nats; $1$ bit $= \ln 2$ nats.
 When convenient, we annotate payload in bits and convert via $\ln 2$.
 
 ### Default dimension
-Unless a left superscript is shown, quantities are $D=4$.  
+Unless a left superscript is shown, quantities are $D=4$ by default.  
 We tag ${}^{(D)}(\cdot)$, ${}^{(d)}(\cdot)$, or ${}^{(2)}(\cdot)$ only when comparing across dimensions or when a quantity lives intrinsically on $\mathcal L$ or on the normal two-plane.
