@@ -4,7 +4,7 @@
 **Version:** 1.0 (September 2025)  
 
 [https://doi.org/DOI-TO-BE-ASSIGNED](https://doi.org/DOI-TO-BE-ASSIGNED)
-![License](https://img.shields.io/badge/docs-CC--BY--NC--ND%204.0-lightgrey.svg)
+![License](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)
 
 **Short version:** spacetime has a **click**. When a simple, dimensionless curvature gauge crosses a universal threshold, a tiny, local **snap** deletes one null pair, commits **one payload bit** to a codimension-2 surface—the **Ledger** $\mathcal L$—and life goes on. No singularities, thermodynamics in charge, quantum mechanics respected.
 
