@@ -1,4 +1,4 @@
-# An IR complete framework for Quantum Gravity in D-dimensions
+# An IR complete framework for Quantum Gravity in n-dimensions
 
 **Author:** Marek Hubka  
 **Version:** 1.0 (September 2025)  
@@ -47,11 +47,11 @@ Think of the thesis as the seed and this series as the full-grown tree.
 
 * **House symbols:** $\mathcal L$ (Ledger), $\mathcal I$ (dimensionless invariant), $\mathcal T=1/(4\ln 2)$ (Transdimensional Constant).
 
-* **Snap law (TDT):** capacity matches payload $\delta S_{\mathcal L}=\delta S_{\mathrm{info}}$; one bit costs $\Delta A=4\ln 2\,\ell_{\mathrm P}^{2}$.
+* **Snap law (TDT):** capacity matches payload $\delta S_{\mathcal L}=\delta S_{\mathrm{info}}$ and one bit costs $\Delta A=4\ln 2 \ell_{\mathrm P}^{2}$.
 
-* **Trigger:** $\mathcal I(r)=r^{4}K(r)$ and $\mathcal I_{\mathrm{crit}}=48\ln 2$.
+* **Trigger:** $\mathcal I=L^{4}K$ and $\mathcal I_{\mathrm{crit}}=48\ln 2$.
 
-* **Placement (Schwarzschild):** $r_{\mathcal L}=\sqrt{\mathcal T}\,R_S$.
+* **Placement (Schwarzschild):** $r_{\mathcal L}=\sqrt{\mathcal T}R_S$.
 
 If those four lines make sense, you’re already 80% of the way there.
 
@@ -67,7 +67,7 @@ If those four lines make sense, you’re already 80% of the way there.
 
 **1. The Universal Trigger (Foundation)**
 - Title: *A Universal Curvature Trigger for Spacetime Dimensional Collapse*
-- What it answers: why the snap happens **exactly** at $\mathcal I=\mathcal I_{\mathrm{crit}}$; why $r_{\mathcal L}=\sqrt{\mathcal T}\,R_S$.
+- What it answers: why the snap happens **exactly** at $\mathcal I=\mathcal I_{\mathrm{crit}}$ and why $r_{\mathcal L}=\sqrt{\mathcal T} R_S$.
 - Takeaway figure: $\mathcal I(r)$ crossing $48\ln 2$.
 
 **2. Null-Pair Removal (Geometric Mechanism)**
@@ -77,11 +77,11 @@ If those four lines make sense, you’re already 80% of the way there.
 
 **3. Transdimensional Thermodynamics (TDT)**
 - Title: *Capacity, Payload, and the Area Tick*
-- What it answers: why $\delta S_{\mathcal L}=\delta S_{\mathrm{info}}$ and $\Delta A=4\ln 2\,\ell_{\mathrm P}^{2}$.
+- What it answers: why $\delta S_{\mathcal L}=\delta S_{\mathrm{info}}$ and $\Delta A=4\ln 2 \ell_{\mathrm P}^{2}$.
 - Punchline: “no record without area.”
 
 **4. Infinity Bits (Reversible Register)**
-- Title: *$\{X,Y,Z\}$ + branch: the minimal reversible write*
+- Title: $\{X,Y,Z\}$ + *branch: the minimal reversible write*
 - What it answers: why **four** bits; why three are geometric metadata; how reversibility survives.
 
 **5. Focused Raychaudhuri (Finite Focusing)**
@@ -91,7 +91,7 @@ If those four lines make sense, you’re already 80% of the way there.
 **6. Ledger EFT \& Master Equation (IR QG EFT)**
 - Title: *Quiet Phases as Boundary Physics*
 - What it answers: between snaps, the Ledger is a **Robin** boundary; in the master equation, snaps are **episodic** CP–TP kicks.
-- For implementers: use effective ${}^{(d)}\!S_{\partial}[\psi]$ now; microscopic ledger DOFs later.
+- For implementers: use effective ${}^{(d)} S_{\partial}[\psi]$ now; microscopic ledger DOFs later.
 
 **7. Tensor Networks for Snaps**
 - Title: *HaPPY-style Encoding of Infinity Bits*
@@ -177,17 +177,22 @@ README.md             this file
 
 ```
 
-Symbols: $\mathcal L,\mathcal I,\mathcal T$ (anchors), upright-sans $\mathsf S,\mathsf B,\mathsf R$ (boundary response), left tags ${}^{(D)},{}^{(d)}$ when bulk + ledger appear together. Entropy subscripts $S_{\mathcal L}, S_{\mathrm{BH}}$. Actions $S_{\mathrm{EH}}, S_{\mathrm{matter}}, S_{\partial}, S_{\mathrm{snap}}$ with arguments.
+Symbols: 
+- $\mathcal L,\mathcal I,\mathcal T$ (anchors),
+- upright-sans $\mathsf S,\mathsf B,\mathsf R$ (boundary response),
+- left tags ${}^{(D)}(\cdot),{}^{(d)}(\cdot)$ when bulk + ledger appear together.
+- Entropy subscripts $S_{\mathcal L}, S_{\mathrm{BH}}$.
+- Actions $S_{\mathrm{EH}}, S_{\mathrm{matter}}, S_{\partial}, S_{\mathrm{snap}}$ with arguments.
 
 ---
 
 ## What to test (per paper)
 
-* **P1:** check $\mathcal I$ threshold on Schwarzschild/Kerr slices; verify $r_{\mathcal L}=\sqrt{\mathcal T}\,R_S$.
+* **P1:** check $\mathcal I$ threshold on Schwarzschild/Kerr slices; verify $r_{\mathcal L}=\sqrt{\mathcal T} R_S$.
 
 * **P2:** verify projector properties (idempotent, trace $=D-2$, boost-invariance).
 
-* **P3:** one-bit area tick $4\ln 2\,\ell_{\mathrm P}^{2}$.
+* **P3:** one-bit area tick $4\ln 2 \ell_{\mathrm P}^{2}$.
 
 * **P4:** four-bit necessity (thermo + reversibility).
 
@@ -216,7 +221,7 @@ BibTeX:
 ```bibtex
 @misc{Hubka2025,
   author       = {Marek Hubka},
-  title        = {An IR complete framework for Quantum Gravity in D-dimensions},
+  title        = {An IR complete framework for Quantum Gravity in n-dimensions},
   year         = {2025},
   publisher    = {Zenodo},
   doi          = {DOI-TO-BE-ASSIGNED},
