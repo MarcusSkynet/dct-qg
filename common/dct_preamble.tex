@@ -1,0 +1,197 @@
+% =======================================================================
+% == CANONICAL UNIFIED PREAMBLE FOR THE DCT/QG SERIES (v2.0) ==
+% =======================================================================
+
+% ------------------- Document Class & Core Setup -------------------
+% Recommended base class.
+% \documentclass[11pt,a4paper]{article}
+
+% ------------------- Essential Packages -------------------
+% --- Font, Encoding, and Microtypography ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}      % For crisp, scalable fonts
+\usepackage{microtype}    % Improves the typographic quality of the document
+
+% --- Page Layout & Spacing ---
+\usepackage{geometry}
+\geometry{margin=1in} % Standard 1-inch margins
+\usepackage{setspace}
+\onehalfspacing        % 1.5 line spacing for readability
+
+% --- Mathematics & Physics Packages ---
+\usepackage{amsmath,amssymb,mathtools,amsthm}
+\usepackage{bm}           % For bold math symbols (\bm)
+\usepackage{upgreek}      % For upright Greek letters (e.g., \upmu)
+\usepackage{mathrsfs}     % For script font (\mathscr)
+\usepackage{siunitx}      % For professional unit typesetting (\SI, \si)
+\usepackage{physics}      % For commands like \dd, \Tr, \ket, \bra, etc. (replaces some manual defs)
+
+% --- Citations, Links, Graphics, and Notes ---
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{graphicx}
+\usepackage{enumitem}     % For customized lists
+\usepackage{orcidlink}    % For ORCID iDs
+\usepackage{tcolorbox}    % For styled boxes
+\usepackage{verbatim}     % For code blocks
+\usepackage{listings}     % For code listings
+\usepackage{csquotes}     % For context-sensitive quotation marks (\enquote)
+\usepackage{todonotes}    % For To-Do notes in the margin
+
+% --- Optional but Recommended Packages ---
+\usepackage{tikz}         % For drawing figures programmaticallly
+
+% ------------------- Theorem-like Environments -------------------
+% Standardized environments for consistent labeling.
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{law}{Law}
+\newtheorem{tdt}{TDT} % Specific environment for TDT laws if needed
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% --- Custom Boxed Environment for Scope Remarks ---
+\newtcolorbox{scopebox}[1][]{
+  colback=gray!5,
+  colframe=gray!75!black,
+  fonttitle=\bfseries,
+  title={#1},
+  % If no title is given by the user, default to "Scope & Open Items"
+  IfValueTF={#1}{}{title={Scope \& Open Items}}
+}
+
+% =======================================================================
+% == CANONICAL MACROS (Grouped by Function) ==
+% =======================================================================
+
+% ------------------- 1. DCT Foundational Concepts (Calligraphic) -------------------
+\newcommand{\LL}{\mathcal{L}}          % The Ledger surface
+\newcommand{\Ical}{\mathcal{I}}        % The universal curvature invariant
+\newcommand{\Icrit}{\Ical_{\mathrm{crit}}} % The critical value of the invariant
+\newcommand{\T}{\mathcal{T}}           % The Transdimensional Constant
+\newcommand{\Jcal}{\mathcal{J}}        % The snap instrument superoperator
+\newcommand{\Rcal}{\mathcal{R}}        % The local areal radius (the geometric "ruler")
+\newcommand{\Acal}{\mathcal{A}}        % Dynamical/infinitesimal area (e.g., in Raychaudhuri eq. and for area ticks)
+
+% ------------------- 2. Boundary Dynamics (Sans-Serif) -------------------
+\newcommand{\Bop}{\mathsf{B}}          % The Robin boundary operator
+\newcommand{\Rrefl}{\mathsf{R}}        % The reflection coefficient
+\newcommand{\SBC}{S_{\text{BC}}}       % ACTION of the Boundary Condition sector
+\newcommand{\Kboundary}{\mathsf{K}}    % General boundary kernel operator (contextual)
+
+% ------------------- 3. Actions & Lagrangians -------------------
+\newcommand{\Lag}{\mathscr{L}}         % Lagrangian density (script font)
+\newcommand{\SL}{S_{\mathcal{L}}}      % *** ENTROPY of the Ledger ***
+\newcommand{\Sledger}{S_{\text{ledger}}} % *** ACTION of the Ledger EFT ***
+
+% ------------------- 4. Standard Physics & GR Quantities -------------------
+% --- General ---
+\newcommand{\lp}{\ell_{\mathrm P}}     % Planck length
+\newcommand{\MP}{M_{\mathrm P}}        % Planck mass
+\newcommand{\br}{\mathrm {br}}         % The irreversible payload bit
+% --- Black Holes ---
+\newcommand{\RS}{R_{\mathrm S}}        % Schwarzschild radius
+\newcommand{\EH}{\mathrm{H}}           % Event Horizon label (e.g., A_H, S_H)
+\newcommand{\rH}{r_{\mathrm H}}        % General D-dimensional horizon radius
+\newcommand{\rL}{r_\LL}                % Ledger radius
+\newcommand{\AL}{A(\LL)}               % Area of the ledger
+\newcommand{\AH}{A_{\mathrm H}}        % Area of the horizon
+\newcommand{\THaw}{T_{\mathrm H}}      % Hawking temperature
+% --- GR & Geometry ---
+\newcommand{\Kretsch}{K}               % Kretschmann scalar
+\newcommand{\RRm}{R_{ABCD}R^{ABCD}}    % Kretschmann scalar written out
+\newcommand{\thet}{\theta}             % Expansion of a null congruence
+\newcommand{\sig}{\sigma_{\mu\nu}\sigma^{\mu\nu}} % Shear norm
+\newcommand{\Ric}{R_{\mu\nu}k^\mu k^\nu} % Ricci focusing term for null geodesics
+
+% ------------------- 5. Mathematical Helpers -------------------
+\newcommand{\RR}{\mathbb{R}}          % Real numbers
+\newcommand{\Id}{\mathbb{I}}           % Identity operator/matrix
+\newcommand{\SO}{\mathrm{SO}}         % Special Orthogonal group
+\newcommand{\nplus}{n_{+}}             % Future-directed outgoing null normal
+\newcommand{\nminus}{n_{-}}            % Future-directed ingoing null normal
+\newcommand{\Pproj}{P^{A}{}_{B}}       % The NPR projector
+\newcommand{\sgn}{\operatorname{sgn}}  % Sign function
+
+% ------------------- 6. Quantum Mechanics Helpers -------------------
+\newcommand{\Hhat}{\widehat{H}}        % Hamiltonian operator
+\newcommand{\Uhat}{\widehat{U}}        % Unitary evolution operator
+
+% ------------------- 7. Dimensional Tagging Helper -------------------
+% Usage: \dimtag{D}{R} produces the D-dimensional Ricci scalar.
+\newcommand{\dimtag}[2]{{}^{(#1)}\!{#2}}
+\newcommand{\Dtag}{(D)}                % Dimensional tag
+\newcommand{\dtag}{(d)}                % D-2 Dimensional tag
+\newcommand{\lDtag}{{}^{\Dtag}}        % Left dimensional tag
+\newcommand{\ldtag}{{}^{\dtag}}        % Left D-2 dimensional tag
+
+% ------------------- 8. Numerical Anchors -------------------
+\newcommand{\numTval}{0.36067376}      % 1/(4 ln 2)
+\newcommand{\numIcritval}{33.27106467} % 48 ln 2
+
+% ------------------- 9. Phenomenological Modules -------------------
+% --- 9a. Echoes & Scattering ---
+\newcommand{\El}{\mathsf{E}_{\ell}}    % Echo transfer function
+\newcommand{\tauRT}{\tau}              % Round-trip time / Echo delay parameter
+\newcommand{\phase}{\varphi}           % The phase angle symbol
+\newcommand{\Rreflw}{\Rrefl_{\mathrm w,\ell}} % Wall reflectivity
+\newcommand{\Rreflb}{\Rrefl_{b,\ell}}  % Barrier reflectivity
+\newcommand{\Tw}{\mathsf{T}_{\mathrm w,\ell}} % Wall transmissivity
+\newcommand{\Tb}{\mathsf{T}_{b,\ell}}  % Barrier transmissivity
+% --- 9b. Tensor Networks & QEC ---
+\newcommand{\Viso}{V}                  % Node isometry
+\newcommand{\Xtot}{X_{\mathrm{tot}}}   % Total X operator
+\newcommand{\Ytot}{Y_{\mathrm{tot}}}   % Total Y operator
+\newcommand{\Ztot}{Z_{\mathrm{tot}}}   % Total Z operator
+% --- 9c. Dark Matter & Remnants ---
+\newcommand{\wgap}{\omega_{\mathrm{gap}}} % Evaporation mass gap frequency
+\newcommand{\Mrem}{M_{\mathrm{rem}}}   % Remnant mass
+\newcommand{\gH}{\gamma_{\mathrm H}}      % Hawking effective greybody coefficient
+\newcommand{\chiH}{\chi}                  % Robin suppression factor
+\newcommand{\betaf}{\beta_{\!f}}          % Initial PBH fraction at formation
+% --- 9d. Dark Energy & Cosmology ---
+\newcommand{\Hcal}{\mathcal{H}}         % Conformal Hubble parameter
+\newcommand{\Cdot}{\dot{\mathcal{C}}}   % Ledger capacity growth rate
+\newcommand{\rhoL}{\rho_{\LL}}          % Ledger energy density
+\newcommand{\pL}{p_{\LL}}               % Ledger pressure
+\newcommand{\wL}{w_{\LL}}               % Ledger equation of state
+\newcommand{\csL}{c_{s,\LL}^2}        % Ledger sound speed
+\newcommand{\OM}{\Omega_{\mathrm m}}    % Matter density parameter
+\newcommand{\OL}{\Omega_{\LL}}          % Ledger (DE) density parameter
+\newcommand{\ORad}{\Omega_{\mathrm r}}    % Radiation density parameter
+% --- 9e. Radion & Fifth Force ---
+\newcommand{\MD}{M_{D}}                % D-dimensional Planck mass
+\newcommand{\varphiRad}{\varphi}       % Canonical radion field
+\newcommand{\mn}{m_n}                   % KK mode mass
+\newcommand{\Lef}{L_{\mathrm{eff}}}    % Effective compactification length
+\newcommand{\lambdaff}{\lambda_{\mathrm{5th}}} % Fifth-force range
+
+% =======================================================================
+% == DEPRECATED / DUPLICATED MACROS (For Search & Replace) ==
+% =======================================================================
+% These are kept here (commented out) to help you find and replace
+% old commands in your documents.
+
+% %\newcommand{\aH}{\alpha_{\mathrm H}}     % DEPRECATED. Use \T instead.
+% %\newcommand{\CurvTrigger}{\Ical=\Icrit} % DEPRECATED. Use the equation directly.
+% %\newcommand{\Area}{\mathcal A}          % DEPRECATED. Use \Acal.
+% %\newcommand{\Bboundary}{\mathsf{B}}      % DUPLICATE of \Bop.
+% %\newcommand{\Rw}{\Rrefl_{\mathrm w,\ell}}% DUPLICATE of \Rreflw.
+% %\newcommand{\Rb}{\Rrefl_{b,\ell}}      % DUPLICATE of \Rreflb.
+% %\newcommand{\MP}{M_{\mathrm P}}           % DUPLICATE of M_P macro.
+% %\newcommand{\Mpl}{M_{\mathrm{Pl}}}      % DUPLICATE of M_P macro.
+% %\newcommand{\PNPR}{\mathsf P_{\mathrm{NPR}}} % DEPRECATED. Use \Pproj.
+% %\newcommand{\tRT}{\tau_{\mathrm{RT}}}   % DEPRECATED. Use \tauRT.
+% %\newcommand{\omegaGap}{\omega_{\mathrm{gap}}} % DUPLICATE of \wgap.
+% %\newcommand{\Deltaecho}{\Delta t_{\mathrm{echo}}} % DEPRECATED. Use \tauRT.
+% %\newcommand{\lPD}{{}^{(D)}\ell_{\mathrm P}} % DEPRECATED. Use \dimtag{D}{\lp}.
+% %\newcommand{\Dtag}{(D)}                 % DEPRECATED. Use \dimtag.
+% %\newcommand{\dtag}{(d)}                 % DEPRECATED. Use \dimtag.
+% %\newcommand{\lDtag}{{}^{\Dtag}}         % DEPRECATED. Use \dimtag.
+% %\newcommand{\ldtag}{{}^{\dtag}}         % DEPRECATED. Use \dimtag.
+
