@@ -81,6 +81,8 @@ If those four lines make sense, you’re already 80% of the way there.
 - Takeaway figure: $\mathcal I(r)$ crossing $48\ln 2$.
 
 **2. Null-Pair Removal (Geometric Mechanism)**
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17433780.svg)](https://doi.org/10.5281/zenodo.17433780)
 - Title: *Null-Pair Removal - The Geometric Mechanism of Dimensional Reduction: From Ledger Kinematics to Lossless Boundary Dynamics*
 - What it answers: what “deleting” means mathematically (the projector), what survives, what doesn’t.
 - One-liner: kinematics in one page; proofs in appendices.
