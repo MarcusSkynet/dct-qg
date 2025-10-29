@@ -1,10 +1,10 @@
 % =======================================================================
 % DCT–QG Priority Compilation (Cheatsheet-Style Overview) — Expanded v1.1
-% Author: Marcus (Marek Hubka)
-% Date: \today
-% License: CC BY 4.0 (adjust as desired)
+% Author: Marek Hubka
+% Date: \September 16. 2025
+% License: CC BY 4.0
 % NOTE: Abstract, Introduction, and Summary/Outlook preserved verbatim.
-% Version 1.1
+% Version 1.2
 % =======================================================================
 \documentclass[11pt,a4paper]{article}
 
@@ -24,14 +24,14 @@
     }
 }
 
-\date{September 16. 2025}
+\date{September 16, 2025}
 
 \begin{document}
 \allowdisplaybreaks
 \maketitle
 \begin{abstract}
 \noindent
-We compile a high-level but specific overview of a quantum-gravity framework in which spacetime undergoes localized, entropy-triggered dimensional reduction \( D\to D-2 \). The transition occurs on internal surfaces (\enquote{ledgers} \( \LL \)) where a \emph{dimensionless} curvature invariant \( \Ical \) reaches a universal threshold \( \Icrit=12/\T=48\ln 2 \). In the Schwarzschild family, \( \Ical=r^{4}K \) with \( K=\RRm \) places the ledger at \( \rL=\sqrt{\T}\,\RS \). Across a snap, Null-Pair Removal (NPR) deletes a null two-plane, while the Law of Transdimensional Thermodynamics (TDT) balances payload against capacity: \( \mathrm d\SL=\mathrm dS_{\mathrm{info}} \), implying an area-per-bit quantum \( \Delta \Acal=4\ln 2\,\lp^{2} \) consistent with black-hole thermodynamics \cite{Bekenstein1973,Hawking1975}. Each ledger tile stores a minimal reversible record (\enquote{Infinity Bits}): \( \{\br,X,Y,Z\} \), built from boost-invariant combinations of orientation, shear alignment, and normal-bundle twist \cite{Ashtekar2000,Booth2005}. Between snaps, \( \LL \) supports a worldvolume EFT; coarse-graining yields a master equation and a master path integral that sum over snap insertions. Phenomenology includes inner-boundary conditions for perturbations (gravitational-wave echoes) \cite{ReggeWheeler1957,PressTeukolsky1973,Cardoso2016}, Hawking-flux bookkeeping \cite{Hawking1975}, and the sequestering of a would-be radion fifth force in 4D. Dark matter is attributed to stabilized remnant black holes (capacity protection and mode-gap kinematics), while the coarse-grained ledger sector provides a nearly constant dark-energy-like component with \( w\simeq -1 \). This note fixes definitions, equations, and claims for priority; detailed derivations appear in modular follow-ups.
+We compile a high-level but specific overview of a quantum-gravity framework in which spacetime undergoes localized, entropy-triggered dimensional reduction \( D\to D-2 \). The transition occurs on internal surfaces (\enquote{ledgers} \( \LL \)) where a \emph{dimensionless} curvature invariant \( \Ical \) reaches a universal threshold \( \Icrit=12/\T=48\ln 2 \). In the Schwarzschild family, \( \Ical=r^{4}K \) with \( K=\RRm \) places the ledger at \( \rL=\sqrt{\T}\,\RS \). Across a snap, Null-Pair Removal (NPR) deletes a null two-plane, while the Law of Transdimensional Thermodynamics (TDT) balances payload against capacity: \( \mathrm d\SL=\mathrm dS_{\mathrm{info}} \), implying an area-per-bit quantum \( \Delta \Acal=4\ln 2\,\lp^{2} \) consistent with black-hole thermodynamics \cite{Bekenstein1973,Hawking1975}. Each ledger tile stores a minimal reversible record (\enquote{Infinity Bits}): \( \{\W,X,Y,Z\} \), built from boost-invariant combinations of orientation, shear alignment, and normal-bundle twist \cite{Ashtekar2000,Booth2005}. Between snaps, \( \LL \) supports a worldvolume EFT; coarse-graining yields a master equation and a master path integral that sum over snap insertions. Phenomenology includes inner-boundary conditions for perturbations (gravitational-wave echoes) \cite{ReggeWheeler1957,PressTeukolsky1973,Cardoso2016}, Hawking-flux bookkeeping \cite{Hawking1975}, and the sequestering of a would-be radion fifth force in 4D. Dark matter is attributed to stabilized remnant black holes (capacity protection and mode-gap kinematics), while the coarse-grained ledger sector provides a nearly constant dark-energy-like component with \( w\simeq -1 \). This note fixes definitions, equations, and claims for priority; detailed derivations appear in modular follow-ups.
 \end{abstract}
 
 \clearpage
@@ -107,20 +107,54 @@ Because \( \Ical \) is a scalar constructed from \( K \) with a fixed length sca
 \section{Null--Pair Removal (NPR): what a snap deletes}
 \label{sec:npr}
 
-Having established the geometric condition for a snap, we must now define precisely what spacetime structures are removed in the process. This is the role of Null-Pair Removal (NPR).
+Having established the geometric condition for a snap, we now define precisely what spacetime structures are removed in the process. This is the role of Null--Pair Removal (NPR).
 
 \subsection{Projector algebra and gauge}
-Pick null directors \( n_{\pm}^{A} \) with \( n_{\pm}\!\cdot n_{\pm}=0 \), \( n_{+}\!\cdot n_{-}=1 \). Define
+Pick null directors \( n_{\pm}^{A} \) with
 \[
-P^{A}{}_{B}=\delta^{A}{}_{B}-n_{+}^{A}n^{-}_{B}-n_{-}^{A}n^{+}_{B}.
+n_{\pm}\!\cdot n_{\pm}=0,\qquad \nplus\!\cdot \nminus=-1.
 \]
-Then \( P^{A}{}_{C}P^{C}{}_{B}=P^{A}{}_{B} \) (idempotent), \( P^{A}{}_{B}n_{\pm}^{B}=0 \), and \( \Tr P = d \). Under \( SO(1,1) \) boosts \( n_{\pm}\to e^{\pm\lambda}n_{\pm} \), the projector is invariant.
+Define the mixed projector onto the Ledger tangent bundle:
+\[
+P^{A}{}_{B} \;\equiv\; \delta^{A}{}_{B}
+\;+\; \nplus^{A}\,n_{-\,B}
+\;+\; \nminus^{A}\,n_{+\,B}.
+\]
+Then
+\[
+P^{A}{}_{C}P^{C}{}_{B}=P^{A}{}_{B}\quad(\text{idempotent}),\qquad
+P^{A}{}_{B}\,n_{\pm}^{B}=0,\qquad
+\Tr\,P=D-2\equiv d.
+\]
+Under local \(SO(1,1)\) boosts \( n_{\pm}\to e^{\pm\lambda}n_{\pm} \) one has
+\(
+P \to P
+\)
+(i.e.\ \(P\) is boost invariant).
 
 \subsection{Action on fields}
-For a vector \( V^{A} \), write \( V^{A}=V_{\parallel}^{A}+V_{\perp}^{A} \) with \( V_{\parallel}^{A}=\alpha n_{+}^{A}+\beta n_{-}^{A} \), \( V_{\perp}^{A}=P^{A}{}_{B}V^{B} \). NPR deletes \( V_{\parallel} \). For tensors, apply \( P \) on each index. The induced metric on the ledger, \(h_{ab}\), is the projection of the ambient metric \(g_{AB}\) using this operator.
+For a vector \(V^{A}\), decompose \(V^{A}=V_{\parallel}^{A}+V_{\perp}^{A}\) with
+\[
+V_{\parallel}^{A}=\alpha\,\nplus^{A}+\beta\,\nminus^{A},\qquad
+V_{\perp}^{A}=P^{A}{}_{B}\,V^{B}.
+\]
+NPR deletes the normal part: \(V_{\parallel}\mapsto 0\).  
+For a general tensor \(T^{A_{1}\dots A_{p}}{}_{B_{1}\dots B_{q}}\), apply \(P\) to every index:
+\[
+\widetilde{T}^{A_{1}\dots A_{p}}{}_{B_{1}\dots B_{q}}
+=\Big(\prod_{i=1}^{p} P^{A_{i}}{}_{C_{i}}\Big)
+\Big(\prod_{j=1}^{q} P^{D_{j}}{}_{B_{j}}\Big)\,
+T^{C_{1}\dots C_{p}}{}_{D_{1}\dots D_{q}}.
+\]
+The induced metric on the Ledger is the tangential projection of \(g\):
+\[
+h_{AB}=g_{CD}\,P^{C}{}_{A}\,P^{D}{}_{B},\qquad
+h^{A}{}_{B}=P^{A}{}_{B}.
+\]
 
 \subsection{Transport rule}
-Transport across \( \LL \) is permitted only during writes (snaps). Between snaps, \( \LL \) acts as an inner boundary determined by a kernel (Sec. \ref{sec:mastereq}).
+Transport across \( \LL \) is permitted only during writes (snaps). Between snaps, \( \LL \) acts as a \emph{lossless} inner boundary governed by a real--Robin kernel (see Sec.~\ref{sec:mastereq}); in particular, there is no normal flux across \( \LL \).
+
 
 % --------------------------- 3) TDT: CAPACITY VS PAYLOAD ------------------
 \section[Law of Transdimensional Thermodynamics (TDT): capacity vs payload]{Law of Transdimensional Thermodynamics (TDT): \\ capacity vs payload}
@@ -160,11 +194,11 @@ For the dimensional reduction to be fundamentally reversible (up to gauge freedo
 \subsection{Definition and invariances}
 Per tile, store
 \[
-\{\, \br,\, X,\, Y,\, Z \,\}.
+\{\, \W,\, X,\, Y,\, Z \,\}.
 \]
-\( \br \) is the payload/branch bit. Geometric bits:
+\( \W \) is the written payload/branch bit. Geometric bits:
 \[
-X=\sgn\bigl(\varepsilon_{ABCD}\,e_{1}^{A}e_{2}^{B}n_{+}^{C}n_{-}^{D}\bigr),\quad
+X=\sgn\bigl(\varepsilon_{ABCD}\,e_{1}^{A}e_{2}^{B}\nplus^{C}\nminus^{D}\bigr),\quad
 Y=\sgn\bigl(\sigma^{(+)}_{ab}\sigma^{(-)ab}\bigr),\quad
 Z=\sgn\bigl(\epsilon^{ab}\mathcal F_{ab}\bigr),
 \]
@@ -174,7 +208,7 @@ with \( \mathcal F_{ab}=\nabla_{a}\omega_{b}-\nabla_{b}\omega_{a} \). All are in
 On measure-zero sets (e.g.\ \( \sigma^{(+)}_{ab}\sigma^{(-)ab}=0 \) or \( \epsilon^{ab}\mathcal F_{ab}=0 \)), adopt fixed local conventions (lexicographic frame choice or infinitesimal regulator) to maintain reversibility.
 
 \subsection{Sufficiency for reversibility}
-Given \( \{\br,X,Y,Z\} \) and smoothness, NPR can be inverted up to diffeomorphisms and boost gauge to re-embed the patch.
+Given \( \{\W,X,Y,Z\} \) and smoothness, NPR can be inverted up to diffeomorphisms and boost gauge to re-embed the patch.
 
 % --------------------------- 5) FOCUSED RAYCHAUDHURI ----------------------
 \section{Focused Raychaudhuri \& junction picture}
@@ -195,7 +229,7 @@ Under standard energy conditions and vanishing twist, focusing drives congruence
 The snap is triggered by \( \Ical=\Icrit \), not by \( \theta\to -\infty \). Across \( \LL \):
 \begin{itemize}[leftmargin=1.4em]
   \item Apply NPR (\( P^{A}{}_{B} \)) on fields; keep the induced \( h_{ab} \) continuous.
-  \item Update capacity via TDT; payload \( \br \) fixed by the branch predicate.
+  \item Update capacity via TDT; payload \( \W \) fixed by the branch predicate.
   \item Impose inner boundary conditions for perturbations (Robin-type) set by a kernel on \( \LL \).
 \end{itemize}
 This is analogous in spirit to null-shell junctions \cite{BarrabesIsrael1991} but with NPR/TDT structure and no sustained NEC violation.
@@ -369,7 +403,7 @@ A viable physical theory must be falsifiable. We conclude by compiling a concise
     \item \textbf{C2} \( \Ical=\Icrit \) with \( \T=1/(4\ln 2) \), \( \Icrit=48\ln 2 \).\quad
     \item \textbf{C3} \( \rL=\sqrt{\T}\,\RS \); axisym: \( \Ical(r,\theta)=\Icrit \).\quad
     \item \textbf{C4} \( \mathrm d \SL=\mathrm d S_{\mathrm{info}} \); one bit \( \Rightarrow \Delta\Acal=4\ln 2\,\lp^{2} \).\quad
-    \item \textbf{C5} Infinity Bits \( \{\br,X,Y,Z\} \) (boost-invariant geometry bits).\quad
+    \item \textbf{C5} Infinity Bits \( \{\W,X,Y,Z\} \) (boost-invariant geometry bits).\quad
     \item \textbf{C6} Focused junction: classical Raychaudhuri between snaps; NPR+TDT at thresholds.\quad
     \item \textbf{C7} \( \SL=\T\,S_{\mathrm{BH}} \) for stationary families.\quad
     \item \textbf{C8} Master equation with snap superoperators; master path integral summing snaps.\quad
@@ -431,9 +465,9 @@ and one \emph{irreversible payload bit} costs
 Reversible geometric metadata \((X,Y,Z)\) (the \emph{Infinity Bits}) do not change von Neumann entropy. We summarize this ethos as: \emph{no record without area}.
 
 \paragraph{Mechanism and dynamics.}
-Snaps are \emph{Null–Pair Removal} (NPR) events: if \( n^{A}_{\pm} \) span the deleted null 2-plane with \( n_{+}\!\cdot n_{-}=1 \),
+Snaps are \emph{Null–Pair Removal} (NPR) events: if \( n^{A}_{\pm} \) span the deleted null 2-plane with \( \nplus\!\cdot \nminus=1 \),
 \[
-P^{A}{}_{B} = \delta^{A}{}_{B} - n_{+}^{A}n^{-}_{B} - n_{-}^{A}n^{+}_{B}
+P^{A}{}_{B} = \delta^{A}{}_{B} - \nplus^{A}n^{-}_{B} - \nminus^{A}n^{+}_{B}
 \]
 projects data onto the ledger surface \(\mathcal L\); local \( SO(1,1) \) boosts in the deleted plane are gauge. Transport across \( \mathcal L \) is permitted only during snaps. Between snaps, the ledger imposes a \emph{real} Robin boundary (lossless, \( \lvert \Rrefl \rvert = 1 \)), so evolution is unitary. At a snap, the open system updates via a localized CP–TP instrument and writes the irreversible payload bit to \( \mathcal L \).
 

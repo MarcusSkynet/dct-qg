@@ -41,6 +41,13 @@
 
 % --- Optional but Recommended Packages ---
 \usepackage{tikz}         % For drawing figures programmaticallly
+\usepackage{float}
+
+% ----- Placeholder Citation Command -----
+% Allows for planning future citations without generating output.
+\makeatletter
+\newcommand{\futurecite}[1]{\@gobble} % Change \@gobble to \cite{#1} to activate.
+\makeatother
 
 % ------------------- Theorem-like Environments -------------------
 % Standardized environments for consistent labeling.
@@ -93,7 +100,9 @@
 % --- General ---
 \newcommand{\lp}{\ell_{\mathrm P}}     % Planck length
 \newcommand{\MP}{M_{\mathrm P}}        % Planck mass
-\newcommand{\br}{\mathrm {br}}         % The irreversible payload bit
+\newcommand{\br}{b_{\mathrm r}}        % The irreversible payload bit (legacy)
+\newcommand{\W}{W}            % Payload/write bit (canon; replaces \br)
+\newcommand{\thet}{\theta}             % Expansion of a null congruence
 % --- Black Holes ---
 \newcommand{\RS}{R_{\mathrm S}}        % Schwarzschild radius
 \newcommand{\EH}{\mathrm{H}}           % Event Horizon label (e.g., A_H, S_H)
@@ -105,16 +114,18 @@
 % --- GR & Geometry ---
 \newcommand{\Kretsch}{K}               % Kretschmann scalar
 \newcommand{\RRm}{R_{ABCD}R^{ABCD}}    % Kretschmann scalar written out
-\newcommand{\thet}{\theta}             % Expansion of a null congruence
+%\newcommand{\thet}{\theta}             % Expansion of a null congruence
 \newcommand{\sig}{\sigma_{\mu\nu}\sigma^{\mu\nu}} % Shear norm
 \newcommand{\Ric}{R_{\mu\nu}k^\mu k^\nu} % Ricci focusing term for null geodesics
 
 % ------------------- 5. Mathematical Helpers -------------------
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
 \newcommand{\RR}{\mathbb{R}}          % Real numbers
 \newcommand{\Id}{\mathbb{I}}           % Identity operator/matrix
 \newcommand{\SO}{\mathrm{SO}}         % Special Orthogonal group
-\newcommand{\nplus}{n_{+}}             % Future-directed outgoing null normal
-\newcommand{\nminus}{n_{-}}            % Future-directed ingoing null normal
+\newcommand{\nplus}{{n_{+}}}             % Future-directed outgoing null normal
+\newcommand{\nminus}{{n_{-}}}            % Future-directed ingoing null normal
 \newcommand{\Pproj}{P^{A}{}_{B}}       % The NPR projector
 \newcommand{\sgn}{\operatorname{sgn}}  % Sign function
 

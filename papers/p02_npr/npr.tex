@@ -1,0 +1,379 @@
+\documentclass[11pt,a4paper]{article}
+
+\input{common/dct_preamble}
+\usepackage{refcount} % makes \getrefnumber{<label>} expand to the raw number
+
+\title{
+    \bfseries Null-Pair Removal \\
+    The Geometric Mechanism of Dimensional Reduction:\\[4pt]
+    \large From Ledger Kinematics to Lossless Boundary Dynamics
+}
+
+\author{
+    Marek Hubka\, \orcidlink{0009-0003-2476-9017}
+    \thanks{
+        Independent Researcher, Czech Republic. \\
+        Website: \href{http://www.tidesofuncertainty.com}{tidesofuncertainty.com}.
+        Email: \href{mailto:marek@tidesofuncertainty.com}{marek@tidesofuncertainty.com}.
+    }
+}
+\date{October 25, 2025}
+
+\begin{document}
+\maketitle
+\vspace{-2ex}
+
+\begin{abstract}
+We formalize \emph{Null-Pair Removal} (NPR) as the local, boost-invariant projector that deletes the two normal null directions at a ledger tile, realizing a \( D\to D-2 \) dimensional reduction (\emph{snap}) in the DCT/QG framework\cite{DCTQG}. Starting from the invariant placement rule \( \Ical_\LL = \Icrit \) (which yields \( r_{\LL}=\sqrt{\T}\,\RS \) in Schwarzschild), we define the NPR map \( \mathsf{P} \), prove idempotence and covariance, and derive its interplay with: (i) lossless, self-adjoint inner boundary dynamics via real--Robin conditions; (ii) the episodic master equation (a dephasing kick at snaps); and (iii) the focused Raychaudhuri impulse with area quantum \( \Delta \Acal= 4\ln 2\,\lp^{2} \) per payload bit \( \W \). Worked examples in Schwarzschild, comments on Kerr, and general \( D \)-ladder scaling are provided. We conclude with appendices for one solved toy model and research outlook.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction and context}
+The \emph{ledger} \( \LL \) is a geometric inner surface placed by the curvature trigger\cite{DCTQG01}
+\[
+\Ical_\LL = \Icrit = \frac{12}{\T},
+\]
+which, for the Schwarzschild family, integrates to the closed-form placement
+\[
+r_{\LL}=\sqrt{\T}\,\RS,\qquad \frac{A_{\LL}}{A_{H}}=\T.
+\]
+Between snaps, exterior fields evolve unitarily on the domain with inner boundary \( \LL \); at a snap the theory prescribes a discrete, reversible kinematic update (Infinity Bits)\footnote{The full, rigorous derivations are reserved for forthcoming companion papers. All concepts are currently in preparation and are introduced in the manifest of DCT/QG\cite{DCTQG} framework. \label{fn:forthcoming}}\futurecite{DCTQG04}~ and a thermodynamic area tick\footnotemark[\getrefnumber{fn:forthcoming}]\futurecite{DCTQG03}~ \( \Delta \Acal_{\text{one bit}} = 4\ln 2\, \lp^{2} \) per \emph{written payload} bit \( \W \).
+
+This paper addresses the missing \emph{mechanism}: how does the geometry locally enact \( D\to D-2 \) reduction? The answer is \emph{Null-Pair Removal} (NPR): a boost-invariant map that eliminates the two normal null directions \( (\nplus,\nminus) \), leaving purely tangential data on \( T\LL \). NPR underwrites the lossless inner boundary (real--Robin), the master equation's dephasing kick\footnotemark[\getrefnumber{fn:forthcoming}]\futurecite{DCTQG07}~, and the focused Raychaudhuri impulse\footnotemark[\getrefnumber{fn:forthcoming}]\futurecite{DCTQG05}~.
+
+\section{Geometric setup on a ledger tile}\label{sec:setup}
+Let \( \LL \) be a spacelike \( (D-2) \)-surface with induced metric \( h_{ab} \), area form \( \epsilon_{ab} \), and future-directed null normals \( \nplus^{A},\nminus^{A} \) obeying
+\[
+\nplus\!\cdot\nminus=-1,\qquad \nplus\!\cdot\nplus=0,\qquad \nminus\!\cdot\nminus=0.
+\]
+The \emph{projector} onto the tangent bundle \( T\LL \subset T\mathcal M \) is
+\[
+\Pproj \;=\; \delta^{A}{}_{B} + {\nplus}^{A}{\nminus}_{B} + {\nminus}^{A}{\nplus}_{B},
+\qquad
+\Pproj\,{\nplus}=0,\ \ \Pproj\,{\nminus}=0,\ \ \Pproj\circ\Pproj=\Pproj.
+\]
+Intrinsic optical data:
+\[
+\theta_{\pm} \equiv h^{ab}\nabla_a n_{\pm b},\qquad
+\sigma_{\pm ab} \equiv \tfrac12\big(\nabla_a n_{\pm b} + \nabla_b n_{\pm a}\big)^{\!\text{tf}},\qquad
+\omega_a \equiv -\,n_{-B}\,\nabla_a \nplus^{\ B}.
+\]
+The formalism for these optical scalars and normal-bundle connections follows standard treatments \cite{Poisson2004}.
+
+\begin{lemma}[Boost invariance]\label{lem:boost}
+Under a local \( \SO(1,1) \) boost \( n_{\pm}\to e^{\pm\lambda}n_{\pm} \), the projector \( \Pproj \) is invariant.
+\end{lemma}
+
+\begin{proof}
+A direct substitution gives
+\(
+\delta^{A}{}_{B} + \ee^{+\lambda}{\nplus}^{A}\,\ee^{-\lambda}{\nminus}_{B} + \ee^{-\lambda}{\nminus}^{A}\,\ee^{+\lambda}{\nplus}_{B} = \Pproj
+\).
+\end{proof}
+
+\section{NPR: definition and core properties}\label{sec:NPRdef}
+\begin{definition}[NPR on tensors]
+For any rank-\((p,q)\) tensor \( T \), define \( \mathsf{P}[T] \) by contracting \emph{each} index with \( \Pproj \):
+\[
+\mathsf{P}[T]^{A_1\cdots A_p}{}_{B_1\cdots B_q}
+ \;=\;
+\Pproj^{A_1}{}_{C_1}\!\cdots \Pproj^{A_p}{}_{C_p}\,
+\Pproj^{D_1}{}_{B_1}\!\cdots \Pproj^{D_q}{}_{B_q}\,
+T^{C_1\cdots C_p}{}_{D_1\cdots D_q}.
+\]
+\end{definition}
+
+\begin{proposition}[Idempotence and covariance]
+\( \mathsf{P}\circ\mathsf{P}=\mathsf{P} \). Moreover \( \mathsf{P} \) is tensorial and invariant under local boosts \( \SO(1,1) \) in the normal 2-plane.
+\end{proposition}
+
+\begin{proof}
+Idempotence follows from \( \Pproj\circ\Pproj=\Pproj \) applied to each slot. Covariance is immediate since \( \Pproj \) is a tensor built algebraically from \( n_{\pm} \) and the metric, and Lemma~\ref{lem:boost} shows boost invariance.
+\end{proof}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{common/images/p02/npr_projection_schematic.pdf}
+    \caption{
+        \textbf{A Visual Analogy for Null-Pair Removal (NPR) as an Orthogonal Projection.}
+        (\textit{Left}) An arbitrary vector \(\mathbf{V}\) (blue) in the ambient spacetime has components both along the Ledger plane \(\LL\) (light red) and in the direction normal to it. The NPR projector \(\Pproj\) acts like a light shining from directly above, removing all components in the normal direction. The result is the projected vector \(\mathbf{P}[V]\) (red), a purely tangential object that lies entirely on the Ledger.
+        (\textit{Right}) The inset shows the physical basis of the deleted normal plane. It is not a single spatial dimension, but a 2D plane spanned by a pair of null vectors, \(\mathbf{n}_+\) and \(\mathbf{n}_-\).
+    }
+    \label{fig:npr_projection}
+\end{figure}
+
+\paragraph{Energy--momentum after NPR.}
+For \( T_{AB} \),
+\[
+\widetilde{T}_{ab}\;\equiv\;q_{a}{}^{C}q_{b}{}^{D} T_{CD},\qquad
+\widetilde{T}_{ab}\,n_{\pm}^{b}=0.
+\]
+Components \( T_{++},T_{--},T_{+-},T_{\pm a} \) are removed; only tangential \( T_{ab} \) remains.
+
+\section{Transport across the ledger between snaps}\label{sec:transport}
+
+\noindent\textit{Notation.} We write $\mathsf B$ for the (real, Hermitian) boundary operator on $\LL$; in a $Y_{\ell m}$ basis this reduces to real scalars $\Bop_{\ell m}(\omega)$, and in spherically symmetric cases $\Bop_{\ell}(\omega)$.
+
+Between snaps, the exterior fields solve the projected equations on the domain with inner boundary \( \LL \), endowed with a \emph{real--Robin} law:
+\[
+(\partial_{n}+\Bop)\,\psi\big|_{\LL}=0,\qquad \Bop\in\RR.
+\]
+
+\noindent\textit{Self-adjointness and frequency dependence.} In practice \(\Bop\) may depend on frequency \(\omega\) and angular channel \((\ell,m)\) via short-distance physics, \(\Bop=\Bop_{\ell m}(\omega)\), but it must remain \emph{real} to define a self-adjoint extension on the half-line. Consequently the reflectivity
+\[
+\Rrefl_{\ell}(\omega)=\frac{\Bop_{\ell}(\omega)-\ii\,k_{\ell}(\omega)}{\Bop_{\ell}(\omega)+\ii\,k_{\ell}(\omega)}\,\ee^{2\ii\varphi_{\ell}(\omega)},\quad \varphi_{\ell}(\omega)\in\RR
+\]
+has unit modulus, \(|\Rrefl_{\ell}(\omega)|=1\), implying vanishing normal energy flux at \(\LL\). See also the self-adjoint extension literature for radial Hamiltonians\cite{Wald1984,MTW1973} and unitarity\cite{Ishibashi2003, ReedSimon1975, Evans2010}.
+
+\noindent\textit{Local wavenumber.}
+Near the inner boundary, each separated mode obeys
+\[
+\big[-\partial_{r_*}^{2}+V_{\ell}(r)\big]\,\psi_{\ell\omega}=\omega^{2}\psi_{\ell\omega},
+\]
+so the normal wavenumber at the ledger is
+\[
+k_{\ell}(\omega)\equiv \sqrt{\omega^{2}-V_{\ell}\!\big(r_{\!*}^{\mathcal L}\big)}\,.
+\]
+In high-frequency or locally flat limits where $V_{\ell}(r_{\!*}^{\mathcal L})\!\approx 0$, one has $k_{\ell}(\omega)\!\approx\!\omega$.
+
+\begin{proposition}[No flux through \( \LL \)]
+For any field obeying the real--Robin boundary condition, the conserved flux normal to the ledger is identically zero.
+\end{proposition}
+
+\begin{proof}[Sketch]
+The conserved flux (Noether current) for a complex scalar field \(\psi\) is \(J^\mu \propto \Im[\psi^* \partial^\mu \psi]\). The component normal to the boundary \(\LL\) is therefore proportional to \(J^n \propto \Im[\psi^* \partial_n \psi]\). We apply the real--Robin condition, \(\partial_n\psi = -\Bop\psi\). Since \(\Bop\) is a real operator, this also means \(\partial_n\psi^* = -\Bop\psi^*\). Substituting this into the flux expression gives:
+\[
+J^n \propto \Im[\psi^* (-\Bop\psi)] = \Im[-\Bop (\psi^*\psi)] = \Im[-\Bop |\psi|^2].
+\]
+Because \(\Bop\) is real and \(|\psi|^2\) is real, the quantity inside the imaginary part is purely real. Therefore, its imaginary part is zero:
+\[
+J^n \propto \Im[\text{real value}] = 0.
+\]
+There is no energy or probability current flowing across the boundary.
+\end{proof}
+
+\section{Snap events: state map, NPR delete, and focusing impulse}\label{sec:snap}
+A snap combines: (i) a \emph{state} dephasing onto a coarse-grained predicate \( \{\Pi_r\} \),
+\[
+\rho \;\longmapsto\; \sum_{r}\Pi_{r}\,\rho\,\Pi_{r},
+\]
+which is a standard decoherence or measurement channel \cite{NielsenChuang2010}, with (ii) a \emph{geometric} NPR deletion of normal components and (iii) a localized Raychaudhuri impulse that increments the tile area by
+\[
+\Delta \Acal \;=\; 4\ln 2\,\lp^{2}\times \big(\#\ \text{payload bits } \W\big).
+\]
+The congruence expansion integrates to
+\[
+\int_{\lambda^-}^{\lambda^+}\theta\,\dd\lambda \;=\; \ln\!\Big(1+\frac{\Delta \Acal}{A}\Big)\ \approx\ \frac{\Delta \Acal}{A},
+\]
+ensuring finite focusing and preventing singular blow-up.
+
+\section{Conservation and locality}\label{sec:conservation}
+Let \( \widetilde{T}_{ab} \) be the tangential stress after NPR. The intrinsic divergence on \( \LL \) satisfies a Gauss--Codazzi relation schematically
+\[
+D^{a}\,\widetilde{T}_{ab} \;=\; -\,\mathcal{K}_{b}{}^{c}{}_{a}\,T^{a}{}_{c},
+\]
+where \( \mathcal{K} \) contains extrinsic curvature data. With real--Robin, normal fluxes vanish, so there is no energy leakage; the only nonzero \emph{source} is the localized impulse already accounted for by \( \Delta \Acal \).
+
+\paragraph{Locality and no-FTL.}
+The dephasing channel \( \rho\mapsto\sum_{r}\Pi_{r}\rho\Pi_{r} \) is completely positive and trace-preserving. For observables spacelike to the tile, commutators vanish; hence NPR snaps do not transmit superluminal signals.
+
+\section{Curvature data that survive NPR}\label{sec:curvature}
+Applying \( \mathsf{P} \) to the Riemann tensor removes mixed/normal components; the \emph{intrinsic} curvature of \( \LL \) obeys the Gauss equation. By the Gauss–Codazzi relation for a codimension-2 surface with null normals \(n_{\pm}^{A}\) and induced metric \(h_{AB}\),
+\[
+\dimtag{d}{R}
+= h^{AC}h^{BD}R_{ABCD}
++ \theta_{+}\theta_{-}
+- \sigma_{+}{}_{ab}\;\sigma_{-}{}^{ab},
+\]
+up to total divergences and choice of normalization for \(n_{\pm}\)\cite{Wald1984,MTW1973}. Thus \(\dimtag{d}{R}\) and the dyad-invariant contractions built from \(\sigma_{\pm ab}\) survive NPR and furnish the reversible metadata.
+
+NPR deletes all curvature components carrying legs in the normal null plane, e.g.
+\[
+R_{A C B D}\,\nplus^{C} \nplus^{D},\qquad
+R_{A C B D}\,\nminus^{C} \nminus^{D},\qquad
+R_{A C B D}\,\nplus^{C} \nminus^{D},\qquad
+R_{A C B D}\,\nminus^{C} \nplus^{D}
+\]
+leaving the intrinsic \( \dimtag{d}{R}_{abcd} \) (all indices tangent to \( \LL \)) and the normal-bundle connection \( \omega_{a} \) (through \( \mathcal F_{ab}=\nabla_{a}\omega_{b}-\nabla_{b}\omega_{a} \)) as the relevant geometric remnants.
+
+\section{Boost-invariant metadata and reversibility}\label{sec:metadata}
+The \emph{Infinity Bits} \( \{\W,X,Y,Z\} \)\futurecite{DCTQG04} store: one irreversibly written \emph{payload} bit \( \W \) and three reversible, boost-invariant geometric bits:
+\[
+X=\mathrm{sgn}\big(\varepsilon_{ABCD}e_1^{A}e_2^{B}\nplus^{C}\nminus^{D}\big),\quad
+Y=\mathrm{sgn}\big(\sigma_{+}{}_{ab}\;\sigma_{-}{}^{ab}\big),\quad
+Z=\mathrm{sgn}\big(\epsilon^{ab}\mathcal F_{ab}\big)
+\]
+\[
+{X, Y, Z}\in\{+1,-1\}
+\]
+Given \( \{X,Y,Z\} \) on a one-ring neighborhood and smoothness, NPR is kinematically reversible up to diffeomorphisms and local \( \SO(1,1) \) gauge. Only \( \W \) consumes ledger capacity.
+
+\section{Worked examples}\label{sec:examples}
+
+\subsection*{Schwarzschild (4D)}
+With \( \Kretsch=48M^{2}/r^{6} \), the invariant \( \Ical(r)\equiv \Kretsch r^{4}=12(\RS/r)^{2} \) places the ledger at
+\[
+r_{\LL}=\sqrt{\T}\,\RS,\qquad \frac{A_{\LL}}{A_\mathrm{H}}=\T.
+\]
+After spherical-harmonic reduction to a master field \( u(r_*,t) \), impose at \( r_*^{\LL} \) a real--Robin law
+\[
+\Big(\frac{\dd}{\dd r_*}+\mathsf{B}_{\ell}(\omega)\Big)u_{\ell\omega}\Big|_{r_*^{\LL}}=0,
+\qquad
+\Rrefl_{\ell}(\omega)=\frac{\Bop_{\ell}(\omega)-\ii\,k_{\ell}(\omega)}{\Bop_{\ell}(\omega)+\ii\,k_{\ell}(\omega)}\,\ee^{2\ii\varphi_{\ell}(\omega)},\quad \varphi_{\ell}(\omega)\in\RR
+\]
+\[
+k_{\ell}(\omega)\equiv \sqrt{\omega^{2}-V_{\ell}\big(r_{\!*}^{\mathcal L}\big)}\,,
+\]
+with $k_{\ell}\!\approx\!\omega$ when $V_{\ell}(r_{\!*}^{\mathcal L})\!\approx 0$. NPR removes normal components; only tangential stress couples to the inner boundary.
+
+\subsection*{Kerr (axisymmetric) --- remarks}
+Adopt a tetrad aligned with principal null directions; choose \( \nplus,\nminus \) compatible with horizon-penetrating slices. Frame-dragging enters through \( \omega_a \), affecting the sign of \( Z \). Boost invariance of \( \Pproj \) and locality of NPR remain intact.
+
+\subsection*{D-ladder step \texorpdfstring{\( D\to D-2 \)}{D to D-2}}
+Let \( \lDtag r_\mathrm{H} \) be the horizon scale and \( \lDtag r_{\LL} \) the ledger scale in \( D \) dimensions. The universal placement and area ratios read: 
+\[ 
+\frac{\lDtag r_{\LL}}{\lDtag r_\mathrm{H}} \;=\; \T^{\frac{1}{2(D-3)}},\qquad 
+\frac{\lDtag A_\LL}{\lDtag A_\mathrm{H}} \;=\; \T^{\frac{D-2}{2(D-3)}}. 
+\]
+Composing NPR with fresh normals at the next ledger reproduces the ladder, consistent with the scaling laws derived in \cite{DCTQG01}.
+
+\section{Interfaces}\label{sec:interfaces}
+
+The NPR mechanism established here is self-contained: a local, boost-invariant projector
+\[
+P^{A}{}_{B}=\delta^{A}{}_{B}+\nplus^{A}\nminus_{B}+\nminus^{A}\nplus_{B},
+\qquad \nplus\!\cdot \nminus=-1,
+\]
+that deletes the normal null pair and preserves the Ledger tangent, plus a lossless (real–Robin) inner boundary between snaps. Its \emph{interfaces} with other pillars of the framework are as follows (details in subsequent papers):
+
+\begin{itemize}[itemsep=2pt,topsep=2pt]
+  \item \textbf{Capacity bookkeeping (TDT).} At a snap, the irreversible write \( \W \) increases the Ledger entropy by \( \Delta \SL=\ln 2 \), costing area \( \Delta \Acal=4\ln 2\,\ell_{P}^{2} \) \futurecite{DCTQG03}. Between snaps, NPR imposes no flux and no growth.
+  \item \textbf{Reversible metadata (Infinity Bits).} Three boost-invariant parities \( X,Y,Z \in \{\pm 1\} \) \futurecite{DCTQG04} stored on \( \LL \) make the NPR map invertible up to local gauge, while carrying no area cost.
+  \item \textbf{Dynamics between snaps (Master Equation / EFT).} Exterior evolution on the half-line with a real–Robin boundary is unitary\cite{Ishibashi2003} \futurecite{DCTQG07} (self-adjoint radial Hamiltonian); snaps appear as localized CP–TP instruments supported on \( \mathcal L \).
+\end{itemize}
+
+These pointers clarify \emph{interfaces} only; full derivations are deferred to the upcoming 
+dedicated TDT, Infinity Bits, and EFT papers.
+
+
+\section{Discussion and outlook}\label{sec:outlook}
+We have isolated the purely geometric core of the snap (\emph{NPR}) and tied it to thermodynamic bookkeeping and boundary dynamics. Immediate next steps are: (i) explicit Kerr calculations (RW--Zerilli--Teukolsky sectors) with inner Robin phases; (ii) numerical relativity implementation of NPR+impulse layers; and (iii) phenomenology (echo templates), where the inner phase \( \Bop_{\ell}(\omega) \) enters observables.
+
+\newpage
+
+\appendix
+\section{The Projector in a Simple Basis (4D to 2D)}
+
+\paragraph{Conventions.} Metric signature \((-,+,+,+)\) in 4D; generalizations keep one timelike, \(D-1\) spacelike. Levi–Civita symbols follow \(\epsilon_{0123}=+\sqrt{|g|}\). \\
+
+The covariant formula for the NPR projector, \(\Pproj = \delta^{A}{}_{B} + \nplus^{A}\nminus_{B} + \nminus^{A}\nplus_{B}\), is constructed to be manifestly independent of any specific coordinate system. It is illuminating to see its action in a simple, concrete basis to understand that it is equivalent to the intuitive act of \textbf{zeroing out} the two normal dimensions.
+
+\subsection*{Setup: A 4D Toy Model of the Black Hole Interior}
+Let's consider a local region of 4-dimensional spacetime inside a black hole, with coordinates \(X^A = (t, r, \theta, \phi)\). In the DCT/QG framework, the final `4D -> 2D` snap resolves the singularity by recording information on a 2-dimensional Ledger.
+\begin{itemize}
+    \item \textbf{The Ledger (Tangent Space):} The information is recorded on the 2-sphere. The Ledger is therefore the 2D surface spanned by the angular basis vectors \(\partial_\theta\) and \(\partial_\phi\).
+    \item \textbf{The Normal Space:} The 2D plane orthogonal to this spherical Ledger is the one spanned by the time and radial coordinates, \(\partial_t\) and \(\partial_r\). This is the plane that will be deleted.
+\end{itemize}
+Inside the event horizon, the roles of \(t\) and \(r\) have swapped. \(r\) is the time-like coordinate, and \(t\) is a space-like one. The metric for the normal plane is therefore Lorentzian, with a signature we can write as \((- , +)\) for the \((r,t)\) subspace in the appropriate frame. We will use a simplified local Minkowski metric for this plane: \(g_{\text{normal}} = \mathrm{diag}(-1, 1)\) for the \((r,t)\) coordinates. \\
+
+\noindent\textit{Basis order:} In what follows we use the component order \((r,t,\theta,\phi)\) for matrix display. This differs from the listing \(X^{A}=(t,r,\theta,\phi)\) above only by a cosmetic swap of the first two entries.
+
+\subsection*{From the Standard Basis to the Null Basis}
+The NPR formalism is built on two null vectors, \(\nplus\) and \(\nminus\), that span this `(r,t)` normal plane. We construct them as linear combinations of our normal basis vectors, \(\partial_r\) and \(\partial_t\).
+\begin{align*}
+    \nplus^A &= \frac{1}{\sqrt{2}}(\partial_r^A + \partial_t^A) = \frac{1}{\sqrt{2}}(1,1,0,0)^T \quad \text{(in (r,t,theta,phi) order)}\\
+    \nminus^A &= \frac{1}{\sqrt{2}}(\partial_r^A - \partial_t^A) = \frac{1}{\sqrt{2}}(1,-1,0,0)^T
+\end{align*}
+These vectors are null with respect to the \((- , +)\) signature of the normal plane, and we normalize them such that they form a valid null basis.
+
+\subsection*{Constructing the Projector Matrix}
+The projector onto the normal space is \(Q^A{}_B\). The projector onto the Ledger's tangent space (the part we want to keep) is then \(P = I - Q\). Let's construct the matrix for \(Q\).
+
+Using the formula for the projector onto the normal space, \(Q^A{}_B = -(\nplus^A \nminus_B + \nminus^A \nplus_B)\) (with the \((-,+)\) signature and \(\nplus\cdot\nminus=-1\) normalization), we can calculate its components. This construction results in the identity matrix for the subspace it projects onto. For the \((r,t)\) block, we get:
+\[
+(Q^A{}_B)_{\text{normal}} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
+\]
+This is the identity matrix in the normal subspace, as expected. The full 4D matrix for \(Q\) is therefore \(\mathrm{diag}(1,1,0,0)\) in our \((r,t,\theta,\phi)\) coordinate order.
+
+The projector onto the Ledger's tangent space, \(\Pproj\), is \(I - Q\). Therefore, the full 4D matrix for the NPR projector is:
+\[
+\Pproj = \mathrm{diag}(1,1,1,1) - \mathrm{diag}(1,1,0,0) = \mathrm{diag}(0, 0, 1, 1).
+\]
+
+\subsection*{Conclusion: The Physical Meaning}
+This result makes the physical action of the final snap transparent. When we apply this projector to any 4D object (a vector, a tensor, the metric) in the black hole interior, it performs a very simple operation:
+\begin{itemize}
+    \item It multiplies all components in the time (\(t\)) and radial (\(r\)) directions by zero, effectively \textbf{deleting them}.
+    \item It leaves the components in the angular (\(\theta, \phi\)) directions completely \textbf{unchanged}.
+\end{itemize}
+For example, applying this to the 4D metric results in a projected metric \(g'_{AB}\) where only the angular components are non-zero. This is the metric of the 2D spherical Ledger. The time and radial dimensions have been \textbf{frozen out}, leaving a static, timeless record.
+
+The complex-looking covariant formula is the necessary and elegant machinery to perform this simple \textbf{zeroing out} operation in a way that is independent of our choice of coordinates, ensuring that NPR is a robust physical principle.
+
+\section{Technical Appendix and Research Outlook}
+
+This appendix provides technical sketches for key results and outlines the primary open problems and future research directions related to the Null-Pair Removal (NPR) mechanism.
+
+\subsection*{Core Algebraic Properties of the NPR Projector}
+
+\paragraph{Proof of Boost Invariance.}
+Under a local \( \SO(1,1) \) boost in the normal plane, the null directors transform as \( \nplus \to e^{+\lambda}\nplus \) and \( \nminus \to e^{-\lambda}\nminus \). The projector \( P' \) in the new frame is:
+\[
+P'^{A}{}_{B} = \delta^{A}{}_{B} + (\ee^{+\lambda}\nplus^{A})(\ee^{-\lambda}\nminus_{B}) + (\ee^{-\lambda}\nminus^{A})(\ee^{+\lambda}\nplus_{B}) = \delta^{A}{}_{B} + \nplus^{A}\nminus_{B} + \nminus^{A}\nplus_{B} = \Pproj.
+\]
+The projector is manifestly invariant, making NPR a physically robust, gauge-independent operation.
+
+\paragraph{Proof of Idempotence.}
+The operator \( \Pproj \) projects any vector into the subspace tangential to \( \LL \). For any vector \( V^A \) already in this tangential subspace, the identity \( P^{A}{}_{B} V^B = V^A \) holds. The column vectors of \( \Pproj \) are themselves, by definition, in this subspace. Therefore, applying the projector a second time has no further effect: \( P^{A}{}_{C}P^{C}{}_{B} = P^{A}{}_{B} \).
+
+\subsection*{Lossless Boundary Dynamics}
+
+\paragraph{Technical Sketch of Self-Adjointness and Losslessness.}
+The lossless nature of the ledger between snaps is guaranteed by the real--Robin boundary condition. For a self-adjoint spatial operator, Green's identity requires the boundary form to vanish. For an operator like \( H = -\partial_x^2 \) on the half-line \(x \ge 0\), this requires that \( [\psi_1^* \partial_x \psi_2 - (\partial_x \psi_1^*) \psi_2]_0^\infty = 0 \). The real--Robin condition, \( (\partial_x+\Bop)\psi|_{x=0}=0 \) with real \(\Bop\), enforces this at the boundary \(x=0\). The corresponding reflection coefficient is:
+\[
+\Rrefl(\omega) = \frac{\Bop - \ii\omega}{\Bop + \ii\omega}.
+\]
+Since \(\Bop\) and \(\omega\) are both real, this is the ratio of a complex number to its conjugate, which has a modulus of exactly 1. Thus, \( |\Rrefl|=1 \), guaranteeing perfect reflection and no energy loss at the boundary\cite{ReedSimon1975, Asorey2005}.
+
+\subsection*{Scaling Relations and the Dimensional Ladder}
+
+\paragraph{Formulas and Derivation Sketch.}
+For the Tangherlini black hole family in \(D\) dimensions, the dimensionless curvature invariant scales as \( \dimtag{D}{\;\Ical} \propto (r_{\mathrm H}/r)^{2(D-3)} \). The trigger condition \( \dimtag{D}{\;\Ical}(\rL) / \dimtag{D}{\;\Ical}(r_{\mathrm H}) = 1/\T \) then uniquely fixes the radius and area ratios:
+\[ 
+\frac{\dimtag{D}{\,r}_{\LL}}{\dimtag{D}{\,r}_{\mathrm H}} = \T^{\frac{1}{2(D-3)}}, \qquad 
+\frac{\dimtag{D}{\,A}(\LL)}{\dimtag{D}{\,A}_{\mathrm H}} = \left(\frac{\dimtag{D}{\,r}_{\LL}}{\dimtag{D}{\,r}_{\mathrm H}}\right)^{D-2} = \T^{\frac{D-2}{2(D-3)}}.
+\]
+These universal scaling laws ensure that the geometric structure of the theory is consistent as one moves up or down the dimensional ladder.
+
+\subsection*{The Snap Impulse and Finite Focusing}
+
+\paragraph{Distributional Model.}
+The Raychaudhuri impulse at a snap is modeled as a distributional source. This can be formalized by considering the snap to occur in an infinitesimally thin layer in the affine parameter \( \lambda \). The expansion \(\thet\) satisfies:
+\[
+\frac{\dd}{\dd\lambda}\ln \Acal(\lambda) = \thet(\lambda) = \bar\theta(\lambda) + \Delta\theta\,\delta(\lambda-\lambda_0),
+\]
+where \(\bar\theta\) is the smooth part and the integrated impulse is given by the TDT area tick from Paper III:
+\[
+\int \Delta\theta\,\delta(\lambda-\lambda_0)\, \dd\lambda = \ln\left(1+\frac{\Delta\Acal}{\Acal}\right).
+\]
+This provides a well-defined mathematical structure for the "kick" that prevents the formation of a caustic.
+
+\subsection*{Open Problems and Future Research Directions}
+
+The formalization of NPR opens several clear and important avenues for future research.
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Numerical Implementation of the Snap Impulse:} A key open problem is the implementation of the distributional impulse model described above in a numerical relativity code. This likely involves creating a new type of "puncturing" or dynamic inner boundary condition that is activated when the \(\Icrit\) threshold is met, and which smoothly matches the metric data across the impulse layer.
+
+    \item \textbf{Explicit Calculations in Kerr Geometry:} While this paper outlines the principles in axisymmetry, a full analysis requires applying the NPR projector within the Teukolsky formalism for gravitational perturbations and the Dirac equation for fermionic fields in a Kerr background. This is essential for building realistic echo templates for spinning black holes and is a major task for future phenomenological work.
+
+    \item \textbf{Global Sufficiency for Reversibility:} This paper and forthcoming paper for part IV of DCT/QG argue for the \emph{local} sufficiency of the Infinity Bits to reverse an NPR snap on a single tile or a small neighborhood. A full, formal proof of \emph{global} sufficiency on an arbitrarily tiled ledger surface with complex topology (e.g., handles or defects) remains an open mathematical problem.
+
+    \item \textbf{The Gauss--Codazzi Formalism:} A complete description requires expressing the intrinsic curvature of the ledger, \( \dimtag{D-2}{R}_{abcd} \), in terms of the ambient curvature and extrinsic data via the Gauss--Codazzi equations. The open task is to provide a full, explicit decomposition showing precisely which curvature components survive the NPR projection and how they relate to the normal-bundle curvature \( \mathcal{F}_{ab} \) that defines the \(Z\) bit of the Infinity Bits register.
+\end{itemize}
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography/dct_refs, bibliography/external_refs}
+
+\end{document}

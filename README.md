@@ -1,9 +1,9 @@
 # An IR complete framework for Quantum Gravity in n-dimensions
 
 **Author:** Marek Hubka  
-**Version:** 1.0 (September 2025)  
+**Version:** 1.2 (October 2025)  
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17136168.svg)](https://doi.org/10.5281/zenodo.17136168)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17136167.svg)](https://doi.org/10.5281/zenodo.17136167)
 ![License](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)
 
 **Short version:** spacetime has a **click**. When a simple, dimensionless curvature gauge crosses a universal threshold, a tiny, local **snap** deletes one null pair, commits **one payload bit** to a codimension-2 surface—the **Ledger** $\mathcal L$—and life goes on. No singularities, thermodynamics in charge, quantum mechanics respected.
@@ -28,10 +28,10 @@ Think of the thesis as the seed and this series as the full-grown tree.
 |------:|:------:|:-----|
 | Manifest | ✅ Released | /manifest/priority_manifest.pdf |
 | 0. Motivation | ⏳ Draft | (queued) |
-| 1. Trigger  | ✅ Released    | papers/p01_trigger/interior_surface_of_bh.pdf |
-| 2. NPR      | ⏳ Draft    | (coming soon) |
-| 3. TDT      | ⏳ Draft    | (queued) |
-| 4. Infinity Bits | ⏳ Draft | (queued) |
+| 1. Trigger  | ✅ Released    | papers/p01_trigger/ledger_surface.pdf |
+| 2. NPR      | ✅ Released    | papers/p02_npr/npr.pdf |
+| 3. TDT      | ⏳ Draft    | (comming soon) |
+| 4. Infinity Bits | ⏳ Draft | (comming soon) |
 | 5. Focused Raychaudhuri | ⏳ Draft | (queued) |
 | 5. Ledger Paradox | ⏳ Draft | (queued) |
 | 6. EFT/Master Eq. | ⏳ Draft | (queued) |
@@ -75,13 +75,13 @@ If those four lines make sense, you’re already 80% of the way there.
 
 **1. The Universal Trigger (Foundation)**
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17289422.svg)](https://doi.org/10.5281/zenodo.17289422)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17289423.svg)](https://doi.org/10.5281/zenodo.17289423)
 - Title: *The Universal Interior Surface of Black Holes and the Derivation of the Transdimensional Constant*
 - What it answers: why the snap happens **exactly** at $\mathcal I=\mathcal I_{\mathrm{crit}}$ and why $r_{\mathcal L}=\sqrt{\mathcal T} R_S$.
 - Takeaway figure: $\mathcal I(r)$ crossing $48\ln 2$.
 
 **2. Null-Pair Removal (Geometric Mechanism)**
-- Title: *NPR: Deleting One Null Pair Cleanly*
+- Title: *Null-Pair Removal - The Geometric Mechanism of Dimensional Reduction: From Ledger Kinematics to Lossless Boundary Dynamics*
 - What it answers: what “deleting” means mathematically (the projector), what survives, what doesn’t.
 - One-liner: kinematics in one page; proofs in appendices.
 
@@ -91,7 +91,7 @@ If those four lines make sense, you’re already 80% of the way there.
 - Punchline: “no record without area.”
 
 **4. Infinity Bits (Reversible Register)**
-- Title: *The Minimal Reversible Write: $\{X,Y,Z\} + b_r$*
+- Title: *The Minimal Reversible Write: $\{X,Y,Z\} + W$*
 - What it answers: why **four** bits; why three are geometric metadata; how reversibility survives.
 
 **5. Finite Focusing (Singularity Resolution)**
