@@ -1,0 +1,2326 @@
+\documentclass[11pt,a4paper]{article}
+
+\input{common/dct_preamble}
+
+\title{
+    \bfseries Dimensional Collapse Theory: \\
+    \Large A Unified Algorithm for \texorpdfstring{$D\to D-2$}{D→D−2} Spacetime Reductions
+    }
+    
+\author{
+    Marek Hubka\, \orcidlink{0009-0003-2476-9017}
+    \thanks{
+        Independent Researcher, Czech Republic. \\
+        Website: \href{http://tidesofuncertainty.com}{tidesofuncertainty.com}.
+        Email: \href{mailto:marek@tidesofuncertainty.com}{marek@tidesofuncertainty.com}.
+    }
+}
+\date{November 25, 2025}
+% \date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present a unified formulation of Dimensional Collapse Theory (DCT), in which spacetime evolves through discrete snaps from a $D$-dimensional parent phase to a $(D{-}2)$-dimensional child phase. Each snap is triggered when the generalized entropy in a local causal cell reaches a universal threshold, and is mediated by a lossless boundary (the \emph{ledger}) that stores four Infinity Bits $(W,X,Y,Z)$ per event. A Null-Pair Removal (NPR) unitary removes a null pair from the parent Hilbert space and writes $(W,X,Y,Z)$ to the ledger. A HaPPY-style tensor network living on the ledger, equipped with an $\SU(5)$ fiber and a $\mathbb{Z}_5$ center, implements an isometry from the cleaned parent degrees of freedom to a child spacetime of dimension $D{-}2$, where time emerges along the local entropy-flux direction and the Standard Model gauge group arises via $\SU(5)\to \SU(3)\times \SU(2)\times \U(1)$. We derive the placement of the ledger surface, formalize the $D\to D{-}2$ algorithm, and survey phenomenological and cosmological consequences including proton decay suppression, neutrino masses, black-hole echoes, and the emergence of cosmic time.
+\end{abstract}
+
+\tableofcontents
+
+% ================== 1. Introduction ==================
+\section{Introduction and Roadmap}
+\label{sec:intro}
+
+The starting question of Dimensional Collapse Theory (DCT)\cite{DCTQG} is deceptively simple:
+
+\begin{quote}
+\emph{What if the singularity of a black hole is not a point in the same dimension as its spacetime, but instead a transition to a lower-dimensional phase?}
+\end{quote}
+
+In DCT, this idea is promoted to a general mechanism. Spacetime does not end in a singular point; rather, whenever certain local entropic conditions are met, the theory performs a discrete, unitary update:
+\[
+D\text{-dimensional parent} \quad\longrightarrow\quad (D{-}2)\text{-dimensional child},
+\]
+with all information preserved on a two-dimensional lossless boundary surface (the \emph{ledger}). The process is local in the sense of causal diamonds, but globally it leads to a cascade of dimensional transitions, including the formation of our $4$D spacetime from higher-dimensional ancestors.
+
+In this work we formulate DCT as an \emph{algorithm} acting on Hilbert spaces and metrics, and we collect its core ingredients into a single coherent framework:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item a universal interior surface in black-hole geometries and its generalization to arbitrary spacetimes via quantum extremal surfaces (ledger placement)\cite{DCTQG01, Engelhardt2015},
+  \item a Null-Pair Removal (NPR) unitary that extracts four Infinity Bits $(W,X,Y,Z)$ when the generalized entropy in a causal cell crosses a threshold\cite{DCTQG02, DCTQG04, Bekenstein1973},
+  \item a ledger Hilbert space modeled as a HaPPY-style tensor network with an $\SU(5)$ fiber and a $\mathbb{Z}_5$ center sector, providing the structural setting for Infinity Bits and ledger code cells\cite{DCTQG04, Pastawski2015, Georgi1974},
+  \item an isometric map that takes the cleaned parent degrees of freedom and the written ledger bits into a $(D{-}2)$-dimensional child spacetime, where time is selected along the dominant entropy flux\cite{DCTQG03, DCTQG04, Jacobson1995},
+  \item and a phenomenological layer in which this machinery suppresses dangerous operators (e.g.\ minimal $\SU(5)$ proton decay), generates neutrino masses, and shapes black-hole and cosmological observables\cite{DCTQG03, DCTQG04, Cardoso2017, Carr2020}.
+\end{itemize}
+
+Our goal here is not to re-derive every technical detail from companion individual papers, but to \emph{unify} them into a single narrative and a single set of equations that describe what the theory does.
+
+\subsection{Core ingredients and guiding principles}
+
+DCT rests on four main principles:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Dimensional phases.} Spacetime can exist in phases of different effective dimension $D=2,4,6,\dots$, each with its own metric structure. The ground phase at $D=2$ is Euclidean and supports no propagating time; phases with $D\ge 3$ are Lorentzian with one time direction.
+
+  \item \textbf{Lossless ledger boundary.} Between the parent and child phases lies a codimension-1 surface (or thin layer) that is \emph{lossless}: information is neither destroyed nor duplicated, but is routed through a two-dimensional ledger that records the essential bits of each snap in a robust quantum code space.
+
+  \item \textbf{Entropy-triggered snaps.} Snaps occur when the \emph{generalized entropy} of a local causal cell exceeds a threshold\cite{Bousso1999, Wall2012}. The threshold is quantized in units of
+  \begin{equation}
+  \Delta S_{\text{min}} = 4\ln 2,
+  \end{equation}
+  corresponding to a nibble of information (four Infinity Bits) and a universal \emph{Transdimensional constant}
+  \begin{equation}
+  \T = \frac{1}{4\ln 2}.
+  \end{equation}
+  Microscopically, a single snap writes four Infinity Bits $(W,X,Y,Z)$; in the coarse–grained thermodynamic bookkeeping of TDT only the payload bit $W$ is counted as \emph{irreversible} Ledger entropy, while $(X,Y,Z)$ are reversible metadata that do not consume Ledger capacity but are crucial for NPR reversibility and branch reconstruction.
+
+  \item \textbf{Unitary evolution on an extended Hilbert space.} The entire process is unitary on an extended Hilbert space
+  \begin{equation}
+  \cH_{\text{ext}} = \cH_{\Parent} \otimes \cH_{\LL} \otimes \cH_{\Child},
+  \end{equation}
+  where $\cH_{\Parent}$ and $\cH_{\Child}$ are bulk Hilbert spaces for the parent and child phases, and $\cH_{\LL}$ is the ledger Hilbert space living on the lossless boundary.
+\end{enumerate}
+
+The ledger is modeled as a quantum error-correcting code on a hyperbolic graph (HaPPY-style)\cite{Pastawski2015, Harlow2017}, with an $\SU(5)$ fiber and a $\mathbb{Z}_5$ center sector. A single snap writes four Infinity Bits $(W,X,Y,Z)$, of which $W$ is a protected ledger bit implemented by a center Wilson operator $\Wop$, and $(X,Y,Z)$ are metadata controlling frames, branch cuts, or local gauge choices.
+
+We use $W$ for the payload Infinity Bit and $\Wop$ for the Wilson operator
+that stores it as a center charge on the ledger; the two should not be
+confused.
+
+\subsection{Notation and canonical symbols}
+\label{subsec:notation}
+
+We follow the canonical notation of the DCT/QG series. In particular:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\T = 1/(4\ln 2)$ is the Transdimensional constant,
+  governing both the Ledger placement and the local
+  generalized–entropy quantum per snap.
+  \item $\Sigma_{\LL}$ denotes the Ledger surface; $\LL$ is the Ledger as an
+  abstract object; $\cH_{\LL}$ is the Ledger Hilbert space.
+  \item $\Parent$ and $\Child$ label the parent and child phases; the extended
+  Hilbert space is
+  \[
+  \cH_{\text{ext}} = \cH_{\Parent}\otimes\cH_{\LL}\otimes\cH_{\Child}.
+  \]
+  \item $(W,X,Y,Z)$ are the Infinity Bits, of which $W$ is the payload (write) bit that
+  contributes to Ledger capacity; $(X,Y,Z)$ are reversible geometric metadata
+  bits.
+  \item $\NPR$ denotes the Null–Pair Removal unitary, and $\Wop$ is the
+  protected Ledger write operator in the $\ZZ_5$ center sector.
+  \item A \emph{snap} is a local event at a codimension–2 surface $\Sigma$ where
+  $\Delta S_{\text{gen}} = 4\ln 2$ in a minimal causal cell; the corresponding
+  operator is $\mathsf{S}[\Sigma]$.
+  \item $\overleftarrow{\mathrm{T}}$ denotes time ordering for the continuous
+  evolution generated by $H_{\text{ext}}(t)$; this is distinct from the
+  Transdimensional constant $\T$.
+  \item In DCT, Lagrangian density is denoted by $\Lag$. This is distinct from the Ledger symbol $\LL$
+\end{itemize}
+
+Any new symbols introduced in this paper are auxiliary and will be clearly
+defined where they appear; the canonical symbols above are meant to remain
+fixed across the series.
+
+\subsection{Position in the DCT/QG series}
+\label{subsec:series-position}
+
+This paper does not introduce new fundamental postulates; instead it \emph{assembles} results from companion parts of the DCT/QG series into a single algorithmic picture. 
+
+In this sense, the present work is the ``master manual'' of DCT: it takes Ledger placement, NPR, TDT, and Infinity Bits as inputs and packages them into a single $D\to D{-}2$ algorithm acting on metrics and Hilbert spaces, with explicit phenomenological and cosmological applications.
+
+\subsection{The DCT snap as an operator}
+
+At the level of operators, a single DCT snap at a codimension-2 surface $\Sigma$ inside a causal diamond proceeds in three conceptual steps:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Detection:} monitor the generalized entropy
+  \begin{equation}
+  S_{\text{gen}}[\Sigma]
+  =
+  \frac{\Area(\Sigma)}{4G\hbar} + S_{\text{out}}[\Sigma]
+  \end{equation}
+  along a foliation of quantum extremal surfaces (QES). A snap is triggered when the smallest local cell $\mathcal{C}$ around $\Sigma$ satisfies
+  \begin{equation}
+  \Delta S_{\text{gen}}(\mathcal{C}) = 4\ln 2.
+  \end{equation}
+
+  \item \textbf{Null-Pair Removal (NPR):} apply a unitary
+  \begin{equation}
+  U_{\NPR}[\Sigma]:\ \cH_{\Parent}\otimes\cH_{\LL}
+  \to
+  \cH_{\Parent}\otimes\cH_{\LL}
+  \end{equation}
+  that disentangles a null pair in the parent cell and writes four Infinity Bits $(W,X,Y,Z)$ to $\cH_{\LL}$.
+
+  \item \textbf{Ledger write and isometry:} perform a protected ledger write $\Wop[\Sigma]^W$ in the $\mathbb{Z}_5$ center sector, set metadata $(X,Y,Z)$, and apply a HaPPY-style isometry
+  \begin{equation}
+  V[\Sigma]:\ \cH_{\Parent\setminus\mathcal{N}}\otimes \cH_{\LL}^{(W;X,Y,Z)}
+  \longrightarrow
+  \cH_{\Child}\otimes \cH'_{\LL},
+  \end{equation}
+  where $\mathcal{N}$ denotes the null-pair subspace and $\cH'_{\LL}$ is the updated ledger space.
+\end{enumerate}
+
+We can combine these into a single \emph{snap operator} at $\Sigma$:
+\begin{equation}
+\mathsf{S}[\Sigma] = V[\Sigma]\;\Wop[\Sigma]^W\;U_{\NPR}[\Sigma],
+\end{equation}
+acting on the extended Hilbert space $\cH_{\text{ext}}$.
+
+\subsection{Master evolution equation}
+
+Let $H_{\text{ext}}(t)$ be the Hamiltonian governing continuous evolution on $\cH_{\text{ext}}$ between snaps, and let $\mathfrak{S}(t)$ be the ordered set of snap surfaces that have triggered up to time $t$ (according to the generalized entropy condition). The global state $|\Psi(t)\rangle$ of the extended system obeys
+\begin{equation}
+\boxed{
+|\Psi(t)\rangle
+=
+\overleftarrow{\mathrm{T}}\exp\!\bigg(-\ii\!\int_0^t H_{\text{ext}}(t')\,\dd t'\bigg)\,
+\overleftarrow{\prod_{\Sigma\in\mathfrak{S}(t)}}\,
+\mathsf{S}[\Sigma]\,
+|\Psi(0)\rangle.
+}
+\label{eq:master-evolution}
+\end{equation}
+Here
+\begin{itemize}[leftmargin=1.5em]
+  \item $\overleftarrow{\mathrm{T}}$ denotes time ordering for the continuous evolution generated by $H_{\text{ext}}(t)$,
+  \item $\overleftarrow{\prod}$ is the ordered product of snap operators from earliest to latest according to the causal structure,
+  \item and each $\mathsf{S}[\Sigma]$ acts only on the degrees of freedom in the causal neighborhood of $\Sigma$.
+\end{itemize}
+
+For later reference it is useful to unpack \eqref{eq:master-evolution} into a verbal recipe:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item Between snaps, evolve unitarily with $H_{\text{ext}}(t)$ on the full extended Hilbert space $\cH_{\text{ext}} = \cH_{\Parent}\otimes\cH_{\LL}\otimes\cH_{\Child}$, with the evolution operator given by the time–ordered exponential
+  \[
+  U_{\text{ext}}(t) = \overleftarrow{\mathrm{T}}\exp\!\bigg(-\ii\!\int_0^t H_{\text{ext}}(t')\,\dd t'\bigg).
+  \]
+  \item Whenever a local causal cell reaches the NPR threshold $\Delta S_{\text{gen}}=4\ln 2$, insert a snap operator $\mathsf{S}[\Sigma]$ at the corresponding codimension–2 surface $\Sigma$:
+  \[
+  \mathsf{S}[\Sigma] = V[\Sigma]\;\Wop[\Sigma]^W\;U_{\NPR}[\Sigma],
+  \]
+  where $U_{\NPR}$ removes the null pair and writes Infinity Bits $(W,X,Y,Z)$, $\Wop^W$ performs the protected ledger write, and $V$ is the local HaPPY–style isometry into the child phase.
+  \item The ordered product $\overleftarrow{\prod}_{\Sigma\in\mathfrak{S}(t)}\mathsf{S}[\Sigma]$ applies these snaps in causal order, so that spacelike–separated snaps commute while timelike–related snaps are applied in the appropriate sequence.
+\end{enumerate}
+
+The crucial point is that the entire evolution is implemented by a composition of unitaries on $\cH_{\text{ext}}$. If we trace out the ledger and child sectors, we obtain an effective non-unitary—but entropy non-decreasing—evolution on the parent alone, consistent with the second law\cite{Breuer2002, Feynman1963}.
+
+\subsection{From black holes to cosmology}
+
+The rest of this work builds out the details and consequences of \eqref{eq:master-evolution}.
+
+\begin{itemize}[leftmargin=1.5em]
+  \item In \Cref{sec:ledger-placement} we derive where the ledger surface sits, starting from black-hole interiors and extending to generic spacetimes via QES arguments. This includes the Ledger radius relation
+  \begin{equation}
+  r_{\LL} = \sqrt{\T}\,R_{\mathrm{S}},
+  \end{equation}
+  which replaces the classical singularity with a smooth, two-dimensional quantum surface.
+
+  \item In \Cref{sec:npr} we define the NPR unitary precisely, show how it extracts four Infinity Bits, and relate the $4\ln 2$ threshold to the transdimensional constant $\T$.
+
+  \item In \Cref{sec:ledger-code} we describe the ledger as a HaPPY-style tensor network with an $\SU(5)$ fiber, a $\mathbb{Z}_5$ center, and local code cells whose logical legs carry GUT-like multiplets.
+
+  \item In \Cref{sec:d-to-dminus2} we assemble these into a concrete $D\to D{-}2$ map: we define dimensional phases, specify how the child inherits a time direction along the entropy-flux vector, and show how the Standard Model gauge group emerges in $(D{-}2)$ dimensions.
+
+  \item In \Cref{sec:phenomenology} we derive phenomenological consequences, including DCT dressing of proton decay operators, neutrino mass scales tied to ledger geometry, and black-hole echo signatures.
+
+  \item In \Cref{sec:cosmology} we describe the earliest snaps, the emergence of time from a Euclidean phase, and possible DCT contributions to inflation and large-scale cosmological observables.
+\end{itemize}
+
+Throughout, we focus on the \emph{algorithmic} structure: what the theory \emph{does} step by step, and how its pieces fit together, leaving detailed proofs and numerical checks to companion papers where appropriate.
+
+% ================== 2. Ledger Placement and Universal Interior Surface ==================
+% ================== 2. Ledger Placement and the Universal Interior Surface ==================
+\section{Ledger Placement and the Universal Interior Surface}
+\label{sec:ledger-placement}
+
+The first question any dimensional-collapse mechanism has to answer is embarrassingly simple:
+
+\begin{quote}
+\emph{Where, exactly, is the ``wall''?}
+\end{quote}
+
+In DCT the wall is not a mysterious ad hoc surface; it is a geometric object picked out by the interplay of curvature and entropy. In black-hole spacetimes this is the \emph{universal interior surface}: a two-dimensional surface at radius
+\begin{equation}
+r_{\LL} = \sqrt{\T}\, R_{\mathrm{S}},
+\label{eq:r-core-def}
+\end{equation}
+where $R_{\mathrm{S}}$ is the Schwarzschild radius and $\T = 1/(4\ln 2)$ is the Transdimensional constant. Only a fraction $\T$ of the total Bekenstein--Hawking entropy is stored on this Ledger; the remainder $(1-\T)$ is accounted for by the region between ledger and the event horizon. The ledger is the quantum boundary associated with this radius.
+
+In this section we:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item derive the ledger radius \eqref{eq:r-core-def} in Schwarzschild,
+  \item interpret the split $S_\LL = \T S_{\text{BH}}$, $S_{\text{cav}} = (1-\T) S_{\text{BH}}$,
+  \item sketch how the construction generalizes to other black holes using curvature invariants,
+  \item and explain how quantum extremal surfaces (QES) provide the general ledger-placement rule in arbitrary spacetimes.
+\end{enumerate}
+
+% --- Patch: QES vs ledger/slab entropy ---
+\begin{remark}[QES, ledger entropy, and slab entropy]
+In the Schwarzschild case we will often speak of a ``ledger entropy''
+$S_{\rm L}$ and a ``slab entropy'' $S_{\rm slab}$ as convenient
+shorthands.  More precisely, these are just the generalized entropy
+$S_{\rm gen}[X]$ evaluated on two special codimension-$2$ surfaces:
+the QES-selected ledger surface $\LL$ and the horizon cross-section
+$\mathcal{H}_{\rm hor}$,
+$$
+S_{\rm L} \equiv S_{\rm gen}[\LL],
+\qquad
+S_{\rm slab} \equiv S_{\rm gen}[\mathcal{H}_{\rm hor}] - S_{\rm gen}[\LL].
+$$
+Thus the location of $\LL$ is still determined by the standard QES condition $\delta S_{\rm gen}=0$; the split into ``ledger'' and ``slab'' is purely a bookkeeping device that makes decomposition manifest in spherical symmetry.
+\end{remark}
+
+
+\subsection{Schwarzschild geometry and basic scales}
+
+Consider a four-dimensional Schwarzschild black hole with mass $M$. The metric in Schwarzschild coordinates $(t,r,\theta,\phi)$ is
+\begin{equation}
+\dd s^2
+=
+-\bigg(1-\frac{R_{\mathrm{S}}}{r}\bigg)\dd t^2
++\bigg(1-\frac{R_{\mathrm{S}}}{r}\bigg)^{-1}\dd r^2
++r^2\dd\Omega_2^2,
+\qquad
+R_{\mathrm{S}} = \frac{2GM}{c^2},
+\label{eq:schwarzschild-metric}
+\end{equation}
+where $\dd\Omega_2^2$ is the unit 2-sphere metric. The event horizon is at $r=\RS$\cite{MTW1973}.
+
+The Bekenstein--Hawking entropy\cite{Bekenstein1973, Hawking1975} of this black hole is
+\begin{equation}
+S_{\text{BH}}
+=
+\frac{k_B\,A_{H}}{4\ell_P^2}
+=
+\frac{k_B\,4\pi R_{\mathrm{S}}^2}{4\ell_P^2}
+=
+\pi k_B \frac{R_{\mathrm{S}}^2}{\ell_P^2},
+\label{eq:SBH-def}
+\end{equation}
+with $A_{H}=4\pi R_{\mathrm{S}}^2$ the horizon area and $\ell_P^2=G\hbar/c^3$ the Planck area. We set $k_B=1$ from now on.
+
+Classically, curvature diverges at $r=0$. A convenient curvature invariant $\Ical$ can be composed of the Kretschmann scalar
+\begin{equation}
+K(r)
+=
+R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+=
+\frac{48 G^2 M^2}{c^4 r^6}
+=
+\frac{12 R_{\mathrm{S}}^2}{r^6},
+\label{eq:kretschmann}
+\end{equation}
+into
+\begin{equation}
+    \Ical = r^4K(r) = 12 \bigg(\frac{\RS}{r}\bigg)^2
+    \label{eq:curv_invariant}
+\end{equation}
+where the last equality holds in units $c=1=G$.
+
+In ordinary GR, nothing distinguished a particular interior radius $0 < r < R_{\mathrm{S}}$; in DCT we pick out a special radius $r_{\LL}$ that plays the role of a quantum ledger surface.
+
+\subsection{Proper vs apparent entropy and the Transdimensional constant}
+
+DCT distinguishes between the \emph{proper} thermodynamic entropy carried by the Ledger and the \emph{apparent} Bekenstein--Hawking entropy of the event horizon:
+\begin{equation}
+S_{\mathrm{proper}} \;\equiv\; S_{\mathcal L}
+= \frac{A_{\mathcal L}}{4\ell_{P}^{2}},
+\qquad
+S_{\mathrm{apparent}} \;\equiv\; S_{\mathrm{BH}}
+= \frac{A_{H}}{4\ell_{P}^{2}}.
+\end{equation}
+For stationary black holes these are related by the Transdimensional constant
+\begin{equation}
+\T = \frac{1}{4\ln 2},
+\end{equation}
+which fixes both the area and entropy ratios,
+\begin{equation}
+\frac{A_{\mathcal L}}{A_H} = \T
+\quad\Longrightarrow\quad
+\frac{S_{\mathcal L}}{S_{\mathrm{BH}}} = \T.
+\end{equation}
+Equivalently,
+\begin{equation}
+S_{\mathcal L} = \T\,S_{\mathrm{BH}},
+\qquad
+S_{\mathrm{BH}} - S_{\mathcal L} = (1-\T)\,S_{\mathrm{BH}}.
+\label{eq:entropy-split}
+\end{equation}
+The first equality is the \emph{placement law}: the Ledger carries a universal fraction $\,\T\,$ of the black hole’s apparent entropy. The second equality is a \emph{bookkeeping decomposition} of $S_{\mathrm{BH}}$ into
+\begin{itemize}
+    \item a proper Ledger contribution $S_{\mathcal L}$ localized on the codimension-2 surface $\mathcal L$, and
+    \item a horizon-scale contribution from vacuum entanglement, given by the remainder $S_{\mathrm{BH}} - S_{\mathcal L}$
+\end{itemize}
+
+supported in the region between $\mathcal L$ and the event horizon. It is \emph{not} a statement about two independent thermodynamic reservoirs. 
+Geometrically, we parametrize the proper Ledger entropy by an effective area at $r_{\LL}$ via the Bekenstein--Hawking relation,
+\begin{equation}
+S_{\mathcal L}
+=
+\frac{A_{\mathcal L}}{4\ell_P^2}
+=
+\frac{4\pi r_{\LL}^2}{4\ell_P^2},
+\end{equation}
+and equating this to $\T S_{\mathrm{BH}}$ with $S_{\mathrm{BH}} = A_H/(4\ell_P^2)$ gives
+\begin{equation}
+\frac{4\pi r_{\LL}^2}{4\ell_P^2}
+=
+\T
+\,
+\frac{4\pi R_{\mathrm{S}}^2}{4\ell_P^2}
+\quad\Longrightarrow\quad
+r_{\LL}^2 = \T\,R_{\mathrm{S}}^2,
+\end{equation}
+so that
+\begin{equation}
+r_{\LL} = \sqrt{\T}\,R_{\mathrm{S}},
+\end{equation}
+recovering \eqref{eq:r-core-def}.
+
+The complementary perspective on this result:
+
+\begin{itemize}[leftmargin=1.5em]
+
+  \item \textbf{Curvature threshold:} inserting $r_{\LL}$ into \eqref{eq:curv_invariant} gives a curvature invariant $\Ical$
+  \begin{equation}
+  \Icrit
+  =
+  r_\LL^4K(r_\LL)
+  =
+  (\sqrt{\T}\RS)^4\frac{12 R_{\mathrm{S}}^2}{(\sqrt{\T}\RS)^6}
+  =
+  \frac{12}{\T}
+  =
+  48 \ln 2.
+  \end{equation}
+  For fixed $M$ (fixed $R_{\mathrm{S}}$), this is a definite, universal curvature scale at which the classical description gives way to a 2D flat quantum surface.
+\end{itemize}
+
+In DCT, $r=r_{\LL}$ is not just ``where classical GR breaks down''; it is the locus of the \emph{ledger}. Null pairs that reach this surface are processed by NPR, and their information is written into Infinity Bits on the ledger.
+
+\subsection{The ledger as the lossless boundary}
+
+The DCT ledger is, at minimum, a two-dimensional surface that:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item is spacelike in the interior geometry and lies at $r=r_{\LL}$,
+  \item carries a quantum error-correcting code structure (HaPPY-style) and a $\mathbb{Z}_5$ center sector,
+  \item and acts as a lossless interface between the $D$-dimensional parent interior and the $(D{-}2)$-dimensional child phase.
+\end{enumerate}
+
+From the bulk perspective, the ledger is a codimension-1 hypersurface anchored at $r_{\LL}$. From the DCT perspective, the ledger is more naturally thought of as a two-dimensional code living on the intersection of this hypersurface with the child phase.
+
+\subsection{Beyond Schwarzschild: curvature invariants and general BHs}
+
+For rotating or charged black holes (Kerr, Reissner--Nordström, Kerr--Newman), the metric no longer has a simple spherical symmetry, and the event horizon and interior structure are more complicated. Nevertheless, the DCT rule for ledger placement follows the same philosophy:
+
+\begin{quote}
+\emph{Find the unique interior surface that carries a fraction $\T$ of the total generalized entropy and supports a transition into 2D phase.}
+\end{quote}
+
+In stationary situations one can proceed along two parallel lines:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Entropy-based:} compute the generalized entropy $S_{\text{gen}}$ on a family of interior surfaces and locate the surface $\Sigma_{\LL}$ for which
+  \begin{equation}
+  S_{\text{gen}}[\Sigma_{\LL}] = \T\,S_{\text{BH}},
+  \end{equation}
+  and which is stable under small deformations (a QES-like condition).
+
+  \item \textbf{Curvature-based:} identify a geometric invariant, such as a dimensionless extention of the Kretschmann scalar $\Ical$, and define the ledger surface as the unique interior surface where the invariant reaches a critical value corresponding to the Schwarzschild $\Icrit$\eqref{eq:curv_invariant} in the appropriate limit.
+\end{itemize}
+
+The detailed implementation is model-dependent and belongs in the companion DCT papers for Kerr and other metrics, but the unifying point is that the ledger is always \emph{anchored} by a curvature/entropy condition, not freely chosen.
+
+\subsection{Quantum extremal surfaces and ledger placement in general spacetimes}
+
+To go beyond stationary black holes, we need a dynamical rule. DCT adopts a QES-based criterion:
+
+\begin{definition}[Ledger QES]
+Let $\cD$ be a local causal diamond in a $D$-dimensional spacetime, and let $\{\Sigma(\lambda)\}$ be a one-parameter family of smooth codimension-2 surfaces inside $\cD$ with generalized entropy
+\begin{equation}
+S_{\text{gen}}[\Sigma]
+=
+\frac{\Area(\Sigma)}{4G\hbar} + S_{\text{out}}[\Sigma].
+\end{equation}
+A surface $\Sigma_\QES$ is a \emph{quantum extremal surface}\cite{Engelhardt2015} if $\delta S_{\text{gen}}[\Sigma_\QES]=0$ under local deformations. A \emph{ledger QES} $\Sigma_{\LL}$ is a QES satisfying
+\begin{equation}
+S_{\text{gen}}[\Sigma_{\LL}]
+=
+\T\,S_{\text{ref}},
+\end{equation}
+where $S_{\text{ref}}$ is the appropriate reference entropy of the region (for example, the total generalized entropy associated with a surrounding trapping horizon).
+\end{definition}
+
+The reference entropy $S_{\text{ref}}$ reduces to $S_{\text{BH}}$ for stationary black holes, reproducing \eqref{eq:entropy-split}. In more general settings (e.g.\ cosmological or highly dynamical collapse) the reference entropy is defined by the natural outer QES associated with the region of interest.
+
+Operationally, ledger placement obeys:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item identify the relevant outer QES or trapping surface and its associated generalized entropy $S_{\text{ref}}$,
+  \item search inward for a QES $\Sigma$ for which $S_{\text{gen}}[\Sigma]=\T S_{\text{ref}}$,
+  \item select the minimal such $\Sigma$ as $\Sigma_{\LL}$.
+\end{enumerate}
+
+In this way, the ledger is always tied to the quantum extremal structure of spacetime and carries a fixed fraction $\T$ of the ``ledger budget'' of the region.
+
+\subsection{Summary: definition of the ledger surface}
+
+We summarize the ledger-placement rule used in the rest of this work.
+
+\begin{definition}[Ledger surface]
+Given a spacetime region with a well-defined outer QES or equivalent reference surface with generalized entropy $S_{\text{ref}}$, the \emph{ledger surface} $\Sigma_{\LL}$ is the innermost codimension-2 surface that
+\begin{enumerate}[leftmargin=1.5em]
+  \item is a quantum extremal surface, $\delta S_{\text{gen}}[\Sigma_{\LL}]=0$,
+  \item and satisfies
+  \begin{equation}
+  S_{\text{gen}}[\Sigma_{\LL}]
+  =
+  \T\,S_{\text{ref}},
+  \qquad
+  \T = \frac{1}{4\ln 2}.
+  \end{equation}
+\end{enumerate}
+In a Schwarzschild black hole, $\Sigma_{\LL}$ lies at radius $r_{\LL} = \sqrt{\T}\,R_{\mathrm{S}}$ and coincides with the universal interior surface.
+\end{definition}
+
+This surface is where the DCT machinery ``hooks into'' the geometry: NPR acts on null pairs crossing $\Sigma_{\LL}$, the HaPPY--$\SU(5)$ ledger code lives on its neighborhood, and the $D\to D{-}2$ isometry uses it as the pivot between parent and child phases.
+
+In the next section we move from \emph{where} the ledger is to \emph{what it does}: we define the Null-Pair Removal (NPR) unitary, the four Infinity Bits, and the role of the Transdimensional constant $\T$ in entropy bookkeeping at each snap.
+
+
+% ================== 3. Null-Pair Removal (NPR) and Infinity Bits ==================
+\section{Null-Pair Removal and Infinity Bits}
+\label{sec:npr}
+
+Once the ledger surface $\Sigma_{\LL}$ is fixed, the next question is what the DCT machinery actually does \emph{at} that surface. The key ingredient is the \emph{Null-Pair Removal} (NPR) unitary, which:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item acts on a small causal cell that straddles $\Sigma_{\LL}$,
+  \item disentangles a distinguished null pair of modes crossing the surface,
+  \item and transfers their information into four \emph{Infinity Bits} $(W,X,Y,Z)$ written on the ledger.
+\end{itemize}
+
+The term ``removal'' is slightly misleading: nothing is destroyed. Instead, a particular entangled pair of null modes is unitarily mapped into a standard reference state on the parent side, while an equal amount of information is written into the ledger code space. The process is strictly unitary on the extended Hilbert space.
+
+In this section we define:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item the local causal cell and the null-pair Hilbert factor,
+  \item the Infinity Bits $(W,X,Y,Z)$ and their role,
+  \item the abstract NPR unitary $U_{\NPR}[\Sigma]$ and its properties,
+  \item a minimal qubit model of NPR,
+  \item and the entropy bookkeeping that fixes the threshold $\Delta S_{\text{gen}} = 4\ln 2$ and connects it to the Transdimensional constant $\T$.
+\end{enumerate}
+
+\subsection{Local causal cell and null-pair factorization}
+
+Consider a small causal diamond $\cD$ that intersects the ledger surface $\Sigma_{\LL}$, small enough that the geometry and matter state can be treated as approximately homogeneous across it. Inside $\cD$ we choose two future-directed null vectors $\nplus^\mu$ and $\nminus^\mu$ normal to $\Sigma_{\LL}$, normalized such that
+\begin{equation}
+\nplus^\mu \nminus_\mu = -1.
+\end{equation}
+They define a pair of null directions (ingoing and outgoing) across the ledger.
+
+At the level of fields, we can expand matter (and possibly gravitational) degrees of freedom in modes adapted to $(\nplus,\nminus)$ and to the angular directions on $\Sigma_{\LL}$. For our purposes we only need the Hilbert-space factorization structure:
+
+\begin{equation}
+\cH_{\Parent}(\cD)
+\;\cong\;
+\cH_{\text{null}} \otimes \cH_{\text{rest}},
+\label{eq:HP-factor}
+\end{equation}
+where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\cH_{\text{null}}$ is the Hilbert space of a distinguished pair of conjugate null modes crossing $\Sigma_{\LL}$ along $k^\mu$ and $\ell^\mu$ in the cell,
+  \item $\cH_{\text{rest}}$ contains all remaining degrees of freedom in $\cD$ (transverse modes, additional null modes, etc.).
+\end{itemize}
+
+We do not assume that the full state factorizes across \eqref{eq:HP-factor}; in general, there is entanglement between $\cH_{\text{null}}$ and $\cH_{\text{rest}}$. We only assume that there exists a preferred two-mode subsystem $\cH_{\text{null}}$ that is singled out by the local stress-energy and QES data as the ``would-be'' carrier of the next entropy increment.
+
+\begin{definition}[Null pair]
+A \emph{null pair} in $\cD$ is a pair of conjugate null modes whose joint Hilbert space $\cH_{\text{null}}$ admits a basis $\{\ket{n}\}$ such that the local energy and entropy flux across $\Sigma_{\LL}$ can be written as expectation values of operators on $\cH_{\text{null}}$ alone, up to corrections suppressed by the size of the cell.
+\end{definition}
+
+In a free-field model, $\cH_{\text{null}}$ might be the Fock space of a single ingoing and outgoing mode. In DCT, we care mainly about its information-carrying capacity (in bits) rather than its detailed field content.
+
+\subsection{Ledger Hilbert space and Infinity Bits}
+
+The ledger occupies a Hilbert space $\cH_{\LL}$ attached to the neighborhood of $\Sigma_{\LL}$. Microscopically, $\cH_{\LL}$ is realized as a HaPPY-style tensor network with:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item an $\SU(5)$ gauge fiber (to host GUT-like multiplets),
+  \item and a $\ZZ_5$ center sector (to host the protected branch/write bit).
+\end{itemize}
+
+For a single snap in a single causal cell, we focus on a small ledger subspace
+\begin{equation}
+\cH_{\LL}^{\text{(cell)}} \cong (\mathbb{C}^2)^{\otimes 4},
+\end{equation}
+which stores four qubits:
+
+\begin{equation}
+\ket{WXYZ}
+=
+\ket{w}_W \otimes \ket{x}_X \otimes \ket{y}_Y \otimes \ket{z}_Z,
+\qquad W,X,Y,Z \in \{0,1\}.
+\end{equation}
+
+\begin{definition}[Infinity Bits]
+For each snap, DCT associates four \emph{Infinity Bits} $(W,X,Y,Z)$:
+\begin{itemize}[leftmargin=1.5em]
+  \item $W$ is the \emph{protected write/branch bit}: a robust, nonlocally stored bit (implemented via a $\ZZ_5$ center Wilson operator $\Wop$) that marks the fact that a snap happened and which branch of the ledger it belongs to.
+  \item $(X,Y,Z)$ are \emph{metadata bits} controlling local frame choices, routing in the HaPPY network, and gauge/phase conventions in the $\SU(5)$ fiber.
+\end{itemize}
+Together they form a \emph{nibble} of information, $\log_2(16)=4$ bits, per snap event.
+\end{definition}
+
+The detailed interpretation of $(X,Y,Z)$ is model-dependent and lives in the HaPPY code layer (\Cref{sec:ledger-code}); for the NPR mechanism we only need to know that they are carried in $\cH_{\LL}$ and not in $\cH_{\Parent}$ after the snap.
+
+% --- Patch: Infinity Bits as thermodynamic vs informational roles ---
+\begin{remark}[Infinity Bits: thermodynamic vs informational roles]
+Each NPR event in a causal cell writes a four-bit Infinity register
+$(W,X,Y,Z)$ into the local ledger.  At the microscopic level all four
+bits are genuine degrees of freedom: the local register has $2^4$
+microstates and contributes an entropy quantum
+$\Delta S = 4 \ln 2$ when it is populated.
+
+For the transdimensional thermodynamic bookkeeping, however, only the
+write/branch bit $W$ is treated as the irreversible payload.  Changing
+$W$ would amount to changing which macroscopic branch of the evolution
+one inhabits.  The remaining bits $(X,Y,Z)$ encode geometric and
+gauge-theoretic metadata (routing, representation labels, etc.) that
+distinguish microstates within a given branch.  They can be reshuffled
+by local reversible operations without affecting the coarse-grained
+entropy, even though they remain part of the full $4\ln 2$ microscopic
+entropy created at each NPR event.
+\end{remark}
+
+\subsection{Definition and properties of the NPR unitary}
+
+We now define the NPR unitary acting in a single causal cell $\cD$ that intersects $\Sigma_{\LL}$. The extended Hilbert space for that cell is
+\begin{equation}
+\cH_{\text{ext}}(\cD)
+=
+\cH_{\text{null}} \otimes \cH_{\text{rest}} \otimes \cH_{\LL}^{\text{(cell)}}.
+\end{equation}
+
+\begin{definition}[NPR unitary]
+The \emph{Null-Pair Removal} unitary at $\Sigma$ in the cell $\cD$ is an operator
+\begin{equation}
+U_{\NPR}[\Sigma,\cD]:
+\ \cH_{\text{null}} \otimes \cH_{\text{rest}} \otimes \cH_{\LL}^{\text{(cell)}}
+\to
+\cH_{\text{null}} \otimes \cH_{\text{rest}} \otimes \cH_{\LL}^{\text{(cell)}},
+\end{equation}
+satisfying the following properties:
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Null vacuumization.} There exists a distinguished ``null vacuum'' state $\ket{0}_{\text{null}}$ in $\cH_{\text{null}}$ such that for any initial joint state $\ket{\Psi_{\text{in}}}$, the post-NPR state can be written as
+  \begin{equation}
+  U_{\NPR} \ket{\Psi_{\text{in}}}
+  =
+  \ket{0}_{\text{null}} \otimes \ket{\Phi_{\text{rest+Ledger}}},
+  \end{equation}
+  i.e.\ the null pair is driven to a fixed reference state, with all information flowing into the rest+ledger factor.
+
+  \item \textbf{Four-bit write.} For a minimal ``triggered'' cell (see below), the von Neumann entropy of the ledger factor increases by exactly $4\ln 2$, corresponding to the registration of one nibble $(W,X,Y,Z)$.
+
+  \item \textbf{Locality.} $U_{\NPR}[\Sigma,\cD]$ acts trivially on degrees of freedom outside the causal diamond $\cD$ and commutes with NPR operations in spacelike separated cells.
+
+  \item \textbf{Reversibility on $\cH_{\text{ext}}$.} $U_{\NPR}$ is strictly unitary on $\cH_{\text{ext}}(\cD)$; irreversibility arises only if one traces out the ledger degrees of freedom.
+\end{enumerate}
+\end{definition}
+
+Operationally, the NPR unitary takes whatever state the null pair was in, unitarily transfers its information into the ledger nibble $(W,X,Y,Z)$, and leaves the parent null mode in a standard vacuum state. This is the core of how DCT ``shaves off'' pairs of null dimensions when a snap happens.
+
+\subsection{Minimal qubit model of NPR}
+
+To make the construction more concrete, we introduce a toy qubit model capturing the essence of NPR. We model:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\cH_{\text{null}}$ as a 4-dimensional system (two qubits) carrying the ingoing and outgoing modes,
+  \item $\cH_{\LL}^{\text{(cell)}}$ as four ledger qubits $(W,X,Y,Z)$,
+  \item and we suppress $\cH_{\text{rest}}$ for simplicity.
+\end{itemize}
+
+Let us choose a basis $\{\ket{n}\}_{n=0}^{3}$ for $\cH_{\text{null}}$, where $n$ labels four orthonormal states of the two-mode system (e.g.\ occupation patterns). The ledger starts in a reference state $\ket{0000}_{WXYZ}$.
+
+We can then define $U_{\NPR}$ by
+\begin{equation}
+U_{\NPR}:\ \ket{n}_{\text{null}}\ket{0000}_{WXYZ}
+\mapsto
+\ket{0}_{\text{null}}\ket{f(n)}_{WXYZ},
+\qquad
+n=0,\dots,3,
+\label{eq:UNPR-mapping}
+\end{equation}
+where $f$ is any injective map
+\begin{equation}
+f:\ \{0,1,2,3\} \hookrightarrow \{0,1\}^4.
+\end{equation}
+For example:
+\begin{align}
+f(0)&=0000,\\
+f(1)&=0001,\\
+f(2)&=0010,\\
+f(3)&=0011.
+\end{align}
+
+To make $U_{\NPR}$ unitary on the full space
+\[
+\cH_{\text{null}}\otimes \cH_{\LL}^{\text{(cell)}}
+\cong
+\mathbb{C}^4\otimes \mathbb{C}^{16},
+\]
+we extend \eqref{eq:UNPR-mapping} arbitrarily to an orthonormal basis of the remaining $4\times 16 - 4 = 60$ input states. The key part is that for the physically relevant sector where the ledger cell is fresh ($\ket{0000}$) and the null pair is in one of the four ``triggering'' states, NPR:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item resets the null pair to $\ket{0}_{\text{null}}$,
+  \item imprints a distinct ledger nibble $\ket{f(n)}$,
+  \item and can be inverted by acting on both registers.
+\end{itemize}
+
+If the incoming state is a superposition
+\begin{equation}
+\ket{\Psi_{\text{in}}}
+=
+\sum_{n=0}^3 \alpha_n \ket{n}_{\text{null}}\ket{0000}_{WXYZ},
+\end{equation}
+then
+\begin{equation}
+U_{\NPR}\ket{\Psi_{\text{in}}}
+=
+\ket{0}_{\text{null}}\otimes
+\sum_{n=0}^3 \alpha_n \ket{f(n)}_{WXYZ},
+\end{equation}
+so all coherence between the different null-pair states is now stored in the ledger's superposition over $\ket{f(n)}$.
+
+In a more realistic model, $\cH_{\text{null}}$ may be larger than 4 dimensions, and $\cH_{\text{rest}}$ participates in the mapping; the essential feature remains: there is a subspace of states whose information is transferred to $(W,X,Y,Z)$ while the null mode is vacuumized.
+
+\subsection{Entropy threshold and \texorpdfstring{$\Delta S_{\text{gen}} = 4\ln 2$}{Sgen}}
+
+NPR is only triggered when the local generalized entropy in the cell increments by a discrete amount. Let $\cC$ be the smallest causal cell centered on $\Sigma_{\LL}$ whose generalized entropy increment
+\begin{equation}
+\Delta S_{\text{gen}}(\cC)
+=
+\frac{\Delta \Acal(\cC)}{4G\hbar} + \Delta S_{\text{out}}(\cC)
+\end{equation}
+(i.e.\ area-plus-outside-entropy change) reaches the threshold
+\begin{equation}
+\Delta S_{\text{gen}}(\cC) = 4\ln 2.
+\label{eq:deltaS-fourln2}
+\end{equation}
+
+\begin{definition}[Snap trigger]
+A DCT snap in the cell $\cC$ is triggered when the generalized entropy increment across $\Sigma_{\LL}$ in that cell satisfies \eqref{eq:deltaS-fourln2}. At that moment NPR is applied once, producing a single nibble $(W,X,Y,Z)$.
+\end{definition}
+
+The choice of $4\ln 2$ is not arbitrary; it is tied to the difference between proper and apparent entropy \eqref{eq:entropy-split} and the Transdimensional constant $\T$:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item The horizon-scale bookkeeping remainder available to feed future snaps is
+  \[
+  S_{\mathrm{BH}} - S_{\mathcal L} = (1-\T)\,S_{\mathrm{BH}},
+  \]
+  i.e. the part of the apparent Bekenstein--Hawking entropy not yet realized as proper Ledger capacity.
+  
+  \item If each snap processes $4\ln 2$ units of generalized entropy, then the total number of \emph{maximal} snaps available in the slab is
+  \begin{equation}
+  N_{\text{snaps}}
+  \approx
+  \frac{S_{\text{cav}}}{4\ln 2}
+  =
+  \frac{1-\T}{4\ln 2} S_{\text{BH}}.
+  \end{equation}
+  For macroscopic black holes this is a huge number, but finite.
+
+  \item The same constant $\T = 1/(4\ln 2)$ controls how much of the total ledger capacity must be reserved for the 2D phase vs.\ how much can be processed through NPR in the slab. In this sense, $4\ln 2$ is the ``area quantum of dimensional collapse'' per snap.
+\end{itemize}
+
+In the qubit model above, writing four qubits in a maximally mixed state increases the ledger entropy by $4\ln 2$:
+\begin{equation}
+S_{\text{ledger}}^{\text{(after)}} - S_{\text{ledger}}^{\text{(before)}}
+= 4\ln 2
+\end{equation}
+provided that the nibble is fully randomized in the ensemble. This matches the entropy removed from the null pair and its environment in the cell, preserving overall unitarity when the ledger is included.
+
+\subsection{From NPR to the snap operator}
+
+The NPR unitary $U_{\NPR}[\Sigma]$ is only one factor in the full snap operator $\mathsf{S}[\Sigma]$ that appears in the master evolution equation \eqref{eq:master-evolution}. In a given causal cell, the snap operator can be factorized as
+\begin{equation}
+\mathsf{S}[\Sigma,\cD]
+=
+V[\Sigma,\cD]\,
+\Wop[\Sigma,\cD]^W\,
+U_{\NPR}[\Sigma,\cD],
+\end{equation}
+where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $U_{\NPR}[\Sigma,\cD]$ performs null-pair removal and writes $(W,X,Y,Z)$ into a local ledger register,
+  \item $\Wop[\Sigma,\cD]^W$ is a center Wilson operator that stores $W$ as a protected nonlocal bit on the ledger graph,
+  \item $V[\Sigma,\cD]$ is the local HaPPY--$\SU(5)$ code isometry that routes the cleaned parent dofs and the ledger nibble into the child spacetime degrees of freedom (see \Cref{sec:ledger-code} and \Cref{sec:d-to-dminus2}).
+\end{itemize}
+
+Because each of these factors is unitary on $\cH_{\text{ext}}(\cD)$ and acts locally in the cell, the global evolution \eqref{eq:master-evolution} is a product of local unitaries, ordered in time and along the entropy-flux flow.
+
+\subsection{Summary}
+
+To summarize, the NPR mechanism provides the microscopic rule for how DCT converts local entropy flux into discrete, ledger-recorded information:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item A \emph{null pair} of modes crossing the ledger surface is singled out inside a local causal cell.
+  \item When the generalized entropy increment in that cell reaches $\Delta S_{\text{gen}} = 4\ln 2$, an NPR snap occurs.
+  \item The NPR unitary $U_{\NPR}$ unitarily maps the null pair to a vacuum reference state and transfers its full information content into four Infinity Bits $(W,X,Y,Z)$ on the ledger.
+  \item The Transdimensional constant $\T = 1/(4\ln 2)$ controls both the global mapping between Ledger and horizon entropy (proper vs apparent) and the local quantum bookkeeping at each snap.
+\end{itemize}
+
+In the next section we turn to the ledger itself: how its Hilbert space is organized as a HaPPY-style tensor network with an $\SU(5)$ fiber, a $\ZZ_5$ center sector, and local code cells that treat the Infinity Bits as inputs for the $D\to D{-}2$ isometry.
+
+% ================== 4. Ledger as HaPPY-SU(5) Code ==================
+\section{The Ledger as a HaPPY-\texorpdfstring{$\SU(5)$}{SU(5)} Code}
+\label{sec:ledger-code}
+
+The ledger is more than just a bookkeeping surface: it is a genuine quantum code that stores the Infinity Bits $(W,X,Y,Z)$, routes information between parent and child phases, and carries an $\SU(5)$ fiber where GUT-like degrees of freedom live. In DCT, the ledger is modeled as a HaPPY-style tensor network on (a discretization of) the ledger surface $\Sigma_{\LL}$.
+
+In this section we:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item define the factorization of the ledger Hilbert space,
+  \item describe the $\ZZ_5$ center sector and the write operator $\Wop$,
+  \item introduce the $\SU(5)$ fiber and local code cells,
+  \item and explain how Infinity Bits act as inputs to the local code isometries that implement the $D\to D{-}2$ map.
+\end{enumerate}
+
+\subsection{Ledger Hilbert space: center \texorpdfstring{$\otimes$}{⊗} code}
+\label{subsec:ledger-factor}
+
+At the microscopic level, the ledger Hilbert space is taken to be a tensor product of two main factors,
+\begin{equation}
+\cH_{\LL}
+\;\cong\;
+\cH_{\text{center}} \otimes \cH_{\text{code}}.
+\end{equation}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\cH_{\text{center}}$ carries a discrete $\ZZ_5$ ``center charge'' that implements the protected write/branch bit $W$ via a Wilson operator $\Wop$.
+
+  \item $\cH_{\text{code}}$ is a HaPPY-style tensor-network code with local legs in the $\SU(5)$ fundamental representation $\Five$, and logical legs carrying higher representations such as $\Ten$ or $\Ten\oplus\Fivebar$ \cite{Georgi1974}.
+\end{itemize}
+
+For a single causal cell $\cC$ intersecting $\Sigma_{\LL}$, we isolate a small ledger factor
+\begin{equation}
+\cH_{\LL}^{(\cC)}
+\cong
+\cH_{\text{center}}^{(\cC)}\otimes
+\cH_{\text{code}}^{(\cC)}\otimes
+\cH_{WXYZ}^{(\cC)},
+\end{equation}
+where $\cH_{WXYZ}^{(\cC)}\cong(\mathbb{C}^2)^{\otimes 4}$ stores the four Infinity Bits $(W,X,Y,Z)$ associated with that cell.
+
+\subsection{Center sector and the write operator \texorpdfstring{$\Wop$}{W}}
+\label{subsec:center-sector}
+
+The center sector encodes a discrete $\ZZ_5$ charge on each plaquette (or dual face) of the ledger graph. For a given cell $\cC$, we model
+\begin{equation}
+\cH_{\text{center}}^{(\cC)}
+\cong
+\mathbb{C}^5
+=
+\operatorname{span}\{\ket{q}\mid q\in\ZZ_5\},
+\end{equation}
+with orthonormal basis $\{\ket{0},\ket{1},\dots,\ket{4}\}$ and a pair of standard $\ZZ_5$ shift and phase operators
+\begin{align}
+Z\ket{q} &= \omega^q \ket{q},
+&
+X\ket{q} &= \ket{q+1\ (\text{mod }5)},
+\end{align}
+where $\omega = e^{2\pi \ii /5}$.
+
+\begin{definition}[Write operator]
+The \emph{write operator} $\Wop$ in a cell $\cC$ is a center Wilson operator acting on $\cH_{\text{center}}^{(\cC)}$ such that
+\begin{equation}
+\Wop\ket{q} = \ket{q+1\ (\text{mod }5)}.
+\end{equation}
+A snap that writes $w\in\{0,1\}$ uses $\Wop^W$ to shift the local center charge when $w=1$ and leaves it unchanged when $w=0$.
+\end{definition}
+
+The central idea is that the bit $W$ is not stored as a fragile local qubit but as a \emph{topological} center charge on the ledger network. In a full lattice model, the physical realization of $W$ would be a non-contractible Wilson loop, making it robust against local errors on the ledger.
+
+\begin{remark}
+The remaining Infinity Bits $(X,Y,Z)$ can, in principle, be encoded either in additional center charges or in local degrees of freedom in $\cH_{\text{code}}^{(\cC)}$; in this work we treat them as local qubits in $\cH_{WXYZ}^{(\cC)}$ for simplicity.
+\end{remark}
+
+\subsection{The \texorpdfstring{$\SU(5)$}{SU(5)} fiber and local matter multiplets}
+\label{subsec:su5-fiber}
+
+The $\SU(5)$ fiber on the ledger is intended to host the degrees of freedom that become Standard-Model matter and gauge fields in the child $(D{-}2)$-dimensional spacetime. Each edge of the ledger graph carries an $\SU(5)$ fundamental representation,
+\begin{equation}
+\cH_{\text{edge}} \cong \Five \cong \mathbb{C}^5.
+\end{equation}
+
+At each vertex $v$ of the hyperbolic ledger graph, a local code cell ties together:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item several \emph{physical} $\SU(5)$ legs in the fundamental (one per incident edge),
+  \item one or more \emph{logical} legs carrying higher representations such as $\Ten$ or $\Ten\oplus\Fivebar$ that represent local matter multiplets,
+  \item and the local Infinity Bits $(W,X,Y,Z)$ for that cell.
+\end{itemize}
+
+For concreteness, consider a vertex with five incident edges and one logical leg in the $\Ten$ representation. The local Hilbert spaces are:
+
+\begin{align}
+\cH_{\text{phys}}^{(v)} &\cong \Five^{\otimes 5},\\
+\cH_{\text{log}}^{(v)} &\cong \Ten \quad\text{or}\quad \Ten\oplus\Fivebar.
+\end{align}
+
+An $\SU(5)$-equivariant tensor at the vertex is then an intertwiner
+\begin{equation}
+T^{(v)} \in \Hom_{\SU(5)}\!\big(\cH_{\text{log}}^{(v)},\ \cH_{\text{phys}}^{(v)}\big),
+\end{equation}
+with components
+\begin{equation}
+T_{i_1 i_2 i_3 i_4 i_5}{}^{A},
+\end{equation}
+where $i_k=1,\dots,5$ denote physical fundamental indices and $A$ labels a basis in the logical representation space.
+
+\begin{definition}[Local ledger code cell]
+A \emph{ledger code cell} at vertex $v$ consists of:
+\begin{itemize}[leftmargin=1.5em]
+  \item physical $\SU(5)$ legs in $\Five^{\otimes 5}$ attached to edges,
+  \item logical matter legs in $\cH_{\text{log}}^{(v)}$,
+  \item a local ledger register $\cH_{WXYZ}^{(v)}$,
+  \item and an $\SU(5)$-equivariant tensor $T^{(v)}$ that defines an isometry
+  \begin{equation}
+  V^{(v)}:\ \cH_{\text{log}}^{(v)}\otimes\cH_{WXYZ}^{(v)} \longrightarrow \cH_{\text{phys}}^{(v)}\otimes\cH_{\text{center}}^{(v)}.
+  \end{equation}
+\end{itemize}
+\end{definition}
+
+The explicit form of $T^{(v)}$ is constrained by $\SU(5)$ covariance and HaPPY-style perfectness conditions, as discussed in the separate SU(5) analysis; here we treat $V^{(v)}$ as a given code isometry with these properties.
+
+\subsection{HaPPY geometry on the ledger}
+\label{subsec:happy-geometry}
+
+Globally, the ledger surface $\Sigma_{\LL}$ is discretized as a hyperbolic tiling (for example a $\{5,4\}$ or $\{5,5\}$ tessellation), with:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item vertices carrying ledger code cells,
+  \item edges carrying fundamental $\Five$ legs,
+  \item faces carrying $\ZZ_5$ center charges and associated Wilson loops.
+\end{itemize}
+
+The HaPPY-style structure means:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item each local tensor $V^{(v)}$ is an isometry from logical+ledger inputs to physical+center outputs,
+  \item the network of such isometries from an interior region of the ledger to its boundary realizes a quantum error-correcting code\cite{NielsenChuang2010, Gottesman1997},
+  \item logical operators supported on a region of the ledger can be reconstructed from multiple boundary subsets, granting robustness against local errors on the ledger.
+\end{itemize}
+
+In this sense, the ledger is a \emph{quantum memory} for the snaps: Infinity Bits $(W,X,Y,Z)$ are stored in a code that is robust against local distortions, thermal noise, and moderate perturbations of the geometry.
+
+\subsection{Infinity Bits as code inputs}
+\label{subsec:infinity-bits-input}
+
+At the level of a single cell, we can write the local ledger map after an NPR event as
+\begin{equation}
+V^{(v)}:\ 
+\ket{\psi_{\text{log}}^{(v)}}\otimes\ket{WXYZ}^{(v)}
+\mapsto
+\ket{\Phi_{\text{phys+center}}^{(v)}},
+\end{equation}
+where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\ket{\psi_{\text{log}}^{(v)}}$ encodes the local matter/gauge state received from the parent,
+  \item $\ket{WXYZ}^{(v)}$ is the nibble written by NPR in that cell,
+  \item $\ket{\Phi_{\text{phys+center}}^{(v)}}$ is the encoded state on the $\SU(5)$ physical legs and center sector.
+\end{itemize}
+
+The roles of the four bits are qualitatively:
+
+\begin{description}[leftmargin=1.5em]
+  \item[$W$:] toggles $\Wop$ in the center sector, changing the $\ZZ_5$ center charge and marking the branch of the ledger on which this snap lies.
+
+  \item[$X,Y,Z$:] act as classical controls for different local choices:
+  \begin{itemize}[leftmargin=1.5em]
+    \item orientation of the local tensor inside the hyperbolic tiling,
+    \item phase/gauge conventions in the $\SU(5)$ fiber,
+    \item routing choices for how logical degrees of freedom are distributed among the five physical legs.
+  \end{itemize}
+\end{description}
+
+A simple toy parameterization is to regard $X,Y,Z$ as selecting one of $2^3=8$ variants of the local tensor,
+\begin{equation}
+V^{(v)}_{(X,Y,Z)}:\ \cH_{\text{log}}^{(v)} \to \cH_{\text{phys}}^{(v)}\otimes\cH_{\text{center}}^{(v)},
+\end{equation}
+with
+\begin{equation}
+V^{(v)}\ket{\psi_{\text{log}}^{(v)}}\ket{WXYZ}^{(v)}
+=
+\Big(\Wop^{(v)}\Big)^W\,
+V^{(v)}_{(X,Y,Z)}\ket{\psi_{\text{log}}^{(v)}}.
+\end{equation}
+
+In this picture, different histories of $(X,Y,Z)$ across the ledger correspond to different microscopic routings of the same macroscopic information, while $W$ selects the branch that actually ``happened''.
+
+\subsection{Code properties and robustness}
+\label{subsec:code-properties}
+
+The combination of HaPPY geometry and $\SU(5)$ symmetry endows the ledger with several key properties:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Error correction.} Logical information (including Infinity Bits and matter multiplets) can be reconstructed from multiple overlapping boundary subregions of the ledger graph. Local defects on the ledger do not immediately corrupt the stored history of snaps.
+
+  \item \textbf{Gauge covariance.} The local tensors $V^{(v)}$ are $\SU(5)$-equivariant, ensuring that gauge transformations on physical legs correspond to consistent actions on logical legs and center charges. This is essential when the child spacetime inherits an $\SU(5)$ (or broken) gauge structure.
+
+  \item \textbf{Approximate perfectness.} While \emph{exact} HaPPY perfectness with unequal leg dimensions is nontrivial, the design goal is that reduced density matrices on small subsets of physical legs are close to maximally mixed in practice. This ensures that ledger code cells are highly entangling and distribute information evenly, a key feature for holographic-like behavior in the $D\to D{-}2$ map.
+
+  \item \textbf{Locality of snaps.} NPR and the subsequent application of $V^{(v)}$ act only on a small neighborhood around each vertex $v$ and the corresponding causal cell. Thus the global snap operator $\mathsf{S}[\Sigma]$ is a product of local code updates, consistent with the causal structure.
+\end{itemize}
+
+\subsection{From ledger code to child spacetime}
+
+The ledger code is the ``middle layer'' of the $D\to D{-}2$ algorithm:
+
+\begin{equation}
+\cH_{\Parent}
+\xrightarrow{\ U_{\NPR}\ }
+\cH_{\Parent}^{\text{clean}}\otimes\cH_{\LL}
+\xrightarrow{\ \{V^{(v)}\}\ }
+\cH_{\Child}\otimes\cH'_{\LL}.
+\end{equation}
+
+Here,
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $U_{\NPR}$ strips null pairs from the parent and writes Infinity Bits into $\cH_{\LL}$,
+  \item the collection of local isometries $\{V^{(v)}\}$ across the ledger graph maps the cleaned parent modes and ledger data into child degrees of freedom,
+  \item $\cH'_{\LL}$ denotes the updated ledger memory, which now carries the record of the snap and residual entanglement between parent and child.
+\end{itemize}
+
+In the next section we make this mapping explicit, defining the $D$-dimensional and $(D{-}2)$-dimensional phases, explaining how a time direction emerges in the child along the local entropy-flux vector, and showing how the $\SU(5)$ fiber on the ledger gives rise to Standard-Model-like structure in the child spacetime.
+
+% ================== 5. The D→D−2 Algorithm and Dimensional Gauge ==================
+\section{The \texorpdfstring{$D\to D-2$}{D→D−2} Algorithm and Dimensional Gauge}
+\label{sec:d-to-dminus2}
+
+We now assemble the previous ingredients into the actual \emph{Dimensional Collapse} step:
+\[
+D\text{-dimensional parent phase}
+\quad\longrightarrow\quad
+(D{-}2)\text{-dimensional child phase}.
+\]
+The key idea is that dimension is not an immutable property of spacetime, but a kind of \emph{phase label} that can change in discrete steps when the generalized entropy in a local causal cell crosses the NPR threshold.
+
+In this section we:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item define the stack of dimensional phases and the notion of a dimensional gauge label,
+  \item describe the local frame at the ledger surface and the geometric meaning of ``removing a null pair'',
+  \item formulate the $D\to D{-}2$ map as a local unitary on the extended Hilbert space,
+  \item and explain how a time direction and the child metric emerge from this map.
+\end{enumerate}
+
+\subsection*{Algorithm 1: Single snap in a causal cell}
+
+It is useful to summarize the local $D\to D{-}2$ update at a single snap as an
+explicit algorithm acting on one causal cell:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Input:} a parent phase of dimension $D=2n$, a local causal cell
+  $\cC$ intersecting the Ledger surface $\Sigma_{\LL}$, and the extended
+  Hilbert space
+  \(
+  \cH_{\text{ext}} = \cH_{\Parent}\otimes\cH_{\LL}\otimes\cH_{\Child}.
+  \)
+  \item \textbf{Monitor generalized entropy.} Evolve with $H_{\text{ext}}(t)$
+  and track the generalized entropy $S_{\text{gen}}[\Sigma]$ on a QES foliation
+  through $\cC$. When the minimal cell satisfies
+  \(
+  \Delta S_{\text{gen}}(\cC)=4\ln 2,
+  \)
+  declare a snap at the corresponding $\Sigma\subset\Sigma_{\LL}$.
+  \item \textbf{Factorize the local Hilbert space.} In a frame adapted to the
+  Ledger, factor the parent Hilbert space into null, tangential, and spectator
+  sectors,
+  \[
+  \cH_{\Parent}(\cC)
+  \cong
+  \cH_{n\pm}\otimes\cH_{\text{tan}}\otimes\cH_{\text{rest}},
+  \]
+  where $\cH_{n\pm}$ carries the degrees of freedom propagating along the
+  snap plane and $\cH_{\text{tan}}$ lives on $T_p\Sigma_{\LL}$.
+  \item \textbf{Apply NPR.} Act with the local NPR unitary
+  \(
+  U_{\NPR}[\Sigma]
+  \)
+  to disentangle and vacuumize the null pair, while writing four Infinity Bits
+  $(W,X,Y,Z)$ into a fresh Ledger register $\cH_{\LL}^{(\cC)}$.
+  \item \textbf{Ledger write.} Apply the protected write operator
+  $\Wop[\Sigma]^W$ in the $\ZZ_5$ center sector to store the payload bit $W$ as
+  a center charge; set $(X,Y,Z)$ as reversible metadata for frames and
+  branch choices.
+  \item \textbf{Child isometry.} Apply a local HaPPY–style isometry
+  \[
+  V[\Sigma]:\ \cH_{\text{tan}}\otimes\cH_{\LL}^{(W;X,Y,Z)}
+  \longrightarrow
+  \cH_{\Child}^{(\text{loc})}\otimes\cH'_{\LL},
+  \]
+  mapping tangential degrees of freedom plus Ledger data into a $(D{-}2)$–
+  dimensional child patch and an updated Ledger state.
+  \item \textbf{Update dimensional gauge.} In this cell, reduce the dimensional
+  gauge label by one,
+  \(
+  n_{\Child}=n_{\Parent}-1
+  \)
+  (i.e.\ $D\to D{-}2$), and construct the local child metric $g^{(D-2)}$ from
+  the induced tangential metric and the projected entropy current as in
+  \Cref{subsec:child-metric}.
+\end{enumerate}
+
+Global evolution is then obtained by composing these local updates over all
+cells where the NPR threshold is reached, in the causal order encoded by
+\eqref{eq:master-evolution}.
+
+\begin{remark}[Lorentzian–Euclidean–Lorentzian pattern]
+At each dimensional step \(D_{n+1} \to D_n = D_{n+1}-2\), the parent phase is a mature Lorentzian spacetime with signature \((-\,+\dots +)\). The NPR operation removes the parent timelike direction and a radial direction, so the freshly born \(D_n\) child is initially in an effectively Euclidean state with signature \((+\dots +)\). The child then acquires its own Lorentzian time direction in a subsequent \emph{internal} snap, driven by its internal entropy current. Thus every long-lived \(D_n\) phase is Lorentzian, but every \(D_n\) phase is \emph{born} Euclidean immediately after a dimensional collapse.
+\end{remark}
+
+\subsection{Dimensional phases as a stack}
+\label{subsec:dim-stack}
+
+DCT treats spacetime as living in a stack of discrete dimensional phases
+\begin{equation}
+D_n = 2n,\qquad n = 1,2,3,\dots,
+\end{equation}
+with
+\begin{align}
+D_1 &= 2 \quad\text{(ground phase)},\\
+D_2 &= 4 \quad\text{(our spacetime)},\\
+D_3 &= 6,\quad D_4 = 8,\quad D_5 = 10,\ \dots
+\end{align}
+
+Each phase consists of:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item a $D_n$-dimensional manifold ${}^{(D_n)}\!\cM$,
+  \item a metric ${}^{(D_n)}g_{\mu\nu}$,
+  \item and a bulk Hilbert space ${}^{(D_n)}\cH_{\text{bulk}}$ of matter and gravitational degrees of freedom.
+\end{itemize}
+
+The ground phase $D_1=2$ is Euclidean and carries no propagating time direction; it acts as an ``information sink'' (in the sense of storage, not loss) for collapsed degrees of freedom. Phases with $D_n\ge 4$ are Lorentzian with one time direction.
+
+\begin{definition}[Dimensional gauge label]
+At each spacetime point $x$ we can associate a \emph{dimensional gauge label} $n(x)\in\NN$ (or equivalently $D(x)=2n(x)$) indicating which phase the local degrees of freedom belong to. In regions where no snap has occurred, $n(x)$ is constant; at a snap, $n(x)$ jumps by $-1$ across the ledger surface:
+\begin{equation}
+n_{\Child} = n_{\Parent} - 1.
+\end{equation}
+\end{definition}
+
+Heuristically, $n(x)$ plays the role of a discrete order parameter; DCT dynamics tell us \emph{when} and \emph{where} this label changes.
+
+\subsection{Local frame and null-pair geometry at the ledger}
+\label{subsec:null-geometry}
+
+Consider a point $p\in \Sigma_{\LL}$ in a parent phase $D = D_n\ge 4$. In a small neighborhood of $p$ we can choose an orthonormal frame
+\begin{equation}
+\{e_0^\mu, e_1^\mu, e_A^\mu\},\qquad A=2,\dots,D-1,
+\end{equation}
+such that:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $e_0^\mu$ is timelike ($g(e_0,e_0)=-1$),
+  \item $e_1^\mu$ is spacelike and normal to $\Sigma_{\LL}$,
+  \item $e_A^\mu$ ($A\ge 2$) are spacelike and tangent to $\Sigma_{\LL}$.
+\end{itemize}
+
+From $e_0$ and $e_1$ we form a pair of null vectors
+\begin{equation}
+\nplus^\mu = \frac{1}{\sqrt{2}}(e_0^\mu + e_1^\mu),
+\qquad
+\nminus^\mu = \frac{1}{\sqrt{2}}(e_0^\mu - e_1^\mu),
+\end{equation}
+which satisfy $\nplus^\mu \nplus_\mu = \nminus^\mu \nminus_\mu = 0$ and $\nplus^\mu \nminus_\mu = -1$. These span a two-dimensional null plane normal to $\Sigma_{\LL}$.
+
+\begin{definition}[Geometric snap plane]
+The \emph{snap plane} at $p$ is the two-dimensional subspace of the tangent space $T_p\cM^{(D)}$ spanned by $\{\nplus^\mu,\nminus^\mu\}$; the remaining $D-2$ directions $\{e_A^\mu\}$ span the tangent space of $\Sigma_{\LL}$ at $p$.
+\end{definition}
+
+The NPR mechanism described in \Cref{sec:npr} acts precisely on the degrees of freedom propagating along $k$ and $\ell$ across the ledger; the $D-2$ tangential directions are left intact and will become the local coordinates of the child phase.
+
+\subsection{Hilbert-space factorization at a snap}
+\label{subsec:hilbert-factor}
+
+At the quantum level, the local Hilbert space near $p$ admits a factorization
+\begin{equation}
+\cH_{\Parent}(\cD_p)
+\;\cong\;
+\cH_{n\pm} \otimes \cH_{\text{tan}},
+\end{equation}
+where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\cH_{n\pm}$ carries the null modes associated with the snap plane spanned by $(\nplus,\nminus)$,
+  \item $\cH_{\text{tan}}$ carries the modes associated with tangential directions $\{e_A\}$ and any additional internal degrees of freedom.
+\end{itemize}
+
+Including the ledger degrees of freedom for the cell containing $p$, the local extended Hilbert space is
+\begin{equation}
+\cH_{\text{ext}}(\cD_p)
+=
+\cH_{n\pm}\otimes\cH_{\text{tan}}\otimes\cH_{\LL}^{(\cC)}.
+\end{equation}
+
+When the generalized entropy threshold $\Delta S_{\text{gen}} = 4\ln 2$ is reached in this cell, the local snap operator (suppressing explicit dependence on $\Sigma$ and $\cC$ for brevity)
+\begin{equation}
+\mathsf{S}_p
+=
+V_p\,\Wop_p^W\,U_{\NPR,p}
+\end{equation}
+acts on $\cH_{\text{ext}}(\cD_p)$ as described in \Cref{sec:npr,sec:ledger-code}.
+
+At the level of this factorization, the NPR step produces
+\begin{equation}
+U_{\NPR,p}:\ 
+\cH_{n\pm}\otimes\cH_{\text{tan}}\otimes\cH_{\LL}^{(\cC)}
+\to
+\cH_{0}\otimes\cH_{\text{tan}}\otimes\cH_{\LL}^{(\cC;WXYZ)},
+\end{equation}
+where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\cH_0$ is the one-dimensional space spanned by the null vacuum $\ket{0}_{k,\ell}$,
+  \item $\cH_{\LL}^{(\cC;WXYZ)}$ is the ledger register updated with Infinity Bits $(W,X,Y,Z)$.
+\end{itemize}
+
+Informally: information carried by the $(\nplus,\nminus)$ modes is now stored in the ledger nibble, and the snap plane becomes dynamically trivial on the parent side.
+
+\subsection{Local \texorpdfstring{$D\to D-2$}{D→D−2} map as an isometry}
+\label{subsec:local-map}
+
+The next step is to use the ledger code to route the cleaned parent tangential degrees of freedom into the child phase. The combined effect of NPR, the write operator, and the local ledger isometry at $p$ can be written as
+\begin{equation}
+\mathsf{S}_p:\ 
+\cH_{n\pm}\otimes\cH_{\text{tan}}\otimes\cH_{\LL}^{(\cC)}
+\longrightarrow
+\cH_{0}\otimes\cH_{\Child}^{(\text{loc})}\otimes\cH'_{\LL}{}^{(\cC)},
+\end{equation}
+with
+\begin{equation}
+\mathsf{S}_p = \big(V_p\otimes\Id_{\cH_0}\big)\,\Wop_p^W\,U_{\NPR,p}.
+\end{equation}
+
+Here:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\cH_{\Child}^{(\text{loc})}$ is the local child Hilbert space associated with the $(D{-}2)$-dimensional tangential directions at $p$,
+  \item $\cH'_{\LL}{}^{(\cC)}$ is the updated ledger memory after the snap.
+\end{itemize}
+
+Globally, the full snap operator on the extended Hilbert space is a product of such local operators over all cells where the threshold has been reached:
+\begin{equation}
+\mathsf{S}[\Sigma_{\LL}]
+=
+\overleftarrow{\prod_{p\in\Sigma_{\LL}}}
+\mathsf{S}_p.
+\end{equation}
+(Only a subset of vertices actually snap at a given time; the ordered product is taken over those.)
+
+\begin{proposition}[Local $D\to D{-}2$ isometry]
+At each point $p\in\Sigma_{\LL}$ where a snap occurs, the restriction of $\mathsf{S}_p$ to the triggered sector is an isometry from the parent null+tangential+ledger input space to the child+ledger output space:
+\begin{equation}
+\mathsf{S}_p^\dagger \mathsf{S}_p
+=
+\Id_{\cH_{n\pm}^{\text{(trig)}}\otimes\cH_{\text{tan}}^{\text{(trig)}}\otimes\cH_{\LL}^{(\cC,\text{fresh})}}.
+\end{equation}
+\end{proposition}
+
+The exact definition of the ``triggered sector'' matches the conditions of NPR (fresh ledger cell, entropy threshold); outside this sector, $\mathsf{S}_p$ acts trivially or as a smooth interpolation.
+
+\subsection{Emergent child metric from the tangential geometry}
+\label{subsec:child-metric}
+
+Geometrically, removing the null plane spanned by $(k,\ell)$ at $p$ leaves the $(D{-}2)$-dimensional tangent space
+\begin{equation}
+T_p \Sigma_{\LL} = \operatorname{span}\{e_A^\mu\mid A=2,\dots,D-1\}.
+\end{equation}
+The induced metric on this space is
+\begin{equation}
+\gamma_{AB} = {}^{(D)}g_{\mu\nu} e_A^\mu e_B^\nu,
+\qquad A,B=2,\dots,D-1,
+\end{equation}
+which is a $(D{-}2)\times(D{-}2)$ positive-definite matrix at $p$.
+
+To construct the child spacetime, DCT proceeds in two steps:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Intrinsic geometry.} The intrinsic metric of the ledger surface, $\gamma_{AB}$, provides the spatial metric of the child phase. For example, for a $D=6$ parent, the ledger is 4-dimensional and $\gamma_{AB}$ has rank 4.
+
+  \item \textbf{Emergent time direction.} The child time direction is selected along the \emph{local entropy-flux vector} projected onto $T_p\Sigma_{\LL}$, ensuring that the direction along which entropy increases becomes timelike in the child. We denote this vector by $u^A$ in the tangential frame and impose a Lorentzian signature by declaring $u^A$ timelike.
+\end{enumerate}
+
+Concretely, let $J^\mu$ be the entropy current in the parent phase, and project it onto the tangent space at $p$:
+\begin{equation}
+J^A = J^\mu e_\mu^A,\qquad A=2,\dots,D-1.
+\end{equation}
+Assuming $J^A\neq 0$, we define the child time direction as
+\begin{equation}
+u^A = \frac{J^A}{\sqrt{\gamma_{BC}J^B J^C}},
+\end{equation}
+and construct the child metric as
+\begin{equation}
+{}^{(D-2)}g_{AB}
+=
+- u_A u_B
++ \big(\gamma_{AB} + u_A u_B\big),
+\end{equation}
+where indices are raised/lowered with $\gamma_{AB}$ and $u_A = \gamma_{AB}u^B$.
+
+This defines a Lorentzian $(D{-}2)$-dimensional metric on the child side, with one timelike direction aligned with entropy flux and $(D{-}3)$ spacelike directions inherited from $\Sigma_{\LL}$.
+
+\begin{remark}
+In black-hole interiors with $D=4$, the child phase is $D{-}2=2$ dimensional and Euclidean; no propagating time emerges, consistent with the idea of a 2D child. For higher-dimensional parents, $D\ge 6$, the ledger surface is at least 4-dimensional and can support a Lorentzian child metric as above.
+\end{remark}
+
+\subsection{Dimensional gauge transformation}
+\label{subsec:dim-gauge-transform}
+
+We can now summarize the $D\to D{-}2$ step as a \emph{dimensional gauge transformation} at the ledger:
+
+\begin{equation}
+\big({}^{(D)}\cM,{}^{(D)}g,n,\ket{\Psi}\big)
+\;\xrightarrow{\ \mathsf{S}[\Sigma_{\LL}]\ }\;
+\big({}^{(D-2)}\!\cM,{}^{(D-2)}g,n-1,\ket{\Psi'}\big)
+\otimes \text{(ledger record)},
+\end{equation}
+where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\ket{\Psi}$ and $\ket{\Psi'}$ are the parent and child bulk states,
+  \item $n$ is the dimensional gauge label ($D=2n$),
+  \item ${}^{(D-2)}g$ is constructed from the induced metric $\gamma_{AB}$ and entropy current as above,
+  \item the ledger record consists of the Infinity Bits $(W,X,Y,Z)$ and center charges written during the snap.
+\end{itemize}
+
+From the perspective of the extended Hilbert space, this is just a unitary update as in the master equation \eqref{eq:master-evolution}; from the perspective of an observer living in a single phase, it looks like a non-unitary dimensional transition with entropy production.
+
+\subsection{Summary}
+
+The $D\to D{-}2$ algorithm can be summarized in five local steps at each snap:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Locate the ledger} $\Sigma_{\LL}$ as a QES carrying a fraction $\T$ of the reference entropy.
+
+  \item \textbf{Choose a local frame} at each point $p\in\Sigma_{\LL}$: split the tangent space into a null snap plane $(\nplus,\nminus)$ and $D{-}2$ tangential directions.
+
+  \item \textbf{Apply NPR} when the generalized entropy increment reaches $4\ln 2$: remove the null pair in the Hilbert-space sense and write four Infinity Bits $(W,X,Y,Z)$ to the ledger.
+
+  \item \textbf{Run the ledger code} via the local HaPPY--$\SU(5)$ isometries $V_p$: route the cleaned parent tangential degrees of freedom plus ledger data into child degrees of freedom.
+
+  \item \textbf{Define the child phase} by:
+  \begin{itemize}[leftmargin=1.5em]
+    \item using the induced metric $\gamma_{AB}$ on $\Sigma_{\LL}$ as the spatial metric,
+    \item choosing the child time direction along the projected entropy current,
+    \item and assigning the dimensional gauge label $n\to n-1$ in the snapped region.
+  \end{itemize}
+\end{enumerate}
+
+In the next section we specialize to the case where the ledger $\SU(5)$ fiber carries GUT-like matter multiplets and show how, after the snap, the child $(D{-}2)$-dimensional spacetime inherits a gauge structure that can break to the Standard Model $\SU(3)\times\SU(2)\times\U(1)$. This turns the abstract $D\to D{-}2$ algorithm into a concrete mechanism for the emergence of Standard-Model degrees of freedom from the DCT ledger.
+
+% ================== 6. Emergence of Standard-Model Structure ==================
+\section{Emergence of Standard-Model Structure}
+\label{sec:sm-emergence}
+
+So far DCT has been completely agnostic about \emph{what} lives on the $\SU(5)$ fiber of the ledger. The $D\to D{-}2$ algorithm would work just as well if the fiber carried some abstract gauge group and a bunch of anonymous matter. The reason we care about $\SU(5)$ specifically is that it gives us a concrete route to the Standard Model\cite{Georgi1974}:
+\[
+\SU(5) \longrightarrow \SU(3)_C \times \SU(2)_L \times \U(1)_Y.
+\]
+
+In this section we outline how:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item the $\SU(5)$ fiber on the ledger becomes an $\SU(5)$ gauge field in the child,
+  \item the usual $\SU(5)$ multiplets $(\Ten\oplus\Fivebar)$ emerge naturally from ledger code cells,
+  \item the Standard Model group arises via spontaneous symmetry breaking in the child,
+  \item and how the Infinity Bits $(W,X,Y,Z)$ slot into this picture as discrete data (branching, generation labels, CP/phase choices) rather than extra continuous fields.
+\end{enumerate}
+
+We do \emph{not} attempt a full GUT model here; the goal is to show that the DCT machinery is compatible with a standard $\SU(5)\to\text{SM}$ story and to highlight the places where DCT adds new structure.
+
+\subsection{From ledger fiber to child gauge field}
+\label{subsec:fiber-to-gauge}
+
+On the ledger, each edge of the HaPPY graph carries an $\SU(5)$ fundamental leg,
+\begin{equation}
+\cH_{\text{edge}} \cong \Five \cong \mathbb{C}^5,
+\end{equation}
+and each vertex hosts an $\SU(5)$-equivariant code tensor $V^{(v)}$ as in \Cref{subsec:su5-fiber}. This is the kinematic data of a lattice gauge theory with gauge group $\SU(5)$ living on the ledger surface $\Sigma_{\LL}$.
+
+After a $D\to D{-}2$ snap, the child phase inherits both:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item a continuum $(D{-}2)$-dimensional manifold ${}^{(D-2)}\!\cM$ with metric ${}^{(D-2)}g_{AB}$ constructed in \Cref{subsec:child-metric},
+  \item and an $\SU(5)$ gauge connection $A_A(x)$ whose holonomies match the center and edge data of the ledger graph in the appropriate limit.
+\end{itemize}
+
+Schematically, the continuum limit identifies:
+
+\begin{description}[leftmargin=1.5em]
+  \item[Edges:] parallel transporters along ledger edges,
+  \[
+  U_e \in \SU(5),
+  \]
+  approximate path-ordered exponentials of the gauge field in the child,
+  \[
+  U_e \sim \mathcal{P}\exp\!\bigg(\ii\int_e A_A\,\dd x^A\bigg).
+  \]
+
+  \item[Faces:] center charges and Wilson loops on plaquettes of the ledger graph become Wilson loops in the child,
+  \[
+  W_{\mathcal{C}} = \Tr\,\mathcal{P}\exp\!\bigg(\ii\oint_{\mathcal{C}} A_A\,\dd x^A\bigg),
+  \]
+  with $\ZZ_5$-valued sectors selecting different topological sectors or discrete theta-like parameters.
+
+  \item[Vertices:] local code cells at vertices encode matter multiplets and their couplings to the gauge field.
+\end{description}
+
+In the continuum child description, the usual Yang--Mills term appears in the effective action,
+\begin{equation}
+S_{\text{gauge}}
+=
+-\frac{1}{2g_5^2}\int_{{}^{(D-2)}\!\cM}\dd^{D-2}x\,\sqrt{-g}\,\Tr(F_{AB}F^{AB}),
+\end{equation}
+with field strength
+\begin{equation}
+F_{AB} = \partial_A A_B - \partial_B A_A + \ii[A_A,A_B].
+\end{equation}
+The bare $\SU(5)$ coupling $g_5$ is an effective parameter derived from the ledger code and NPR rates; its detailed value is model-dependent and belongs in the phenomenology section.
+
+\subsection{Multiplets in a ledger code cell: \texorpdfstring{$\Ten\oplus\Fivebar$}{10⊕5bar}}
+\label{subsec:mult-cell}
+
+At each ledger vertex $v$, the local code cell involves:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item physical legs in $\Five^{\otimes 5}$ attached to edges,
+  \item one or more logical legs in a representation such as
+  \[
+  \cH_{\text{log}}^{(v)} \cong \Ten\oplus\Fivebar,
+  \]
+  \item a ledger nibble $\ket{WXYZ}^{(v)}$,
+  \item and an $\SU(5)$-equivariant isometry
+  \[
+  V^{(v)}:\ \cH_{\text{log}}^{(v)}\otimes\cH_{WXYZ}^{(v)} \to \cH_{\text{phys}}^{(v)}\otimes\cH_{\text{center}}^{(v)}.
+  \]
+\end{itemize}
+
+The choice $\Ten\oplus\Fivebar$ is familiar from standard $\SU(5)$ GUTs: a single generation of Standard-Model fermions (excluding a right-handed neutrino) fits into a $\Ten\oplus\Fivebar$ of $\SU(5)$. Concretely, under
+\[
+\SU(5)\ \longrightarrow\ \SU(3)_C\times\SU(2)_L\times\U(1)_Y,
+\]
+one has the decompositions:
+\begin{align}
+\Ten &\to (3,2)_{1/6} \oplus (\overline{3},1)_{-2/3} \oplus (1,1)_{1},
+\\
+\Fivebar &\to (\overline{3},1)_{1/3} \oplus (1,2)_{-1/2},
+\end{align}
+which can be identified with
+\begin{align}
+(3,2)_{1/6} &\sim Q_L,\\
+(\overline{3},1)_{-2/3} &\sim u_R^c,\\
+(1,1)_{1} &\sim e_R^c,\\
+(\overline{3},1)_{1/3} &\sim d_R^c,\\
+(1,2)_{-1/2} &\sim L_L.
+\end{align}
+
+\begin{definition}[Generation cell]
+A \emph{generation cell} on the ledger is a vertex whose logical space contains a $\Ten\oplus\Fivebar$ (plus possibly singlet(s)) and whose Infinity Bits $(W,X,Y,Z)$ label which branch and which generation this logical content belongs to. After the $D\to D{-}2$ snap, this cell seeds one generation of Standard-Model-like matter in the child.
+\end{definition}
+
+In this picture, the ledger code organizes matter content into discrete ``generation cells'' distributed over $\Sigma_{\LL}$; the child sees these as pointlike or localized sources of matter fields, depending on how the ledger maps into the child geometry.
+
+\subsection{Symmetry breaking: \texorpdfstring{$\SU(5)\to\SU(3)\times\SU(2)\times\U(1)$}{SU(5)→SU(3)×SU(2)×U(1)}}
+\label{subsec:sym-breaking}
+
+Within the child phase, the $\SU(5)$ gauge symmetry is expected to be broken to the Standard-Model group. In a conventional 4D GUT this is achieved by a Higgs field in the adjoint $\mathbf{24}$ representation acquiring a vacuum expectation value (VEV). In the DCT context, we can reuse the same representation-theoretic structure, with the understanding that the adjoint field originates from ledger-coded degrees of freedom rather than being an arbitrary new field.
+
+Let $\Phi(x)$ be an adjoint-valued scalar in the child:
+\begin{equation}
+\Phi(x) \in \mathfrak{su}(5),
+\qquad
+\Phi(x) = \Phi^a(x) T^a,
+\end{equation}
+with $T^a$ generators of $\mathfrak{su}(5)$ in the fundamental. A typical symmetry-breaking VEV takes the form
+\begin{equation}
+\langle\Phi\rangle
+=
+v_{\text{GUT}}\,
+\operatorname{diag}(2,2,2,-3,-3),
+\end{equation}
+up to normalization and tracelessness conventions. This pattern preserves exactly
+\[
+\SU(3)_C\times\SU(2)_L\times\U(1)_Y,
+\]
+with hypercharge embedded in the $\SU(5)$ generator proportional to $\operatorname{diag}(-1/3,-1/3,-1/3,1/2,1/2)$.
+
+The effective Lagrangian in the child then contains
+\begin{equation}
+\Lag_{\text{child}}
+\supset
+-\frac{1}{2g_5^2}\Tr(F_{AB}F^{AB})
++ \Tr(D_A\Phi D^A\Phi)
+- V(\Phi)
++ \Lag_{\text{matter}}(\Ten,\Fivebar,\Phi,A_A,\dots),
+\end{equation}
+with $V(\Phi)$ chosen such that $\langle\Phi\rangle$ has the desired breaking pattern and $\Lag_{\text{matter}}$ includes Yukawa couplings between $\Ten$, $\Fivebar$, and additional Higgs multiplets (e.g.\ a $\Five$ or $\Fivebar$ for electroweak breaking).
+
+From the DCT viewpoint:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item The field $\Phi$ and the matter multiplets $(\Ten,\Fivebar)$ are not arbitrary; they are effective continuum descriptions of the ledger code degrees of freedom in the $\SU(5)$ fiber.
+
+  \item The pattern of VEVs and Yukawas is constrained by the local structure of the code tensors $V^{(v)}$ and the distribution of Infinity Bits $(W,X,Y,Z)$ across the ledger.
+
+  \item In particular, the same $\SU(5)$ structure that appears in the local intertwiners $T^{(v)}$ must be compatible with the continuum $\SU(5)$ symmetry of the child gauge theory.
+\end{itemize}
+
+\subsection{Infinity Bits as discrete SM data}
+\label{subsec:infinity-sm-data}
+
+Infinity Bits $(W,X,Y,Z)$ were introduced in \Cref{sec:npr} as a packet of four bits written per snap. How do they appear from the child’s Standard-Model perspective?
+
+DCT suggests the following qualitative roles:
+
+\begin{description}[leftmargin=1.5em]
+  \item[$W$ (write/branch bit):]
+  distinguishes different ``branches'' of the ledger history, which can show up in the child as discrete choices of vacuum branch, e.g.\ different choices of CP-violating phases or discrete theta parameters in the gauge sector.
+
+  \item[$S$:]
+  may label which $\SU(5)$ representation is realized at a given ledger cell (e.g.\ whether the logical leg is $\Ten\oplus\Fivebar$ or includes additional singlets or higher reps); in the child this looks like a choice of which matter fields actually appear at that spacetime point.
+
+  \item[$Y$:]
+  can encode relative orientation or embedding of the local $\SU(5)$ fiber into the global gauge bundle, i.e.\ which embedding of $\SU(3)_C\times\SU(2)_L\times\U(1)_Y$ is realized locally. In the child this may correspond to discrete Wilson lines or domain structures in the gauge field.
+
+  \item[$Z$:]
+  is naturally interpreted as a generation or flavor index control, selecting between different copies of the same representation with different Yukawa couplings. In the child this shows up as discrete labels distinguishing fermion generations or sectors in the flavor matrix.
+\end{description}
+
+The precise mapping is model-dependent and will be further constrained in the phenomenology section, especially by neutrino masses and proton decay considerations. The key point is that the Infinity Bits provide a built-in source of \emph{discrete} data that can act as generation labels, discrete symmetry labels, or branch indicators in the effective Standard-Model-like theory, without introducing ad hoc new continuous fields.
+
+\subsection{Where DCT modifies the usual \texorpdfstring{$\SU(5)$}{SU(5)} story}
+\label{subsec:dct-modifies-su5}
+
+Up to now, the story could almost be read as a slightly poetic rephrasing of a conventional $\SU(5)$ GUT. The DCT-specific modifications enter in several places:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Dimensional origin.} The $\SU(5)$ gauge theory is not fundamental in the UV; it emerges as the effective gauge theory of the child phase after a $D\to D{-}2$ snap from a higher-dimensional parent with a different (potentially trivial) gauge structure.
+
+  \item \textbf{Ledger dressing of dangerous operators.} Operators that cause proton decay in standard $\SU(5)$ (mediated by heavy lepto-quark bosons $X,Y$) are now dressed by the ledger/NPR structure. Schematically,
+  \[
+  \mathcal{O}_{\text{dangerous}} \sim \frac{1}{M_X^2} QQQL
+  \quad\longrightarrow\quad
+  \widetilde{\mathcal{O}}_{\text{DCT}} \sim \frac{1}{M_X^2} QQQL\cdot (\text{ledger factor}),
+  \]
+  where the ledger factor can strongly suppress or even forbid certain processes, effectively placing proton decay \emph{inside} the DCT machinery rather than in the visible sector. This will be discussed in \Cref{sec:phenomenology}.
+
+  \item \textbf{Radion and neutrino masses.} The radion-like mode associated with fluctuations of the ledger radius couples preferentially to neutral leptonic sectors, providing a natural origin for small neutrino masses and mixing in the child. This again ties SM parameters to ledger geometry rather than treating them as arbitrary input.
+\end{itemize}
+
+From a high-level perspective, the emergence of the Standard Model in DCT is not a miracle; it is the statement that the \emph{simplest} nontrivial gauge and matter structure supported by the ledger code (an $\SU(5)$ fiber with $\Ten\oplus\Fivebar$ logical legs per generation cell) reproduces the known pattern of SM charges in the child, while DCT-specific ingredients (Infinity Bits, NPR, ledger geometry) control the dangerous UV operators and subtle IR parameters.
+
+In the next section, we turn to explicit phenomenology: how DCT affects proton decay bounds, how radion-induced neutrino masses arise, and how black-hole echo signatures and cosmological data might carry imprints of the $D\to D{-}2$ machinery.
+
+
+% (To be filled in: SU(5) breaking, generation cells, mapping Infinity Bits ↔ SM data.)
+
+% ================== 7. Phenomenology ==================
+% ================== 7. Phenomenology: Proton Decay, Neutrinos, and Echoes ==================
+\section{Phenomenology: Proton Decay, Neutrinos, and Echoes}
+\label{sec:phenomenology}
+
+Up to this point DCT has been a story about geometry, Hilbert spaces, and code properties. In this section we ask the more pedestrian question:
+
+\begin{quote}
+What does all of this do to actual observables?
+\end{quote}
+
+We focus on three intertwined sectors:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item proton decay and dangerous $\SU(5)$ GUT operators,
+  \item neutrino masses emerging from the radion / ledger geometry,
+  \item black-hole echoes from the ledger--slab structure.
+\end{enumerate}
+
+The goal here is not to provide final numbers, but to show how DCT reshapes the \emph{structure} of these phenomena and ties them to the $D\to D{-}2$ machinery.
+
+\subsection{Revisiting proton decay in a DCT-dressed \texorpdfstring{$\SU(5)$}{SU(5)}}
+\label{subsec:proton-decay}
+
+In a conventional 4D $\SU(5)$ GUT, proton decay arises\cite{Georgi1974} from dimension-6 operators mediated by heavy lepto-quark gauge bosons $X,Y$ with mass $M_X\sim M_{\text{GUT}}$. At the effective field theory level one writes, schematically,
+\begin{equation}
+{}^{(4)}\!\Lag_{\text{eff}}
+\supset
+\frac{c}{M_X^2}\,\mathcal{O}_{qqql}
+\,+\,\text{h.c.},
+\qquad
+\mathcal{O}_{qqql}\sim QQQL,
+\label{eq:Oqqql}
+\end{equation}
+where $Q$ and $L$ are quark and lepton doublets and $c$ is a dimensionless coefficient. Experimental bounds on the proton lifetime, which now exceed \(10^34\) years for key decay modes\cite{PDG2022, SuperK1998}, then constrain
+\[
+\frac{M_X}{\sqrt{|c|}}
+\gtrsim 10^{15-16}\,\text{GeV}.
+\]
+
+In DCT, the story is modified because the would-be $X,Y$ transitions do not live in a plain 4D continuum; they are \emph{dressed} by the ledger and NPR structure.
+
+\subsubsection*{Ledger dressing of dangerous operators}
+
+At the level of the child effective theory, the dangerous operator acquires an extra factor that encodes the probability amplitude for a given process to be compatible with the DCT snap structure and Infinity Bits. We write
+\begin{equation}
+\Lag_{\text{eff}}^{\text{(DCT)}}
+\supset
+\frac{c}{M_X^2}\,
+\mathcal{O}_{qqql}\,
+\mathcal{F}_{\LL}[W,X,Y,Z;\,\text{geometry}]
+\,+\,\text{h.c.},
+\label{eq:Oqqql-DCT}
+\end{equation}
+where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\mathcal{F}_{\LL}$ is a dimensionless functional of the Infinity Bits and ledger geometry,
+  \item it is generated by integrating out intermediate excitations that traverse the ledger code and may require additional snaps.
+\end{itemize}
+
+Heuristically, a baryon-violating process like $p\to e^+\pi^0$ would have to:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item excite the $\SU(5)$ gauge sector in such a way that a lepto-quark transition is kinematically allowed;
+  \item be compatible with the NPR threshold: the local generalized entropy in the relevant causal cell must reach $\Delta S_{\text{gen}}=4\ln 2$ to trigger a snap;
+  \item produce ledger Infinity Bits $(W,X,Y,Z)$ that are consistent with the existing ledger history (e.g.\ branch $W$ and local charge conservation in the $\ZZ_5$ center);
+  \item route through the HaPPY--$\SU(5)$ code in such a way that the child final state matches the desired proton decay channel.
+\end{enumerate}
+
+Each of these steps can suppress the amplitude. In a toy model, one can parameterize
+\begin{equation}
+\mathcal{F}_{\LL}
+\sim
+\epsilon_{\NPR}^{N_{\text{snaps}}}\,
+\epsilon_{\text{code}}^{N_{\text{cells}}},
+\end{equation}
+where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $\epsilon_{\NPR}\le 1$ is an amplitude suppression per NPR event required along the virtual trajectory,
+  \item $\epsilon_{\text{code}}\le 1$ is a suppression per extra ledger cell traversed,
+  \item $N_{\text{snaps}},N_{\text{cells}}$ are model-dependent integers counting how ``expensive'' the process is in the ledger network.
+\end{itemize}
+
+Even moderate values $\epsilon_{\NPR},\epsilon_{\text{code}}\ll 1$ can drive $\mathcal{F}_{\LL}$ to extremely small values, effectively replacing $M_X^2$ by an \emph{effective} scale
+\begin{equation}
+M_{X,\text{eff}}^2
+\sim
+\frac{M_X^2}{|\mathcal{F}_{\LL}|}.
+\end{equation}
+
+This opens the possibility that:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item the fundamental $M_X$ is not too far above the conventional GUT scale,
+  \item yet the observed proton longevity is explained by ledger dressing rather than by pushing $M_X$ arbitrarily high or forbidding $\SU(5)$ altogether.
+\end{itemize}
+
+\subsubsection*{Structural prediction}
+
+The key structural prediction is:
+
+\begin{quote}
+\emph{All baryon-violating operators in the effective child theory carry a ledger dressing factor that depends on Infinity Bits and NPR geometry. Processes that do not align with the ledger structure are exponentially suppressed.}
+\end{quote}
+
+This implies a strong correlation between any observed proton decay channels and the underlying ledger configuration: different branches $(W,X,Y,Z)$ could in principle lead to different relative branching ratios, offering a DCT-specific signature if proton decay is ever seen.
+
+\subsection{Neutrino masses from ledger / radion geometry}
+\label{subsec:neutrino-masses}
+
+The discovery of neutrino oscillations\cite{SuperK1998} proved that neutrinos have mass, but these masses are puzzlingly small and require new physics (e.g.\ seesaw mechanisms) in conventional frameworks. In DCT, a natural candidate for generating neutrino masses is the \emph{radion-like} mode associated with fluctuations of the ledger radius and the thickness of the slab wall.
+
+\subsubsection*{Radion as a ledger thickness mode}
+
+Recall that the ledger radius in a Schwarzschild black hole is
+\begin{equation}
+r_{\LL} = \sqrt{\T}\,R_{\mathrm{S}},
+\qquad
+\T = \frac{1}{4\ln 2},
+\end{equation}
+and there is a slab between $r_{\LL}$ and $R_{\mathrm{S}}$ that hosts dynamical modes and echo physics. The thickness and shape of this slab, and of the ``wall'' region near $r_{\LL}$, are controlled by a small set of geometric parameters (e.g.\ a wall thickness $\ell_{\text{wall}}$ and a stiffness parameter $k$ in an effective potential).
+
+Fluctuations of these parameters behave like scalar modes in the child: a \emph{radion} field $\varphi(x)$ that couples to fields whose propagation is sensitive to the precise location and properties of the ledger.
+
+\subsubsection*{Neutrinos as probes of the wall}
+
+Neutrinos, being neutral and weakly interacting, are particularly sensitive to small corrections in propagation phases accumulated near the wall. In a simplified picture:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item neutrinos in the child experience an effective potential $V_\nu(x,\varphi)$ due to the radion,
+  \item this potential induces small Dirac or Majorana mass terms when integrated out,
+  \item the typical mass scale is set by the inverse wall thickness and coupling strength.
+\end{itemize}
+
+A toy estimate (suppressing order-one factors) might take the form
+\begin{equation}
+m_\nu
+\sim
+k_{\nu}\,
+\frac{\hbar c}{\ell_{\text{wall}}}\,
+\left(\frac{\ell_P^2}{r_{\LL}^2}\right)^\alpha,
+\label{eq:mnu-toy}
+\end{equation}
+where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item $k_{\nu}$ is a dimensionless coupling encoding how strongly neutrinos feel ledger fluctuations,
+  \item $\ell_{\text{wall}}$ is an effective wall thickness,
+  \item the factor $(\ell_P^2/r_{\LL}^2)^\alpha$ captures the fact that the effect is suppressed by the ratio of Planck scale to ledger scale (with some exponent $\alpha>0$).
+\end{itemize}
+
+Because $r_{\LL}$ is macroscopic for astrophysical black holes, this ratio is tiny, naturally producing small neutrino masses even if $\ell_{\text{wall}}$ is microscopic. In a full DCT treatment, the same radion that appears in the echo problem also appears in the neutrino sector, tying together gravitational and particle-physics observables.
+
+\subsubsection*{Mixing and flavor structure}
+
+The Infinity Bits $z$ and possibly $(x,y)$ can act as discrete flavor labels on generation cells. If the radion couplings $k_{\nu}$ depend on these labels, then different generations naturally acquire different effective masses,
+\begin{equation}
+m_{\nu,i}
+\sim
+k_{\nu,i}\,\frac{\hbar c}{\ell_{\text{wall}}}\,
+\left(\frac{\ell_P^2}{r_{\LL}^2}\right)^\alpha,
+\qquad i=1,2,3,
+\end{equation}
+and off-diagonal couplings in ledger code tensors $V^{(v)}$ can generate mixing angles and CP phases. This suggests the qualitative picture:
+
+\begin{quote}
+\emph{Neutrino masses and mixings are a tomographic image of the ledger wall: small numbers in the PMNS matrix correspond to delicate interference patterns in how different generation cells couple to the radion mode.}
+\end{quote}
+
+\subsection{Black-hole echoes from the ledger--slab structure}
+\label{subsec:echoes}
+
+One of the most direct gravitational signatures of DCT is the presence of a reflective or partially reflective inner boundary at $r=r_{\LL}$, together with a potential barrier near the photon sphere. This combination naturally produces \emph{gravitational-wave echoes} in the post-merger signals of events like GW150914\cite{LIGO2016, Cardoso2016, Cardoso2017}.
+
+\subsubsection*{Slab and echo time delay}
+
+Consider perturbations of a Schwarzschild black hole. The usual Regge--Wheeler or Zerilli potentials\cite{ReggeWheeler1957, MTW1973} have a peak near the photon sphere at $r\approx 3R_{\mathrm{S}}/2$ and decay to zero both near the horizon and at infinity. In DCT, the horizon region is replaced by a slab extending down to $r_{\LL}$, with a Robin boundary condition at the ledger,
+\begin{equation}
+\left.\big(\partial_{r_*}\psi + \kappa\,\psi\big)\right|_{r_* = r_*^\LL} = 0,
+\end{equation}
+where $r_*$ is the tortoise coordinate and $\kappa$ encodes the wall stiffness.
+
+In this setup, waves can:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item fall in from the potential barrier toward the ledger,
+  \item partially reflect off the inner boundary,
+  \item and partially transmit into the child phase as ledger excitations.
+\end{itemize}
+
+The reflected portion travels back to the barrier, leading to a series of late-time echoes. The characteristic echo time delay is roughly
+\begin{equation}
+\Delta t_{\text{echo}}
+\sim
+2\,\big|r_*^{\text{barrier}} - r_*^\LL\big|,
+\end{equation}
+where $r_*^{\text{barrier}}$ and $r_*^\LL$ are the tortoise-coordinate locations of the barrier peak and ledger, respectively.
+
+Because $r_*^\LL$ is a logarithmic function of $r_{\LL}$ in Schwarzschild-like coordinates, even a modest shift in $r_{\LL}$ away from $R_{\mathrm{S}}$ can produce distinct echo delays compared to other near-horizon models. DCT ties $r_{\LL}$ to the Transdimensional constant $\T$ via $r_{\LL}=\sqrt{\T}\,R_{\mathrm{S}}$, so $\Delta t_{\text{echo}}$ is not a free parameter but a calculable function of $\T$ and the wall physics.
+
+\subsubsection*{Energy flow and NPR bookkeeping}
+
+Energy that is not reflected at the wall is not lost; it is processed by NPR and written to the ledger as additional Infinity Bits. The echo sector and the neutrino/radion sector are therefore not independent:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item the same wall parameters $(\ell_{\text{wall}},\kappa)$ that control the reflection coefficient and echo spectrum also control radion dynamics,
+  \item the total rate at which energy is absorbed by the wall (and converted into ledger bits) is constrained by the NPR threshold $\Delta S_{\text{gen}}=4\ln 2$ and the available slab entropy $(1-\T)S_{\text{BH}}$.
+\end{itemize}
+
+This suggests cross-checks:
+
+\begin{quote}
+\emph{Any echo signal consistent with a DCT wall model must be compatible with the neutrino mass scale and the rate at which snaps consume slab entropy.}
+\end{quote}
+
+\subsection{Effective summary}
+\label{subsec:phen-summary}
+
+Collecting the main points:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Proton decay:} DCT does not switch off $\SU(5)$ GUT physics; it dresses dangerous baryon-violating operators with ledger factors $\mathcal{F}_{\LL}$ that can strongly suppress proton decay rates. This opens a window where $\SU(5)$-like unification is compatible with proton longevity, and proton decay---if seen---would carry DCT-specific signatures.
+
+  \item \textbf{Neutrinos:} Neutrino masses arise naturally from the radion / ledger-wall geometry, with scales set by wall thickness and the ledger radius $r_{\LL}=\sqrt{\T}R_{\mathrm{S}}$. The same structure that governs echoes also feeds into neutrino mass and mixing, turning neutrinos into a probe of the dimensional-collapse machinery.
+
+  \item \textbf{Echoes:} The ledger--slab structure and Robin boundary at $r_{\LL}$ predict late-time gravitational-wave echoes whose delay and amplitude are tied to $\T$ and wall parameters. Echo observations, neutrino data, and proton decay bounds become three legs of a single DCT phenomenological tripod.
+\end{itemize}
+
+In \Cref{sec:cosmology} we move from localized objects to the whole universe, asking how the $D\to D{-}2$ algorithm and the ledger machinery influence cosmic history, the emergence of time, and large-scale cosmological observables.
+
+
+% (To be filled in: DCT-dressed C_6, radion + neutrino mass, BH echoes.)
+
+% ================== 8. Cosmology and Emergence of Time ==================
+% ================== 8. Cosmology and the Emergence of Time ==================
+\section{Cosmology and the Emergence of Time}
+\label{sec:cosmology}
+
+Up to now we have applied DCT mostly to localized systems: black holes, local causal cells, and ledger patches. Cosmology poses a different, global question:
+
+\begin{quote}
+\emph{What happens if an entire universe is created by a $D\to D-2$ snap?}
+\end{quote}
+
+In this section we sketch a DCT-based picture of cosmic history in which:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item the parent phase is always Lorentzian with signature $(- + \dots +)$,
+  \item a \emph{cosmic} $D\to D-2$ snap removes the parent time and a radial direction via NPR, producing a child universe that \emph{initially} has a Euclidean metric $(+\dots +)$,
+  \item an \emph{internal} first snap in the child then selects a new time direction out of the Euclidean directions, restoring a Lorentzian signature in the child,
+  \item the ``heat'' of this process drives an inflation-like expansion in the child phase,
+  \item and further local snaps in the child generate structure and black holes, tying together cosmology and the local DCT algorithm.
+\end{enumerate}
+
+The emphasis is on \emph{structure} rather than detailed model-building; the goal is to show how the same $D\to D-2$ machinery that governs black holes also applies to the universe as a whole.
+
+\subsection{Parent Lorentzian phase and child pre-time Euclidean state}
+\label{subsec:parent-lorentz-child-eucl}
+
+Consider a parent phase with dimension $D_{\Parent} = D_3 = 6$, i.e.\ a six-dimensional spacetime ${}^{(6)}\!\cM$ with Lorentzian metric
+\begin{equation}
+{}^{(6)}g_{MN} \quad\text{of signature}\quad (- + + + + +),
+\end{equation}
+and a corresponding parent time coordinate (or timelike direction) $T$.
+
+From the DCT perspective:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item The $6$-dimensional parent phase already has a well-defined time direction and Lorentzian signature.
+  \item A cosmic $6\to 4$ snap will \emph{remove} this parent time direction \emph{and} a parent radial direction (the pair that would swap across an event horizon under a Wick-like rotation).
+  \item The information in the $(T,R)$ pair is processed by NPR and written to the cosmic ledger.
+\end{itemize}
+
+Immediately after this $6\to 4$ snap, the child universe is born as a $4$-dimensional manifold with an \emph{initially Euclidean} effective metric
+\begin{equation}
+{}^{(4)}g_{AB} \;\simeq\; \delta_{AB},
+\qquad A,B = 1,\dots,4,
+\end{equation}
+from the internal viewpoint. All four directions are equivalent and spacelike; from the child’s perspective, there is no distinguished time direction yet. This is the \emph{pre-time Euclidean phase of the child}, even though the parent phase was fully Lorentzian.
+
+In other words:
+
+\begin{quote}
+The parent is Lorentzian; NPR removes its time and a radial direction; the newborn child starts out Euclidean. This process must ultimately account for the observed cosmological parameters, such as the baryon-to-photon ratio and the dark energy density\cite{Planck2020}.
+\end{quote}
+
+\subsection{The first internal snap and the birth of time}
+\label{subsec:first-internal-snap}
+
+The $6\to 4$ cosmic snap explains how our $4$-dimensional universe is created as a Euclidean child. The next step is to understand how a time direction appears \emph{within} this child.
+
+Once the child exists, its own dynamics (matter content, ledger excitations, radion modes) generate an entropy current $J^A$ on the $4$-dimensional Euclidean manifold. When the generalized entropy in suitable child causal diamonds reaches the NPR threshold, an \emph{internal} snap occurs in the child phase. This is structurally the same as any other $D\to D-2$ step, but now $D=4$ and $D-2=2$; crucially, the internal snap selects a timelike direction for the child epoch that we actually inhabit.
+
+At a given point $p$ in the Euclidean child:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item The local metric is Euclidean with orthonormal frame $\{e_A^M\}_{A=1,\dots,4}$ and
+  \[
+  {}^{(4)}g_{AB} = \delta_{AB}.
+  \]
+  \item Ledger and field excitations generate an entropy current $J^A$.
+  \item A child ledger surface ${}^{(4)}\Sigma_{\LL}$ is selected by the QES rule (now entirely inside the child).
+  \item When the child NPR threshold is met in enough regions, the internal snap spontaneously selects a unit vector
+  \[
+  u^A = \frac{J^A}{\sqrt{\delta_{BC}J^B J^C}},
+  \]
+  to become the new timelike direction.
+  \item The child metric is then reinterpreted as Lorentzian:
+  \begin{equation}
+  g^{(4)}_{AB} = -u_A u_B + \big(\delta_{AB} + u_A u_B\big),
+  \end{equation}
+  where indices are raised/lowered with the Euclidean metric and $u_A = \delta_{AB}u^B$.
+\end{enumerate}
+
+To an observer in the child:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Time is \emph{born} at this internal snap, aligned with the direction of maximal entropy flux $J^A$.
+  \item Before this, the child geometry was effectively Euclidean (no distinguished timelike axis).
+  \item After this, the child is a fully Lorentzian $4$-dimensional spacetime with signature $(- + + +)$.
+\end{itemize}
+
+This is consistent with the global rule:
+
+\begin{quote}
+Every long-lived $D$-dimensional phase is Lorentzian; but right after a $D\to D-2$ snap, the child is momentarily Euclidean until its own internal snap chooses a new time direction.
+\end{quote}
+
+\subsection{Snap heat and inflation-like expansion}
+\label{subsec:snap-heat}
+
+Both the cosmic $6\to 4$ snap and the child’s internal snap carry energetic consequences.
+
+\begin{itemize}[leftmargin=1.5em]
+  \item The \emph{cosmic} snap converts the parent $(T,R)$ degrees of freedom into ledger excitations and child geometric data, injecting ``dimensional energy'' into the emergent $4$-dimensional Euclidean universe.
+  \item The \emph{internal} snap that picks the child time direction reinterprets part of this stored energy as an effective vacuum energy in the Lorentzian child.
+\end{itemize}
+
+Let $\rho_{\text{snap}}$ be the effective energy density in the child after the internal snap, and $p_{\text{snap}}$ the corresponding pressure. If the snap excitations are approximately homogeneous and isotropic, and dominated by vacuum-like modes, one expects an equation of state
+\begin{equation}
+p_{\text{snap}} \approx -\rho_{\text{snap}},
+\end{equation}
+driving accelerated expansion via
+\begin{equation}
+H^2 = \left(\frac{\dot{a}}{a}\right)^2
+=
+\frac{8\pi G_4}{3}\,\rho_{\text{snap}} + \dots
+\end{equation}
+for the scale factor $a(t)$ in the child FRW metric.
+
+Because $\rho_{\text{snap}}$ is determined by:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item how much parent dimensional energy is transferred by the cosmic $6\to 4$ snap,
+  \item how many NPR events occur during the child’s internal snap,
+  \item and how ledger/radion modes redistribute that energy,
+\end{itemize}
+DCT offers a structural explanation for an early inflation-like phase: the vacuum-like energy is the record of dimensional change, not a separate scalar field added by hand.
+
+As ledger excitations thermalize and NPR events slow down, $\rho_{\text{snap}}$ decays into radiation and matter, ending the inflation-like phase and reheating the universe.
+
+\subsection{Dimensional cascade with Lorentzian phases and Euclidean births}
+\label{subsec:dim-cascade}
+
+In DCT, the dimensional ladder is
+\begin{equation}
+D_n = 2n,\qquad n = 1,2,3,\dots,
+\end{equation}
+with no known upper bound on $n$. Each \emph{stable} phase $D_n$ is Lorentzian, but each $D_n$ phase is \emph{born} from a $D_{n+1}\to D_n$ snap as a Euclidean child before it acquires its own time direction.
+
+Schematically:
+
+\begin{center}
+\(
+\cdots \to
+D_{n+1} \text{ (Lorentzian)}
+\xrightarrow{\text{snap}}
+D_n \text{ (Euclidean child)}
+\xrightarrow{\text{internal snap}}
+D_n \text{ (Lorentzian phase)}
+\to D_{n-1} \to \cdots
+\)
+\end{center}
+
+For our universe:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item A Lorentzian $D_3=6$ parent snaps to create a Euclidean $D_2=4$ child.
+  \item An internal snap in that $D_2=4$ child selects a time direction, giving the Lorentzian $4$-dimensional phase we observe.
+  \item Within this $4$-dimensional epoch, further local $4\to 2$ snaps create black-hole ledger surfaces, continuing the cascade on smaller scales.
+\end{itemize}
+
+Thus cosmological history and black-hole formation are manifestations of the same pattern: Lorentzian phases giving birth to Euclidean children, which then pick their own time direction and become Lorentzian.
+
+\subsection{Cosmological observables and DCT fingerprints}
+\label{subsec:cosmo-observables}
+
+The patched picture modifies the interpretation of DCT fingerprints but not their broad categories. We still expect:
+
+\paragraph{(1) Large-scale curvature and dark energy.}
+Residual vacuum-like energy left after the child’s internal snap 
+appears as late-time dark energy, consistent with the \(\Lambda\)CDM model's value of \(\Omega_\Lambda\approx0.68\)\cite{Planck2020}.
+
+\begin{itemize}[leftmargin=1.5em]
+  \item how much dimensional energy from the parent $6\to 4$ snap survived into the Lorentzian $4$-dimensional phase,
+  \item how efficiently internal snaps and NPR events converted that energy into radiation and matter.
+\end{itemize}
+
+\paragraph{(2) Primordial perturbations.}
+Fluctuations of ledger/radion modes during the Euclidean child phase and across the internal snap seed primordial perturbations in the Lorentzian $4$-dimensional epoch.
+
+\paragraph{(3) Relation to local DCT phenomenology.}
+The same Transdimensional constant $\T$, wall parameters $(\ell_{\text{wall}},\kappa)$, and ledger structure that govern black-hole interiors, echoes, and neutrino masses also govern:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item the energetics of the cosmic $6\to 4$ snap,
+  \item the properties of the Euclidean child phase,
+  \item and the dynamics of the internal snap that births time in our universe.
+\end{itemize}
+
+Cosmology therefore remains tied to local DCT phenomena; the patch simply clarifies that all long-lived $D$-phases are Lorentzian, and Euclidean metrics appear as transient ``newborn child'' states after each dimensional step.
+
+\subsection{Summary}
+\label{subsec:cosmo-summary}
+
+In the patched cosmological picture:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Every dimensional phase $D_n$ is fundamentally Lorentzian in its mature form.
+  \item A $D_{n+1}\to D_n$ snap removes the parent time and a radial direction via NPR, creating a Euclidean $D_n$ child whose directions are initially all spatial.
+  \item An internal snap in this child, driven by its own entropy current, selects a new timelike direction, turning the $D_n$ phase back into a Lorentzian spacetime.
+  \item Our $4$-dimensional universe is such a Lorentzian child, born from a Lorentzian $6$-dimensional parent and passing through a Euclidean pre-time stage.
+  \item Subsequent local snaps within the $4$-dimensional epoch create $2$-dimensional ledger surfaces, continuing the dimensional cascade downward.
+\end{itemize}
+
+This keeps the DCT algorithm consistent across all $D\to D-2$ transitions: Lorentzian parents, Euclidean newborn children, and Lorentzian mature phases, with no obvious ceiling in $D$ and the same NPR–ledger machinery at each step.
+
+
+% (To be filled in: first snap, (++++) → (−+++), inflation-like phase, large-scale structure hints.)
+
+% ================== 9. Predictions and Tests ==================
+% ================== 9. Predictions and Tests ==================
+\section{Predictions and Tests}
+\label{sec:predictions}
+
+A theory is only as good as the things it sticks its neck out about. In this section we collect the main \emph{testable} consequences of DCT as formulated in this unified framework, with an eye toward falsifiability and cross-checks across very different regimes.
+
+We will group the predictions into:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item geometric / gravitational signatures (black holes, echoes, ledgers),
+  \item particle-physics signatures (proton decay pattern, neutrinos, GUT structure),
+  \item cosmological signatures (emergence of time, inflation-like snap, dark energy),
+  \item consistency relations tying these sectors together.
+\end{enumerate}
+
+\subsection{Geometric and gravitational signatures}
+\label{subsec:pred-grav}
+
+\paragraph{(1) Universal ledger radius.}  
+DCT predicts that in any regime where a semiclassical black hole makes sense, the classical singularity is replaced by a universal interior surface at
+\begin{equation}
+r_{\LL} = \sqrt{\T}\,R_{\mathrm{S}},
+\qquad
+\T = \frac{1}{4\ln 2},
+\end{equation}
+with a slab between $r_{\LL}$ and the would-be horizon. This is not a free parameter: the same constant $\T$ appears in the entropy split and NPR threshold.
+
+Although $r_{\LL}$ is hidden behind the horizon for astrophysical black holes, it appears indirectly via echo delays and ringdown modifications. In principle:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item measuring consistent echo time delays across different masses with a scaling predicted by $r_{\LL}\propto R_{\mathrm{S}}$ would support DCT,
+  \item observing an echo pattern incompatible with any choice of $\T$ (given independent constraints) would falsify this aspect of the theory.
+\end{itemize}
+
+\paragraph{(2) Gravitational-wave echoes with specific structure.}  
+The ledger--slab--barrier structure and Robin boundary at $r_{\LL}$ imply late-time gravitational-wave echoes after compact-object mergers. DCT predicts:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item a characteristic echo time delay
+  \[
+  \Delta t_{\text{echo}}\sim 2|r_*^{\text{barrier}}-r_*^\LL|,
+  \]
+  where $r_*^\LL$ corresponds to $r_{\LL}=\sqrt{\T}R_{\mathrm{S}}$,
+  \item a reflection coefficient at the wall controlled by the same wall parameters $(\ell_{\text{wall}},\kappa)$ that enter radion/neutrino physics,
+  \item a nontrivial frequency dependence of echoes tied to the effective boundary condition and NPR activity at the wall.
+\end{itemize}
+
+A sufficiently precise echo detection program (e.g.\ with next-generation gravitational-wave observatories) could:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item constrain $(\T,\ell_{\text{wall}},\kappa)$ from ringdown and echo data alone,
+  \item and then be cross-checked against neutrino-sector predictions below.
+\end{itemize}
+
+\paragraph{(3) Black-hole thermodynamics and observational phenomenology.}
+In DCT the genuine black hole is the ledger surface at
+\[
+  r_{\LL} = \sqrt{\T}\,R_S,
+\]
+where the $D\to D-2$ transition takes place and the full microscopic interior is encoded on a 2D ledger.  The event horizon at $r=R_S$ is a purely causal surface: it is where the Wick rotation exchanges the timelike and radial directions, and beyond which the interior becomes inaccessible to outside observers.  Crucially, in the low-energy effective description, the region $r_{\LL}<r<R_{\mathrm{S}}$ is simply the standard vacuum of general relativity; there is no additional hot ``slab'' filled with thermal matter. The mapping
+\begin{equation}
+S_{\mathcal L} = \T\,S_{\mathrm{BH}},
+\qquad
+S_{\mathrm{BH}} - S_{\mathcal L} = (1-\T)\,S_{\mathrm{BH}}
+\end{equation}
+is therefore a bookkeeping decomposition of the Bekenstein--Hawking entropy into
+\begin{itemize}
+    \item a proper Ledger contribution $S_{\mathcal L}$ localized on the codimension-2 surface $\mathcal L$, and
+    \item a horizon-scale vacuum entanglement remainder $S_{\mathrm{BH}} - S_{\mathcal L}$
+\end{itemize}
+not two independent thermodynamic reservoirs that could evaporate separately. This picture is strongly supported by recent gravitational-wave observations confirming the Hawking Area Theorem with high confidence\cite{LIGOArea2021}.
+
+Within this picture Hawking-like radiation arises as \emph{waste heat} of snap events at the NPR wall: when new entropy crosses the horizon and is irreversibly written to the ledger, the mismatch of modes across the Robin boundary produces a thermal flux at the standard Hawking temperature. The observed flux thus tracks the \emph{growth} and snap activity of the black hole, not its autonomous decay.  This has several phenomenological consequences:
+\begin{itemize}[leftmargin=1.5em]
+  \item \emph{Null searches for PBH evaporation bursts.} In semiclassical evaporation scenarios, sufficiently small primordial black holes (PBHs) end their lives in brief, intense gamma-ray bursts. In DCT there is no such terminal evaporation channel: once the ledger surface has formed, there is no hot slab that can explosively empty itself. A null result in searches for gamma-ray bursts associated with ``PBH evaporation,'' conducted by observatories such as the Fermi Gamma-ray Space Telescope\cite{FermiLAT2018}, is therefore \emph{expected} \cite{Green2021, Carr2020} and disfavors the semiclassical picture, not the existence of small PBHs.
+
+  \item \emph{Long-lived PBHs and dark-matter candidates.} Because the ledger entropy $S_\LL=\T S_{\text{BH}}$ is not radiated away, PBHs can remain effectively stable over cosmological timescales, limited only by their environment and by ongoing snap-driven growth.  This makes PBHs natural dark-matter candidates in DCT: their primary signatures are gravitational, not explosive electromagnetic transients.
+
+  \item \emph{Femtolensing and gravitational constraints.} If small, long-lived PBHs constitute a fraction of the dark matter, the most relevant probes become gravitational: microlensing and femtolensing of distant sources, as well as dynamical bounds.  In this  framework, the absence of evaporation flashes does not rule out PBH dark matter; instead, lensing searches (including femtolensing of gamma-ray bursts by asteroid-mass PBHs) and dynamical measurements provide the leading constraints on the PBH mass spectrum and abundance.
+\end{itemize}
+Any robust observation that \emph{requires} an isolated black hole to lose essentially all of its mass and entropy via Hawking evaporation on a finite timescale would be in direct tension with DCT as formulated here.  Conversely, a phenomenology in which black holes are ledger surfaces embedded in vacuum, Hawking-like flux is interpreted as snap waste heat, and PBHs behave as long-lived compact objects is a natural realization of the DCT mechanism.
+
+\subsection{Particle-physics signatures}
+\label{subsec:pred-particle}
+
+\paragraph{(4) Proton decay dressing and pattern.}  
+DCT does \emph{not} forbid an underlying $\SU(5)$ GUT; instead, it predicts that all baryon-violating operators are dressed by ledger factors:
+\begin{equation}
+\mathcal{L}_{\text{eff}}^{\text{(DCT)}}
+\supset
+\frac{c}{M_X^2}\,
+\mathcal{O}_{qqql}\,
+\mathcal{F}_{\LL}[W,X,Y,Z;\text{geometry}]
++ \text{h.c.}
+\end{equation}
+
+Three structural predictions follow:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \emph{Suppression:} proton decay is generically suppressed beyond naive $\SU(5)$ expectations, potentially pushing lifetimes beyond current bounds without needing $M_X$ to be arbitrarily large.
+
+  \item \emph{Channel dependence:} different decay channels can experience different ledger suppression factors, leading to a branching-ratio pattern that may deviate from standard $\SU(5)$ predictions.
+
+  \item \emph{Branch sensitivity:} if different cosmic regions effectively realize different ledger branches (encoded in $W$ and center charges), then proton decay rates and patterns may vary subtly between regions, although such variations are likely unobservable in practice.
+\end{itemize}
+
+If proton decay is eventually observed with a pattern and rate that \emph{cannot} be reconciled with any reasonable ledger suppression $\mathcal{F}_{\LL}$ (given independent constraints from echoes and neutrinos), that would falsify this DCT realization of $\SU(5)$.
+
+\paragraph{(5) Neutrino mass scale tied to wall geometry.}  
+DCT predicts that neutrino masses receive contributions from a radion-like mode tied to wall geometry, schematically:
+\begin{equation}
+m_{\nu,i} \sim k_{\nu,i}\,
+\frac{\hbar c}{\ell_{\text{wall}}}
+\left(\frac{\ell_P^2}{r_{\LL}^2}\right)^\alpha,
+\qquad
+r_{\LL}=\sqrt{\T}\,R_{\mathrm{S}},
+\end{equation}
+for some exponent $\alpha>0$ and couplings $k_{\nu,i}$ that may depend on Infinity Bits (e.g.\ generation labels).
+
+This implies:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item the \emph{overall} neutrino mass scale is not arbitrary; it is constrained by the same geometric parameters $(\T,\ell_{\text{wall}})$ that affect echoes,
+  \item the \emph{hierarchy} of neutrino masses and mixings reflects details of how different generation cells couple to the radion and ledger, rather than purely arbitrary Yukawa choices.
+\end{itemize}
+
+In principle, one can envision a program where:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item neutrino oscillation experiments fix mass-squared differences and mixing angles,
+  \item absolute mass-scale measurements (e.g.\ beta-decay endpoints, cosmology) constrain $m_{\nu,\text{tot}}$,
+  \item gravitational-wave echoes constrain $(r_{\LL},\ell_{\text{wall}},\kappa)$,
+  \item and these are checked against a single DCT parametrization.
+\end{itemize}
+
+If such a combined fit fails dramatically, that would be a strong blow to the radion-based neutrino mass mechanism within DCT.
+
+\paragraph{(6) GUT representation content from ledger cells.}  
+DCT specifically prefers $\SU(5)$ fibers with local logical legs in $\Ten\oplus\Fivebar$ per ``generation cell''. This leads to:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item a prediction that the Standard-Model quantum numbers fit naturally into $\SU(5)$-like multiplets at high energies;
+  \item the possibility of small deviations (e.g.\ extra singlets, right-handed neutrinos) encoded in additional ledger reps or Infinity-Bit-dependent logic;
+  \item constraints on how many generations can be supported by a given ledger configuration, potentially relating the number of observed generations to topological or combinatorial properties of the ledger network.
+\end{itemize}
+
+Evidence that the SM \emph{cannot} be embedded into any reasonable $\SU(5)$-like structure (for example, via future precision unification tests) would challenge this aspect of the DCT picture.
+
+\subsection{Cosmological signatures}
+\label{subsec:pred-cosmo}
+
+\paragraph{(7) Emergent time aligned with entropy flux.}  
+DCT predicts that the cosmic arrow of time is aligned with the direction of maximal entropy flux at the first $D\to D{-}2$ snap. Operationally, this means:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item the initial time slicing of the 4D universe is not arbitrary, but is selected by the DCT rule that $u^A$ (the child timelike direction) is proportional to the projected entropy current $J^A$;
+  \item any consistent cosmological model derived from DCT must admit an entropy current whose direction matches the observed thermodynamic arrow.
+\end{itemize}
+
+This is more a \emph{consistency requirement} than an observational prediction, but any cosmological scenario where entropy behaves in a fundamentally incompatible way (e.g.\ globally decreasing along the cosmic time direction) would rule out DCT.
+
+\paragraph{(8) Snap-driven inflation-like phase.}  
+The first snap is predicted to generate snap heat that behaves effectively like a vacuum energy for some period, leading to a rapid accelerated expansion. This gives a structural explanation for an early inflation-like epoch.
+
+Qualitative signatures:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item a nearly homogeneous and isotropic early universe with small perturbations seeded by ledger/radion fluctuations,
+  \item a decay of the effective vacuum energy as ledger excitations thermalize into radiation and matter.
+\end{itemize}
+
+Any inflationary model built inside DCT must reproduce:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item the observed near-scale-invariant spectrum of primordial perturbations,
+  \item the correct horizon and flatness properties,
+  \item and a match between the inflation scale and the DCT snap parameters.
+\end{itemize}
+
+\paragraph{(9) Residual dark energy as leftover snap energy.}  
+If the first snap does not fully convert its vacuum-like energy into radiation and matter, a residue can appear as late-time dark energy. Then:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item the magnitude of the cosmological constant is not arbitrary; it is set by how efficiently snap heat decayed,
+  \item in principle, a quantitative model could relate $\Lambda$ to $(\T,\ell_{\text{wall}},\kappa)$ and details of the first ledger.
+\end{itemize}
+
+Given the observed $\Lambda$, one can ask whether any DCT parameter region is compatible with both dark energy and the local phenomenology (neutrinos, echoes, etc.). A negative answer would again falsify this implementation.
+
+\subsection{Consistency relations and falsifiability}
+\label{subsec:consistency-falsifiable}
+
+Perhaps the most important prediction of DCT is not any single number, but the web of \emph{consistency relations} connecting apparently unrelated observables. In a schematic way, DCT says:
+
+\begin{equation}
+\text{(echoes)}\quad\Longleftrightarrow\quad
+\text{(neutrino masses)}\quad\Longleftrightarrow\quad
+\text{(proton decay pattern)}\quad\Longleftrightarrow\quad
+\text{(dark energy \& early-universe dynamics)},
+\end{equation}
+all mediated by a small set of structural parameters:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item the Transdimensional constant $\T = 1/(4\ln 2)$,
+  \item wall/ledger parameters $(\ell_{\text{wall}},\kappa)$,
+  \item ledger-network structure and Infinity Bit distributions,
+  \item and the choice of GUT fiber (here $\SU(5)$) on the ledger.
+\end{itemize}
+
+A realistic DCT phenomenology program would:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item build explicit models of the wall potential, radion spectrum, and ledger code,
+  \item compute echo spectra, neutrino masses/mixings, and proton decay operators in a common parameterization,
+  \item confront these predictions with data and experimental limits,
+  \item and check for any parameter region where all constraints are simultaneously satisfied.
+\end{enumerate}
+
+If no such region exists, the DCT framework in its current form is falsified and must be revised or abandoned. If such a region exists, DCT makes highly nontrivial predictions about correlations between future measurements in different sectors.
+
+\subsection{Roadmap}
+\label{subsec:roadmap}
+
+To make DCT a genuinely testable theory rather than a schematic framework, several concrete steps are needed:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Wall and echo modeling:} develop detailed models of the ledger wall, boundary conditions, and NPR-induced dissipation to compute precise ringdown and echo templates for gravitational-wave detectors.
+
+  \item \textbf{Radion and neutrino sector:} compute radion spectra and couplings from specific wall models, derive neutrino mass matrices and compare with oscillation data and cosmological bounds.
+
+  \item \textbf{Ledger-dressed GUT operators:} explicitly evaluate the ledger dressing factor $\mathcal{F}_{\LL}$ for proton decay operators in representative ledger code models, and confront with current and future proton decay limits.
+
+  \item \textbf{Cosmological implementation:} construct a concrete DCT-based cosmological model (or family of models) with a first snap, snap-driven inflation, and reheating, and test against CMB and large-scale structure.
+
+  \item \textbf{Global parameter scans:} search for regions in parameter space where all of the above are simultaneously viable, and identify smoking-gun signatures that distinguish DCT from other beyond-GR/beyond-SM proposals.
+\end{itemize}
+
+The payoff is clear: DCT does not simply add another scalar field or tweak a coupling. It proposes a unified mechanism --- entropy-triggered dimensional collapse with a quantum ledger --- that links gravity, quantum information, and particle physics. The price is high (a great deal of detailed work), but the reward is a framework in which very different phenomena are no longer separate mysteries, but different faces of the same underlying machinery.
+
+
+% (To be filled in: falsifiable signatures, experiments, observational programs.)
+
+% ================== 10. Conclusion ==================
+% ================== 10. Conclusion and Outlook ==================
+\section{Conclusion and Outlook}
+\label{sec:conclusion}
+
+Dimensional Collapse Theory (DCT) proposes a simple but radical idea: spacetime dimension is not fixed, but can change in discrete, entropy-triggered steps
+\[
+D \;\longrightarrow\; D-2,
+\]
+with each step mediated by a quantum ledger that keeps track of what happened. In this work we have assembled the pieces of that idea into a single, coherent framework, connecting black-hole interiors, quantum extremal surfaces, tensor-network codes, GUT-like gauge structure, neutrino masses, proton decay, gravitational-wave echoes, and cosmology.
+
+\subsection{What we have built}
+
+The main structural elements of DCT as presented here are:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Ledger placement:} the \emph{ledger surface} $\Sigma_{\LL}$ is defined as a quantum extremal surface carrying a fixed fraction
+  \[
+  S_{\text{gen}}[\Sigma_{\LL}] = \T\,S_{\text{ref}},\qquad \T = \frac{1}{4\ln 2},
+  \]
+  of a suitable reference entropy. In black holes this selects a universal interior surface radius $r_{\LL} = \sqrt{\T}\,R_{\mathrm{S}}$ and an associated ledger--slab structure, as derived in Paper~I of the series\cite{DCTQG01}.
+
+  \item \textbf{Null-Pair Removal (NPR):} a local, unitary mechanism that removes a distinguished pair of null modes crossing $\Sigma_{\LL}$ when the generalized entropy increment in a causal cell reaches $\Delta S_{\text{gen}} = 4\ln 2$, and transfers their information into four \emph{Infinity Bits} $(W,X,Y,Z)$ written on the ledger\cite{DCTQG02,DCTQG03,DCTQG04}.
+
+  \item \textbf{Ledger as HaPPY--$\SU(5)$ code:} a HaPPY-style tensor network on $\Sigma_{\LL}$ with an $\SU(5)$ fiber and a $\ZZ_5$ center sector, in which Infinity Bits act as inputs to local code cells\cite{DCTQG04}. The write bit $W$ is stored as a center charge via a Wilson operator $\Wop$, while $(X,Y,Z)$ control local routing, orientation, and flavor/generation data.
+
+  \item \textbf{$D\to D-2$ algorithm and dimensional gauge:} at each snap, the local tangent space is split into a null snap plane $(k,\ell)$ and $D-2$ tangential directions; NPR vacuumizes the null modes and writes ledger data, while the tangential directions become the local coordinates of a $(D-2)$-dimensional child spacetime. The child time direction is selected along the projected entropy current, and a discrete \emph{dimensional gauge label} $n$ jumps as $n\to n-1$.
+
+  \item \textbf{Emergent Standard-Model structure:} the $\SU(5)$ fiber on the ledger, with local logical legs in $\Ten\oplus\Fivebar$ per generation cell, reproduces the familiar $\SU(5)\to\SU(3)_C\times\SU(2)_L\times\U(1)_Y$ breaking pattern in the child. Infinity Bits provide discrete data for branches, embeddings, and generations; dangerous baryon-violating operators are dressed by ledger factors, potentially reconciling $\SU(5)$-like unification with proton longevity.
+
+  \item \textbf{Phenomenology and cosmology:} the same wall and ledger structure that produces black-hole interior boundaries and gravitational-wave echoes also yields radion-induced neutrino masses and an early snap-driven inflation-like phase in cosmology. Dark energy and primordial perturbations can be viewed as relics of the first cosmic snap, while local black holes are later, smaller-scale manifestations of the same dimensional-collapse machinery.
+\end{itemize}
+
+Taken together, these elements define what we have loosely called the ``DCT algorithm'': a map from a higher-dimensional parent phase, through a ledger, to a lower-dimensional child phase, with the ledger serving as a quantum memory that keeps the overall evolution unitary.
+
+\subsection{How this differs from other frameworks}
+
+Several features distinguish DCT from other proposals at the quantum gravity / high-energy frontier:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Discrete dimensional steps:} DCT insists on $D\to D-2$ jumps, triggered by an entropy threshold and implemented by local unitaries, rather than smooth changes in effective dimension or continuous compactification.
+
+  \item \textbf{Quantum ledger as first-class object:} instead of treating holographic screens, entanglement wedges, or tensor networks as mere tools, DCT elevates the ledger to a dynamical player: a quantum code surface on which real physical information is written via NPR and Infinity Bits.
+
+  \item \textbf{Unified role of $\T$ and $\Delta S_{\text{gen}}$:} a single constant,
+  \[
+  \T = \frac{1}{4\ln 2},
+  \]
+  governs both the difference between proper and apparent entropy and the local quantum of generalized entropy processed per snap ($4\ln 2$). This ties together black-hole thermodynamics, ledger capacity, and the granularity of dimensional collapse.
+
+  \item \textbf{Interweaving gravity and particle physics:} the choice of $\SU(5)$ fiber is not just a particle-physics aesthetic; it is baked into the ledger code that implements $D\to D-2$, so GUT-like structure and dimensional collapse are two sides of the same mechanism rather than separate sectors coupled ad hoc.
+
+  \item \textbf{Strong consistency constraints:} by construction, DCT links echoes, neutrino masses, proton decay, and cosmology through a small set of geometric and code parameters. This is a high bar: the framework can be wrong in many ways, but if it is right, it explains a lot at once.
+\end{itemize}
+
+\subsection{Open problems and next steps}
+
+The present work is a unified \emph{architecture} rather than a completed predictive model. Many pieces of the machinery are still schematic and need to be fleshed out. Key open problems include:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Explicit wall models:} construct concrete potentials and boundary conditions for the ledger wall, derive the Robin parameter $\kappa$ and wall thickness $\ell_{\text{wall}}$ from microphysics, and compute the full spectrum of perturbations (including radion modes) and their couplings.
+
+  \item \textbf{NPR microdynamics:} move beyond toy qubit examples to field-theoretic NPR models, clarify how $\Delta S_{\text{gen}}=4\ln 2$ emerges in interacting QFTs, and show explicitly how the null pair factorization works in curved backgrounds.
+
+  \item \textbf{Ledger code constructions:} build explicit HaPPY-style tensor networks with mixed leg dimensions (for $\SU(5)$ fundamentals and logical $\Ten\oplus\Fivebar$ reps), verify approximate perfectness, and compute ledger dressing factors $\mathcal{F}_{\LL}$ for representative operators.
+
+  \item \textbf{Radion–neutrino sector:} derive neutrino mass matrices from a concrete radion model, determine whether realistic masses and mixings can be achieved without fine-tuning, and map ledger/generation labels $(X,Y,Z)$ to flavor data.
+
+  \item \textbf{Echo templates:} implement DCT wall models in numerical relativity perturbation codes, generate echo templates across parameter space, and compare with current and future gravitational-wave data to constrain $(\T,\ell_{\text{wall}},\kappa)$.
+
+  \item \textbf{Cosmological implementations:} construct explicit $6\to 4$ snap cosmologies, including the first ledger, snap-driven inflation, reheating, and the generation of primordial perturbations; confront these with CMB and large-scale structure observations.
+
+  \item \textbf{Global consistency scans:} perform multi-sector parameter scans (echoes, neutrinos, proton decay, dark energy) to identify regions where all constraints can be simultaneously satisfied, or prove that none exist for the simplest DCT realizations.
+\end{itemize}
+
+\subsection{Perspective}
+
+From one angle, DCT is a bold claim about the nature of spacetime: that singularities are replaced by 2D ledgers, that dimensions fall in steps of two, and that a quantum ledger keeps track of everything. From another angle, it is a modest claim:
+
+\begin{quote}
+\emph{Whenever generalized entropy piles up beyond a certain amount, the universe does not simply absorb it; it restructures itself, reducing dimension and writing the result into a more compact form.}
+\end{quote}
+
+The work presented here shows that this idea can be developed into a mathematically coherent algorithm that:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item respects unitarity (via the extended Hilbert space and ledger),
+  \item respects known gravitational thermodynamics (via the QES-based ledger placement and entropy split)\cite{Wald1993, Jacobson1995, Engelhardt2015},
+  \item accommodates realistic gauge and matter structure (via the $\SU(5)$ ledger fiber and generation cells),
+  \item and suggests concrete observational handles (echoes, neutrinos, proton decay, cosmology).
+\end{itemize}
+
+Whether Nature actually uses this algorithm remains an open question. The encouraging part is that DCT is not a free-form speculation: it makes structural predictions that can, in principle, be checked and falsified. The daunting part is the amount of detailed work required to push those predictions to the level of concrete numbers.
+
+The natural next step is to zoom in on individual components --- the NPR unitary in realistic field theories, the ledger code in explicit tensor-network models, the radion spectrum and couplings, the first-snap cosmology --- and develop each into a separate, technically precise paper, while keeping them anchored to the unified framework laid out here.
+
+If the pieces hold together under that scrutiny, DCT might offer a new way to think about gravity, quantum information, and the Standard Model as different aspects of the same underlying process: the universe rearranging its own dimensionality to keep the books balanced.
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography/dct_refs, bibliography/external_refs}
+
+\end{document}

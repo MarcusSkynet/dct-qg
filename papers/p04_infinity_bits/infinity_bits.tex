@@ -1,0 +1,545 @@
+\documentclass[11pt,a4paper]{article}
+
+\input{common/dct_preamble}
+
+% =================== Document ===================
+\title{
+    \bfseries The Infinity Bits: \\[2pt] 
+    \large A Boost-Invariant Geometric Register for a Reversible Dimensional Reduction\\[4pt]
+}
+
+\author{
+    Marek Hubka\, \orcidlink{0009-0003-2476-9017}
+    \thanks{
+        Independent Researcher, Czech Republic. \\
+        Website: \href{http://tidesofuncertainty.com}{tidesofuncertainty.com}.
+        Email: \href{mailto:marek@tidesofuncertainty.com}{marek@tidesofuncertainty.com}.
+    }
+}
+\date{November 25, 2025}
+%\date{\today}
+
+\begin{document}
+\maketitle
+\vspace{-2ex}
+
+\begin{abstract}
+We define the \emph{Infinity bits} written at each snap on the ledger \( \LL \) as the four-bit set \( \{\,\W, X, Y, Z \,\} \). Here \( \W \) is an irreversible \emph{payload} bit that consumes ledger capacity per TDT, while \( X, Y, Z \) are reversible, \emph{boost-invariant geometric bits} that record the discrete orientation, shear alignment, and twist chirality of the deleted null 2-plane. We give precise, covariant definitions, prove invariance under local \( SO(1,1) \) boosts of the normals and dyad rotations on \( \LL \), and provide an operational extraction recipe. We show that the triplet \( (X,Y,Z) \), together with smoothness constraints on a one-ring neighborhood, is sufficient to reverse the kinematics of \emph{Null-Pair Removal} (NPR) up to diffeomorphisms and the local boost gauge. Capacity accounting, inner-boundary phases (real--Robin), and worked examples (Schwarzschild, remarks on Kerr) are presented. Background geometry and optical scalars follow standard GR sources \cite{HawkingEllis1973,Poisson2004}, the rotation one-form and normal bundle from isolated-horizon technology \cite{Ashtekar2000}, boundary self-adjointness from \cite{Ishibashi2003,ReedSimon1975,Evans2010}, and open-systems language from \cite{NielsenChuang2010,Breuer2002}. Cross-links to Papers I–III in this series are indicated \cite{DCTQG01,DCTQG02,DCTQG03}. \\ \\
+\end{abstract}
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!75!black,title={Scope \& Open Items}]
+\begin{itemize}[noitemsep,leftmargin=1.5em]
+    \item[(i)] We prove \emph{local} sufficiency (one-ring neighborhood) for reversibility; a global constructive proof on arbitrary tile topologies is deferred.
+    \item[(ii)] We give Kerr \emph{remarks} (nonzero normal-bundle twist); explicit extraction maps in generic axisymmetry will appear in a companion.
+    \item[(iii)] The quantitative map \( (X,Y,Z)\mapsto S_{\ell}(\omega) \) (Robin phase in phenomenology) is outlined here and developed in the echoes paper.
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction and context}
+Paper I fixed the ledger \( \LL \) via the invariant curvature trigger
+\[
+\Ical = \Icrit = \frac{12}{\T}\ \Rightarrow\ r_{\LL}=\sqrt{\T}\,\RS,\qquad \frac{A_\LL}{A_{H}}=\T
+\]
+for Schwarzschild \cite{DCTQG01,Poisson2004}. Paper II defined the geometric mechanism of a snap as \emph{Null-Pair Removal} (NPR): contract every tensor index with the tangential projector
+\[
+\Pproj \;=\; \delta^{A}{}_{B}+ \nplus^{A}\nminus_{B}+ \nminus^{A}\nplus_{B},
+\]
+with null normals normalized by \( \nplus\!\cdot\nminus=-1 \), so that components along the normal null 2-plane are deleted while boost invariance is preserved \cite{DCTQG02,Poisson2004}. Paper III (TDT) established the thermodynamic bookkeeping: only the \emph{payload} written at a snap consumes capacity and ticks area by a universal quantum \cite{DCTQG03}.
+
+This paper provides the missing, \emph{minimal} discrete metadata to make NPR \emph{reversible} up to smooth gauge: three boost-invariant geometric bits, plus the payload bit. The Infinity bits \( \{W,X,Y,Z\} \) are exactly the additional information needed to select a unique pre-snap kinematic branch up to smooth diffeomorphisms and local boosts.
+
+\begin{comment}
+\begin{figure}[t]
+  \centering
+  \fbox{\rule{0pt}{1.45in}\rule{0.95\linewidth}{0pt}}
+  \caption{\textbf{Placeholder Fig.\,1.} Ledger tile \( \LL \) with tangent dyad \( \{e_1,e_2\} \) and future null normals \( \nplus,\nminus \) with \( \nplus\!\cdot\nminus=-1 \). The Infinity bits \( \{ \W,X,Y,Z \} \) is written at a snap: \( \W \) is irreversible payload; \( X,Y,Z \) are reversible, boost-invariant geometric bits.}
+\end{figure}
+\end{comment}
+
+\section{Geometric setup and notation}\label{sec:setup}
+Let \( \LL \) be a spacelike \( (D-2) \)-surface with induced metric \( h_{ab} \) and area form \( \epsilon_{ab} \). Choose future-directed null normals \( \nplus^{A},\nminus^{A} \) normalized by \( \nplus\!\cdot\nminus=-1 \); the local boost \( SO(1,1) \) acts as \( n_{\pm}\to e^{\pm \lambda} n_{\pm} \). The tangential projector \( \Pproj \) is as above and is boost invariant \cite{Poisson2004}. Optical data on \( \LL \) are
+\[
+\theta_{\pm}=h^{ab}\nabla_a n_{\pm b},\qquad
+\sigma^{(\pm)}_{ab} = \tfrac{1}{2}\big(\nabla_a n^{(\pm)}_b+\nabla_b n^{(\pm)}_a\big)^{\!\mathrm{tf}},
+\]
+and the normal-bundle (H\'aj\'\i{}{\v c}ek) one-form is
+\[
+\omega_a \;=\; -\,n_{-B}\,\nabla_a n_{+}^{\ B}, \qquad
+\mathcal F_{ab}=\nabla_a\omega_b-\nabla_b\omega_a \quad \text{(normal-bundle curvature)} \cite{Ashtekar2000}.
+\]
+
+\section{The Infinity bits: definitions}\label{sec:defs}
+\begin{definition}[Payload bit \( \W \)]
+The irreversible macro-outcome bit recorded by the snap’s coarse-grained predicate (apparatus/matter). It carries \( \ln 2 \) nats of \emph{payload} information and incurs a ledger capacity cost per TDT \cite{DCTQG03}.
+\end{definition}
+
+\begin{definition}[Orientation/parity bit \( X \)]
+Fix a right-handed dyad \( \{e_1,e_2\} \) on \( \LL \). Define
+\[
+\boxed{\quad
+X \;\equiv\; \mathrm{sgn}\!\Big(\varepsilon_{ABCD}\,e_1^{A}e_2^{B}\nplus^{C}\nminus^{D}\Big)\ \in\ \{+1,-1\}\ .
+\quad}
+\]
+\end{definition}
+
+\begin{definition}[Shear-alignment bit \( Y \)]
+Define the boost-invariant scalar
+\[
+S_\sigma \;\equiv\; \sigma^{(+)}_{ab}\,\sigma^{(-)ab}.
+\]
+Then
+\[
+\boxed{\quad Y \;\equiv\; \mathrm{sgn}\!\big(S_\sigma\big)\ \in\ \{+1,-1\}\ . \quad}
+\]
+\end{definition}
+
+\begin{definition}[Twist-chirality bit \( Z \)]
+With \( \mathcal F_{ab}=\nabla_a\omega_b-\nabla_b\omega_a \) and \( \epsilon^{ab} \) the Levi–Civita density on \( \LL \), set
+\[
+\boxed{\quad Z \;\equiv\; \mathrm{sgn}\!\big(\epsilon^{ab}\,\mathcal F_{ab}\big)\ \in\ \{+1,-1\}\ . \quad}
+\]
+\end{definition}
+
+\begin{remark}[Measure-zero cases]
+If a defining scalar vanishes on a tile (\( S_\sigma=0 \) or \( \epsilon^{ab}\mathcal F_{ab}=0 \)), adopt a fixed tie-breaker (e.g. \( +1 \)) or borrow a one-ring majority. Such cases are nongeneric and do not spoil reversibility.
+\end{remark}
+
+\subsubsection*{Summary: what each Infinity bit does}
+
+For later use it is convenient to summarize the operational role of each bit:
+\[
+\begin{array}{c|l}
+\text{Bit} & \text{Resolves which discrete ambiguity?} \\
+\hline
+W & \text{Payload / branch choice: which macro-outcome was written at the snap} \\
+X & \text{Orientation / parity of the null tile in spacetime (mirror flip)} \\
+Y & \text{Relative alignment of ingoing/outgoing shears (which side is focusing)} \\
+Z & \text{Chirality of twist / normal-bundle curvature (handed rotation)} \\
+\end{array}
+\]
+Together, the reversible metadata bits \( (X,Y,Z) \) resolve the discrete
+\emph{kinematic} ambiguities of the deleted null 2-plane, while the payload bit
+\( W \) picks out a single irreversible branch of the macroscopic outcome.
+Only \( W \) consumes Ledger capacity via TDT; \( X,Y,Z \) are free in the
+capacity budget but essential for local reversibility.
+
+\section{Invariance, gauge behavior, and minimality}\label{sec:invariance}
+\begin{proposition}[Boost invariance]
+Under the local boost \( n_{\pm}\to e^{\pm\lambda}n_{\pm} \), the bits \( X, Y, Z \) are unchanged.
+\end{proposition}
+\begin{proof}
+\( X \) depends on the 4-volume form contracted with \( n_+\wedge n_- \), which rescales by \( e^{+\lambda}e^{-\lambda}=1 \). For \( Y \), \( \sigma^{(+)}_{ab} \) and \( \sigma^{(-)}_{ab} \) carry opposite boost weights, which cancel in the contraction \( \sigma^{(+)}_{ab}\sigma^{(-)ab} \). For \( Z \), \( \mathcal F_{ab}=\dd\omega \) is gauge invariant under \( \omega\mapsto \omega+\dd \varphi \) and insensitive to boosts of \( n_\pm \) \cite{Poisson2004,Ashtekar2000}.
+\end{proof}
+
+\begin{proposition}[Dyad behavior]
+Under proper rotations \( e_i\to R_{i}{}^{j} e_j \) on \( \LL \) with \( \det R=+1 \), the signs \( X,Y,Z \) are invariant as defined. (Improper rotations flip \( X \) by construction.)
+\end{proposition}
+
+\begin{theorem}[Idempotent reversibility (local)]
+On a one-ring neighborhood of a tile, NPR plus the metadata \( (X,Y,Z) \) fixes the discrete ambiguities of re-embedding the pre-snap 4D neighborhood up to diffeomorphisms and the local \( SO(1,1) \) gauge. Applying the snap map twice leaves the kinematic class unchanged.
+\end{theorem}
+
+\paragraph{Sketch of the mechanism.}
+Starting from a post-snap tile with intrinsic induced metric \( h_{ab} \)
+(on \( \LL \)) and NPR projector \( \Pproj \) in the ambient spacetime,
+the NPR map admits a finite family of pre-snap embeddings related by
+three discrete operations:
+(i) flipping the null dyad orientation,
+(ii) swapping which side of the tile carries stronger focusing (shear alignment),
+and (iii) flipping the chirality of twist in the normal bundle.
+The scalars that define \( X,Y,Z \) are engineered to be invariant under smooth
+diffeomorphisms and local \( SO(1,1) \) boosts, but to change sign under exactly
+these three discrete operations. Fixing the triplet \( (X,Y,Z) \) therefore
+selects a unique kinematic branch up to smooth deformations, while the payload
+bit \( W \) selects the macroscopic outcome branch. This is the sense in which
+Infinity bits are ``exactly sufficient'' for local NPR reversal.
+
+\begin{remark}[Fulfillment of Postulate P2]
+This theorem provides the formal proof of Postulate P2 (Minimal reversible record at snaps) stated in Paper I. It demonstrates that the geometric bit triplet \((X,Y,Z)\) constitutes the sufficient, minimal, and boost-invariant metadata required to ensure the snap is a kinematically reversible process.
+\end{remark}
+\begin{remark}[Minimality]
+Fewer than three geometric bits leave discrete mirror, alignment, or chirality ambiguities unresolved; \( (X,Y,Z) \) is the minimal set that removes them while staying boost invariant. A global constructive proof on arbitrary topologies is left open.
+\end{remark}
+
+\section{Operational extraction recipe}\label{sec:extraction}
+Given \( (g_{AB},\LL,n_\pm) \):
+\begin{enumerate}[leftmargin=1.2em]
+  \item Choose a canonical dyad \( \{e_1,e_2\} \) (e.g. align \( e_1 \) with a principal direction of \( \sigma^{(+)} \) or with the intrinsic curvature Hessian).
+  \item Compute \( X=\mathrm{sgn}(\varepsilon_{ABCD}e_1^{A}e_2^{B}n_{+}^{C}n_{-}^{D}) \).
+  \item Compute \( Y=\mathrm{sgn}(\sigma^{(+)}_{ab}\sigma^{(-)ab}) \).
+  \item Compute \( Z=\mathrm{sgn}(\epsilon^{ab}\mathcal F_{ab}) \).
+  \item Record \( \W \) from the apparatus predicate (coarse-grained outcome).
+\end{enumerate}
+A concrete implementation of this recipe in an almost-flat ``mini--Kerr'' patch
+is given in Appendix~\ref{app:toy-infinity-bits}, where each step can be read
+off explicitly from a \(4\times 4\) metric and dyad.
+
+
+\begin{comment}
+\begin{figure}[t]
+  \centering
+  \fbox{\rule{0pt}{1.25in}\rule{0.95\linewidth}{0pt}}
+  \caption{\textbf{Placeholder Fig.\,2.} Extraction pipeline for \( (X,Y,Z) \): dyad choice \(\to\) orientation \( X \), shear-alignment \( Y \), twist-chirality \( Z \); payload \( \W \) comes from the coarse-grained predicate.}
+\end{figure}
+\end{comment}
+
+\section{Capacity accounting (link to TDT)}\label{sec:capacity}
+Only \( \W \) is \emph{irreversible} and consumes capacity; \( X,Y,Z \) are \emph{reversible metadata}. The thermodynamic cost is additive over individual snap events. For a process involving a total of \( k \) snaps, each writing a single payload bit, the cumulative change in the ledger's entropy and area is
+\[
+\Delta S_{\LL}= k\,\ln 2,
+\]
+\[
+\Delta \Acal_{\LL} = k\,4\ln 2\,\lp^2 \quad (4\mathrm D),
+\qquad
+\Delta {}^{(D)}\!\Acal_{\LL}= k\,4\ln 2\,{}^{(D)}\!A_{\mathrm P} \quad (D\text{-dim}).
+\]
+Between snaps, the real--Robin inner boundary is lossless (unit-modulus reflectivity), so
+\[
+\nabla_a s^a=0
+\]
+on the Ledger worldtube \cite{Ishibashi2003,ReedSimon1975,Evans2010}.
+
+Equivalently, for a sequence of \(k\) snaps whose payload bits all read \(W=1\),
+the Ledger obeys the TDT capacity–payload rule
+\[
+\Delta S_{\LL} = \Delta S_{\mathrm{info}} = k\,\ln 2,
+\qquad
+\Delta \Acal_{\LL} = k\,4\ln 2\,\lp^2,
+\]
+with the reversible metadata bits \( (X,Y,Z) \) contributing no capacity cost.
+
+
+\section{Inner phase and boundary conditions}\label{sec:phase}
+Metadata fix the \emph{discrete} branch of the inner reflection phase encoded by a real--Robin law
+\[
+(\partial_{n}+\mathsf{B}(\omega))\,\psi_{\ell\omega}\big|_{\LL}=0, 
+\qquad 
+\mathsf{R}(\omega)=\frac{\mathsf{B}-\ii \omega}{\mathsf{B}+\ii \omega},\ \ |\mathsf{R}|=1
+\]
+Different \( (X,Y,Z) \) select different phase branches without changing capacity or flux. A quantitative calibration \( (X,Y,Z)\mapsto S_{\ell}(\omega) \) is outlined here and developed in the echoes phenomenology paper.
+
+\begin{comment}
+\begin{figure}[t]
+  \centering
+  \fbox{\rule{0pt}{1.0in}\rule{0.95\linewidth}{0pt}}
+  \caption{\textbf{Placeholder Fig.\,3.} Discrete mapping from \( (X,Y,Z) \) to an inner phase branch for \( S_{\ell}(\omega) \). All branches are lossless (\( |\mathcal R|=1 \)).}
+\end{figure}
+\end{comment}
+
+\section{Worked examples}\label{sec:examples}
+\subsection*{Schwarzschild (4D)}
+Adopt a canonical tetrad with \( \omega_a=0 \) on \( \LL \) by symmetry. Then
+\[
+Z=\mathrm{sgn}(\epsilon^{ab}\mathcal F_{ab})=0 \ \Rightarrow\ \text{use tie-breaker } Z=+1.
+\]
+The principal shear axes on the inward/outward generators coincide, so \( Y=\mathrm{sgn}(S_\sigma)=+1 \); \( X \) depends on the dyad orientation convention (fix \( X=+1 \) by right-handed choice). The metadata thus pick a canonical inner phase branch.
+
+\subsection*{Kerr (axisymmetric) --- remarks}
+Frame dragging induces \( \omega_a\neq 0 \) and hence \( \mathcal F_{ab}\neq 0 \), so \( Z=\pm 1 \) reflects the handedness of rotation relative to the dyad and normals. The alignment \( Y \) can flip if the principal shear axes of \( n_+ \) and \( n_- \) misalign due to spin-induced couplings. Boost invariance and locality of the definitions remain intact \cite{Ashtekar2000,Poisson2004}.
+
+\subsection*{\texorpdfstring{\( D \)}{D}-ladder invariance}
+The definitions of \( X,Y,Z \) are insensitive to \( D \); the payload cost per snap remains one bit, while geometric scales follow Paper I’s relations\cite{DCTQG01}:
+\[
+\frac{{}^{(D)}r_{\LL}}{{}^{(D)}r_H} 
+\quad \text{and} \quad 
+\frac{{}^{(D)}A_{\LL}}{{}^{(D)}A_H}. 
+\]
+
+\section{Gluing across tiles and smoothness}\label{sec:gluing}
+Neighboring tiles with consistent \( (X,Y,Z) \) glue without discrete defects. Inconsistencies indicate nontrivial normal-bundle holonomy \( \oint \omega \), resolvable by tie-breakers or one-ring smoothing. A global smoothing theorem is conjectured and deferred.
+
+\section{Information-theoretic channel and locality}\label{sec:info}
+The snap acts on the state as a CP-TP dephasing channel
+\[
+\rho \;\mapsto\; \sum_{r}\Pi_{r}\,\rho\,\Pi_{r}.
+\]
+Here \( r \in \{0,1\} \) is the classical register that records the macroscopic
+predicate outcome. We identify this register with the payload bit itself:
+\[
+r \equiv W,
+\]
+and \( \Pi_{r} \) is the projector onto the branch in which the apparatus
+predicate takes the value \( r \). Tracing out the classical register that stores
+\(W\) implements the dephasing channel above; because this map is completely
+positive, trace-preserving, and constructed locally at the Ledger, it commutes
+with spacelike observables and cannot be used for superluminal signaling.
+
+
+\section{Discussion and outlook}
+The Infinity bits provides the minimal, boost-invariant discrete geometry needed to invert NPR kinematics up to smooth gauge, while keeping capacity accounting faithful to TDT. Open items are (i) global constructive sufficiency, (ii) explicit Kerr extraction maps, and (iii) the quantitative map to inner phases for echoes. Next in the series: the focused Raychaudhuri impulse, echo phenomenology, and a tensor-network realization where the metadata control boundary phases in a HaPPY-like node.
+
+%============================ APPENDIX =========================================
+\appendix
+\section{A Toy ``Almost–Flat'' 4D Walkthrough for Extracting Infinity Bits}
+\label{app:toy-infinity-bits}
+
+This appendix implements the extraction recipe of
+Sec.~\ref{sec:extraction} in a concrete example: an almost-flat 4D
+``mini--Kerr'' patch. The goal is to show explicitly how the invariants that
+define \( X,Y,Z \) can be computed from a finite set of metric components and
+null dyad data.
+
+\subsection*{Aim and scope}
+This appendix gives a concrete, pencil–and–paper recipe for extracting the Infinity Bits
+\[
+\{\,W,\;X,\;Y,\;Z\,\}
+\]
+from an \emph{explicit} local metric patch. The construction is fully local to a single ledger tile \( \LL \), boost–invariant in the deleted normal plane, and uses only first derivatives of the metric. We work in a simple ``almost–flat'' background so every step can be read off from the metric matrix.
+
+\subsection*{A.1\quad Local metric model near the ledger}
+Work in coordinates \( (t,r,\theta,\phi) \) centered on a tile at radius \( r=r_{\LL} \) and colatitude \( \theta=\theta_{0}\in(0,\pi) \). Consider a weakly rotating, weakly anisotropic metric (keep only linear terms in the small parameters \( \Omega,\varepsilon_{+} \)):
+\[
+g_{AB}\;\approx\;
+\begin{pmatrix}
+-1 & 0 & 0 & -\,\Omega\,r^{2}\sin^{2}\theta \\[2pt]
+0 & +1 & 0 & 0 \\[2pt]
+0 & 0 & r^{2}\big(1+\varepsilon_{+}\big) & 0 \\[2pt]
+-\,\Omega\,r^{2}\sin^{2}\theta & 0 & 0 & r^{2}\big(1-\varepsilon_{+}\big)\sin^{2}\theta
+\end{pmatrix},
+\]
+with \( \lvert \Omega r\rvert\ll 1 \) and \( \lvert \varepsilon_{+}\rvert\ll 1 \). The cross term \( g_{t\phi}\propto \Omega \) mimics slow frame–dragging (``mini–Kerr''), while \( \varepsilon_{+} \) encodes a small axisymmetric tidal anisotropy on the 2–sphere. We will also use the first derivatives \( \partial_{t}\varepsilon_{+},\,\partial_{r}\varepsilon_{+} \) at the tile.
+
+\subsection*{A.2\quad Tangent 2–metric and orthonormal dyad on \( \LL \)}
+Restrict \( g_{AB} \) to the ledger surface \( \LL \) (spanned by \( \theta,\phi \)):
+\[
+h_{ab} \;=\;
+\begin{pmatrix}
+r^{2}\big(1+\varepsilon_{+}\big) & 0\\[2pt]
+0 & r^{2}\big(1-\varepsilon_{+}\big)\sin^{2}\theta
+\end{pmatrix}_{(\theta,\phi)}.
+\]
+Choose a \emph{right–handed} orthonormal dyad \( \{e_{1},e_{2}\} \) tangent to \( \LL \):
+\[
+e_{1} \;=\; \frac{1}{r\sqrt{1+\varepsilon_{+}}}\,\partial_{\theta},
+\qquad
+e_{2} \;=\; \frac{1}{r\sin\theta\sqrt{1-\varepsilon_{+}}}\,\partial_{\phi}.
+\]
+This sets the parity convention for the \(X\) bit.
+
+\subsection*{A.3\quad Null directors and basic kinematics}
+Let the deleted normal plane be spanned by two future–directed null directors \( \nplus,\nminus \) normalized by
+\[
+\nplus\!\cdot\nminus=-1
+\]
+and orthogonal to \( \LL \). For the toy metric,
+\[
+\nplus \;=\; \frac{1}{\sqrt{2}}\big(\partial_{t}+\partial_{r}\big),\qquad
+\nminus \;=\; \frac{1}{\sqrt{2}}\big(\partial_{t}-\partial_{r}\big),
+\]
+which indeed satisfy \( \nplus\!\cdot\nminus=-1 \) and \( \nplus\!\cdot e_{i}=\nminus\!\cdot e_{i}=0 \) up to \( \mathcal{O}(\Omega,\varepsilon_{+}) \).
+The projector to the ledger tangent bundle is
+\[
+\Pproj \;=\; \delta^{A}{}_{B} + \nplus^{A}\nminus_{B} + \nminus^{A}\nplus_{B}.
+\]
+The intrinsic metric evolves along \( \nplus,\nminus \) via Lie derivatives; define the shear tensors on \( \LL \) by
+\[
+\sigma^{(\pm)}_{ab} \;\equiv\; \tfrac12\big(\mathcal{L}_{n\pm} h_{ab}\big)^{\mathrm{tf}},
+\]
+the trace–free parts of \( \tfrac12\mathcal{L}_{\nplus/\nminus} h_{ab} \).
+
+\subsection*{A.4\quad Orientation/parity bit \(X\)}
+Define the 4–volume sign using the spacetime volume form \( \varepsilon_{ABCD} \):
+\[
+\chi \;\equiv\; \mathrm{sgn}\!\Big(\varepsilon_{ABCD}\,e_{1}^{A}e_{2}^{B}\nplus^{C}\nminus^{D}\Big),
+\qquad
+X \;=\; \chi \in\{+1,-1\}.
+\]
+\emph{Reasoning.} If \( \{e_{1},e_{2}\} \) is chosen right–handed and \( \nplus,\nminus \) are future–directed as above, \( \chi=+1 \). Under a local boost \( \nplus\to e^{+\lambda}\nplus,\,\nminus\to e^{-\lambda}\nminus \), the wedge \( \nplus\wedge\nminus \) rescales by a positive factor, so \( \chi \) (hence \(X\)) is boost–invariant. Flipping the dyad orientation flips \(X\).
+
+\subsection*{A.5\quad Shear–alignment bit \(Y\)}
+Use the boost–invariant scalar
+\[
+S_{\sigma} \;\equiv\; \sigma^{(+)}_{ab}\,\sigma^{(-)ab},
+\qquad
+Y \;=\; \mathrm{sgn}\!\big(S_{\sigma}\big)\in\{+1,-1\}.
+\]
+\emph{Reasoning.} In our toy model,
+\[
+\mathcal{L}_{\nplus} h_{ab} \;=\; \tfrac{1}{\sqrt{2}}\big(\partial_{t}+\partial_{r}\big)h_{ab},
+\qquad
+\mathcal{L}_{\nminus} h_{ab} \;=\; \tfrac{1}{\sqrt{2}}\big(\partial_{t}-\partial_{r}\big)h_{ab}.
+\]
+Taking the trace–free parts and forming \( \sigma^{(+)}\!:\sigma^{(-)} \) yields
+\[
+S_{\sigma} \;\propto\; \big\|(\partial_{t}h)^{\mathrm{tf}}\big\|^{2} - \big\|(\partial_{r}h)^{\mathrm{tf}}\big\|^{2}.
+\]
+Thus:
+\begin{align*}
+\text{time–dominated anisotropy } &\Rightarrow S_{\sigma}>0 \Rightarrow Y=+1, \\
+\text{radius–dominated anisotropy } &\Rightarrow S_{\sigma}<0 \Rightarrow Y=-1.
+\end{align*}
+In static axisymmetry (\( \partial_{t}\varepsilon_{+}=0 \)), one finds \( \sigma^{(-)}_{ab}=-\sigma^{(+)}_{ab} \), so \( S_{\sigma}=-\|\sigma^{(+)}\|^{2}\le 0 \Rightarrow Y=-1 \).
+
+\subsection*{A.6\quad Chirality/twist bit \(Z\)}
+Define the Hájíček (normal–bundle) connection and its curvature on \( \LL \):
+\[
+\omega_{a} \;\equiv\; -\,\nminus_{B}\,\nabla_{a}\nplus^{\ B},\qquad
+\mathcal{F}_{ab} \;\equiv\; \nabla_{a}\omega_{b}-\nabla_{b}\omega_{a},
+\]
+and the pseudoscalar density
+\[
+\Upsilon \;\equiv\; \epsilon^{ab}\,\mathcal{F}_{ab},
+\qquad
+Z \;=\; \mathrm{sgn}\!\big(\Upsilon\big)\in\{+1,-1\},
+\]
+with \( \epsilon^{ab} \) the Levi–Civita tensor on \( \LL \). For the axisymmetric toy metric, to first order in \( \Omega \),
+\[
+\omega_{\phi}\;\approx\; \Omega\,r^{2}\sin^{2}\theta,\qquad \omega_{\theta}\approx 0,
+\quad\Longrightarrow\quad
+\Upsilon\;\approx\; \partial_{\theta}\omega_{\phi} \;=\; 2\Omega\,r^{2}\sin\theta\cos\theta,
+\]
+so at the tile (\( \theta_{0}\in(0,\tfrac{\pi}{2}) \)) we get \( Z=\mathrm{sgn}(\Omega) \). At the equator \( \Upsilon=0 \) (measure–zero); use a one–ring average or a fixed tie–breaker there.
+
+\subsection*{A.7\quad The branch/write bit \(W\)}
+Fix once and for all a \emph{model predicate} that turns the local matter/field configuration into a classical branch bit (e.g. ``did the normal energy flux through the tile exceed threshold during \( \Delta \tau \)?''). Then
+\[
+W \in\{0,1\},\qquad
+W=1\ \text{iff predicate true at the snap.}
+\]
+This is the \emph{only} irreversible bit; by TDT–1/2 a one–bit payload write costs \( \Delta S=\ln 2 \) and
+\[
+\Delta A \;=\; 4\ln 2\,\ell_{P}^{2}\quad \text{(in 4D)}.
+\]
+
+\subsection*{A.8\quad Boost/gauge invariance (sketch)}
+Under \( \SO(1,1) \) boosts \( \nplus\to e^{+\lambda}\nplus,\,\nminus\to e^{-\lambda}\nminus \):
+\begin{itemize}
+\item \(X\): \( \varepsilon(e_{1},e_{2},\nplus,\nminus) \) rescales by a positive factor, so \( \mathrm{sgn} \) is unchanged.
+\item \(Y\): \( \sigma^{(\pm)}_{ab}=\tfrac12(\mathcal{L}_{\nplus/\nminus}h_{ab})^{\mathrm{tf}} \) each rescales oppositely; their full contraction \( \sigma^{(+)}\!:\sigma^{(-)} \) is invariant.
+\item \(Z\): \( \omega_{a} \) shifts by a gauge gradient while \( \mathcal{F}_{ab}=\nabla_{a}\omega_{b}-\nabla_{b}\omega_{a} \) is gauge– and boost–invariant; thus \( \Upsilon=\epsilon^{ab}\mathcal{F}_{ab} \) keeps its sign.
+\end{itemize}
+Hence \( (X,Y,Z) \) are well–defined boost–invariant bits.
+
+\subsection*{A.9\quad Finite–difference recipe from metric data (practical extraction)}
+On a numerical tile (or analytic worksheet):
+\begin{enumerate}
+\item Build \( h_{ab} \) from \( g_{AB} \) by restriction to \( \LL \); construct a right–handed dyad \( \{e_{1},e_{2}\} \). Compute \( X \) from the 4–volume sign.
+\item Estimate \( (\partial_{t}h)^{\mathrm{tf}},\,(\partial_{r}h)^{\mathrm{tf}} \) by centered differences in a small star around the tile; form
+\[
+S_{\sigma} \;\propto\; \big\|(\partial_{t}h)^{\mathrm{tf}}\big\|^{2} - \big\|(\partial_{r}h)^{\mathrm{tf}}\big\|^{2},
+\]
+and set \( Y=\mathrm{sgn}(S_{\sigma}) \).
+\item Compute \( \omega_{a} \) by projecting \( \nabla_{a}\nplus \) along \( \nminus \) (or equivalently \( \nabla_{a}\nminus \) along \( \nplus \)); then \( \mathcal{F}_{ab}=\partial_{a}\omega_{b}-\partial_{b}\omega_{a} \) (on \( \LL \)), and \( Z=\mathrm{sgn}(\epsilon^{ab}\mathcal{F}_{ab}) \).
+\item Evaluate the fixed predicate to get \( W \).
+\end{enumerate}
+
+\subsection*{A.10\quad Worked numerical sample (at a glance)}
+At \( r=r_{\LL},\,\theta_{0}=\pi/4 \) take
+\[
+\Omega \;=\; +3\times 10^{-3}/r_{\LL},\qquad
+\partial_{r}\varepsilon_{+} \;=\; +2\times 10^{-2}/r_{\LL},\qquad
+\partial_{t}\varepsilon_{+}=0.
+\]
+Then:
+\begin{align*}
+    W & = \text{predicate outcome.} \\
+    X & =+1\ \text{(by dyad choice)},\\
+    Y & =-1\ \text{(radius–dominated shear)},\\
+    Z & =+1\ \text{(co–rotating twist)},
+\end{align*}
+If a transient wave makes \( \lvert \partial_{t}\varepsilon_{+}\rvert \gg \lvert \partial_{r}\varepsilon_{+}\rvert \) momentarily, the same procedure flips \( Y \) to \( +1 \) while \( X,Z \) are unchanged.
+
+\subsection*{A.11\quad Tie–breakers and robustness}
+Measure–zero cases (exact zeros) can be resolved by fixed defaults (e.g.\ \( +1 \)) or by a one–ring majority among neighboring tiles. Small–noise stability is controlled by the margins:
+\[
+\big\|(\partial_{t}h)^{\mathrm{tf}}\big\|^{2} - \big\|(\partial_{r}h)^{\mathrm{tf}}\big\|^{2} \;\gtrless\; 0
+\quad\Rightarrow\quad
+\text{flip only if perturbations exceed the signed gap.}
+\]
+Since \( X,Y,Z \) depend on \emph{signs} of boost–invariant scalars, they are robust against smooth gauge changes and small metric noise.
+
+\subsection*{A.12\quad Why these four bits suffice (local reversibility sketch)}
+Given \( (X,Y,Z) \) on a tile and its neighbors, smoothness plus the boost gauge on the normal plane fix how \( \LL \) was embedded in the pre–snap 4D geometry up to diffeomorphisms; \( W \) is the only irreversible bit (the payload). Thus the quadrupole \( \{W,X,Y,Z\} \) is the minimal reversible record consistent with the NPR map and TDT bookkeeping.
+%===============================================================================
+
+\section{Future directions and open work}\label{app:future}
+This paper establishes the local, boost-invariant definition of the Infinity bits
+\( \{W,X,Y,Z\} \), their extraction recipe, and the link to TDT capacity accounting.
+Here we summarize technical directions that will be developed in subsequent work.
+
+\subsection*{Global reversibility and detailed proofs}
+Locally, Theorem~\ref{sec:invariance} (idempotent reversibility) shows that NPR
+plus the metadata \( (X,Y,Z) \) fixes discrete kinematic ambiguities up to
+diffeomorphisms and the \( SO(1,1) \) boost gauge. A full, global constructive
+proof on arbitrary Ledger topologies---including an explicit smoothing theorem
+for gluing tiles with consistent \( (X,Y,Z) \) and nontrivial normal-bundle
+holonomy \( \oint\omega \)---is left open. A future technical note will give
+complete, coordinate-level proofs of boost invariance, dyad behavior, and
+minimality, extending the sketches in Sec.~\ref{sec:invariance} and
+Appendix~\ref{app:toy-infinity-bits}.
+
+\subsection*{Tie-breakers, stability, and numerics}
+Measure-zero cases where the defining scalars vanish
+(\(S_\sigma=0\), \( \epsilon^{ab}\mathcal F_{ab}=0 \)) are currently resolved by
+fixed conventions or one-ring majorities. A systematic analysis of stability
+under numerical noise and coarse graining---including thresholds for flipping
+\(X,Y,Z\) and error budgets in finite-difference extractions---is deferred to a
+numerical implementation paper.
+
+\subsection*{Explicit tetrad constructions in standard spacetimes}
+The worked Schwarzschild and Kerr remarks in Sec.~\ref{sec:examples} can be
+extended to full tetrad constructions in Eddington–Finkelstein, Kruskal, and
+Kerr (Boyer–Lindquist or horizon-adapted) frames. These will provide explicit
+tables of \( (X,Y,Z) \) across the Ledger for benchmark spacetimes, and will be
+used to calibrate the inner phase branches \( S_{\ell}(\omega) \) in the echoes
+phenomenology paper.
+
+\subsection*{Relation to isolated horizons and Gauss--Codazzi data}
+The normal-bundle connection \( \omega_a \) and curvature \( \mathcal F_{ab} \)
+used in the definition of \( Z \) are standard in isolated-horizon technology
+\cite{Ashtekar2000}. A future note will connect the Infinity bits
+to the Gauss--Codazzi decomposition of data on \( \LL \), clarifying how NPR
+removes normal components while preserving intrinsic curvature and
+normal-bundle information, and how this structure fits within the broader
+isolated-horizon framework.
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography/dct_refs, bibliography/external_refs}
+
+% =================== Bibliography ===================
+\begin{comment}
+\begin{thebibliography}{99}
+
+\bibitem{HawkingEllis1973}
+S.~W. Hawking and G.~F.~R. Ellis, \emph{The Large Scale Structure of Space-Time}. Cambridge Univ. Press (1973).
+
+\bibitem{Poisson2004}
+E.~Poisson, \emph{A Relativist’s Toolkit: The Mathematics of Black-Hole Mechanics}. Cambridge Univ. Press (2004).
+
+\bibitem{Ashtekar2000}
+A.~Ashtekar, C.~Beetle, and S.~Fairhurst, \emph{Isolated horizons: A generalization of black hole mechanics}, Class. Quantum Grav. \textbf{17}, 253 (2000).
+
+\bibitem{Ishibashi2003}
+A.~Ishibashi and R.~M. Wald, \emph{Dynamics in non-globally hyperbolic static spacetimes}, Class. Quantum Grav. \textbf{20}, 3815 (2003).
+
+\bibitem{ReedSimon1975}
+M.~Reed and B.~Simon, \emph{Methods of Modern Mathematical Physics II: Fourier Analysis, Self-Adjointness}. Academic Press (1975).
+
+\bibitem{Evans2010}
+L.~C. Evans, \emph{Partial Differential Equations}, 2nd ed., AMS (2010).
+
+\bibitem{NielsenChuang2010}
+M.~A. Nielsen and I.~L. Chuang, \emph{Quantum Computation and Quantum Information}, 10th Anniversary ed., Cambridge Univ. Press (2010).
+
+\bibitem{Breuer2002}
+H.-P. Breuer and F.~Petruccione, \emph{The Theory of Open Quantum Systems}. Oxford Univ. Press (2002).
+
+\bibitem{DCTQG01}
+M.~[Author], \emph{A Universal Curvature Trigger for Spacetime Dimensional Collapse}, Paper I in this series (2025).
+
+\bibitem{DCTQG02}
+M.~[Author], \emph{Null-Pair Removal: The Geometric Mechanism of Dimensional Snap}, Paper II in this series (2025).
+
+\bibitem{DCTQG03}
+M.~[Author], \emph{The Laws of Transdimensional Thermodynamics (TDT)}, Paper III in this series (2025).
+
+\end{thebibliography}
+\end{comment}
+
+\end{document}

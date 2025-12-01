@@ -1,9 +1,6 @@
 % =======================================================================
-% == CANONICAL UNIFIED PREAMBLE FOR THE DCT/QG SERIES (v2.1) ==
+% == CANONICAL UNIFIED PREAMBLE FOR THE DCT/QG SERIES (v2.2) ==
 % =======================================================================
-
-% ------------------- Document Class (example) -------------------
-% \documentclass[11pt,a4paper]{article}
 
 % ------------------- Fonts, Encoding, Microtype -------------------
 \usepackage[T1]{fontenc}
@@ -12,8 +9,7 @@
 \usepackage{microtype}        % Better kerning/justification
 
 % ------------------- Layout & Spacing -------------------
-\usepackage{geometry}
-\geometry{margin=1in}
+\usepackage[a4paper,margin=1in]{geometry}
 \usepackage{setspace}
 \onehalfspacing
 
@@ -40,6 +36,7 @@
 \usepackage{csquotes}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\usepackage[nameinlink]{cleveref}
 \usepackage{orcidlink}        % Optional author ORCID
 \usepackage{todonotes}        % Optional
 
@@ -48,6 +45,11 @@
 \newcommand{\futurecite}[1]{\@gobble} % flip to \cite{#1} later if desired
 \makeatother
 
+% --- Custom Colors ---
+\definecolor{boardblue}{rgb}{0.05, 0.25, 0.5}
+\definecolor{boardgreen}{rgb}{0.1, 0.5, 0.2}
+\definecolor{boardred}{rgb}{0.6, 0.1, 0.1}
+
 % =======================================================================
 % == Theorem-like environments ==
 % =======================================================================
@@ -55,10 +57,12 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}{Proposition}
 \newtheorem{lemma}{Lemma}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem{law}{Law}
 \newtheorem{tdt}{TDT}     % DCT Transdimensional Thermodynamics laws
+
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
 
@@ -75,8 +79,8 @@
 % == CANONICAL MACROS (grouped) ==
 % =======================================================================
 
-% -------- 1) DCT Foundational (calligraphic, core symbols) --------
-\newcommand{\LL}{\mathcal{L}}                 % Ledger surface
+% -------- 1) DCT Foundational (core symbols & entropies) --------
+\newcommand{\LL}{\mathcal{L}}                 % Ledger surface / worldtube
 \newcommand{\Ical}{\mathcal{I}}               % Curvature invariant
 \newcommand{\Icrit}{\Ical_{\mathrm{crit}}}    % Critical value
 \newcommand{\T}{\mathcal{T}}                  % Transdimensional Constant
@@ -85,6 +89,8 @@
 \newcommand{\Acal}{\mathcal{A}}               % Dynamical/infinitesimal area
 \newcommand{\AP}{\ell_{\mathrm P}^{2}}        % Planck area (4D)
 \newcommand{\APD}{{}^{(D)}\!A_{\mathrm P}}    % D-dim Planck area
+
+% Entropies and currents
 \newcommand{\Sinfo}{S_{\mathrm{info}}}        % Information (Shannon/vN) entropy
 \newcommand{\Sth}{S_{\mathrm{th}}}            % Thermodynamic entropy
 \newcommand{\SBH}{S_{\mathrm{BH}}}            % Black-hole thermodynamic entropy
@@ -93,52 +99,88 @@
 \newcommand{\entropyinflux}{\Phi_S}           % Entropy influx density (exterior)
 \newcommand{\GD}{G_{D}}                       % D-dimensional Newton constant
 
-% -------- 2) Boundary Dynamics (sans-serif operators) --------------
+% -------- 2) Boundary dynamics (sans-serif operators) --------------
 \newcommand{\Bop}{\mathsf{B}}                 % Robin boundary operator
 \newcommand{\Rrefl}{\mathsf{R}}               % Reflection coefficient / kernel
 \newcommand{\Kboundary}{\mathsf{K}}           % Generic boundary kernel
 
-% -------- 3) Actions & Entropies -----------------------------------
+% -------- 3) Actions & effective theories --------------------------
 \newcommand{\Lag}{\mathscr{L}}                % Lagrangian density
 \newcommand{\Sledger}{S_{\text{ledger}}}      % Ledger EFT action (if used)
 \newcommand{\SBC}{S_{\mathrm{BC}}}            % Boundary-condition sector action
-\newcommand{\SAH}{A_{\mathcal{EH}}}           % Einstein-Hilbert action
+\newcommand{\SAH}{A_{\mathcal{EH}}}           % Einstein–Hilbert action
 
 % -------- 4) Standard GR / BH quantities ---------------------------
-% General
+% Planck-scale & congruence data
 \newcommand{\lp}{\ell_{\mathrm P}}            % Planck length
 \newcommand{\MP}{M_{\mathrm P}}               % Planck mass
-\newcommand{\br}{b_{\mathrm r}}               % Legacy branch bit (deprecated)
-\newcommand{\W}{W}                            % Canonical write bit (replaces \br)
 \newcommand{\thet}{\theta}                    % Null congruence expansion
-% Black holes
+
+% Black-hole radii, areas, temperatures
 \newcommand{\RS}{R_{\mathrm S}}               % Schwarzschild radius
 \newcommand{\EH}{\mathrm{H}}                  % Horizon label (A_H, S_H)
 \newcommand{\rH}{r_{\mathrm H}}               % D-dim horizon radius
 \newcommand{\rL}{r_{\LL}}                     % Ledger radius
-\newcommand{\AL}{A_\LL}                      % Ledger area
+\newcommand{\AL}{A_\LL}                       % Ledger area
 \newcommand{\AH}{A_{\mathrm H}}               % Horizon area
 \newcommand{\THaw}{T_{\mathrm H}}             % Hawking temperature
-% Geometry & optics
+
+% Curvature & optical scalars
 \newcommand{\Kretsch}{K}                      % Kretschmann scalar (shorthand)
 \newcommand{\RRm}{R_{ABCD}R^{ABCD}}           % Kretschmann written-out
 \newcommand{\sig}{\sigma_{\mu\nu}\sigma^{\mu\nu}} % Shear norm
 \newcommand{\Ric}{R_{\mu\nu}k^\mu k^\nu}      % Ricci focusing term
 
-% -------- 5) Mathematical helpers ----------------------------------
+% Legacy Infinity Bit name (deprecated) and canonical write bit
+\newcommand{\br}{b_{\mathrm r}}               % Legacy branch bit (deprecated)
+\newcommand{\W}{W}                            % Canonical write (payload) bit
+
+% -------- 5) Mathematical helpers & group theory -------------------
+% Basic sets
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+% Lie groups
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\U}{\mathrm{U}}
+
+% GUT representations
+\newcommand{\Ten}{\mathbf{10}}
+\newcommand{\Five}{\mathbf{5}}
+\newcommand{\Fivebar}{\overline{\mathbf{5}}}
+\newcommand{\Tenbar}{\overline{\mathbf{10}}}
+
+% Operators / misc math helpers
+\newcommand{\Hom}{\operatorname{Hom}}
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\ee}{\mathrm{e}}
-\newcommand{\RR}{\mathbb{R}}
 \newcommand{\Id}{\mathbb{I}}
-\newcommand{\SO}{\mathrm{SO}}
-\newcommand{\nplus}{{n_{+}}}                    % Outgoing null normal
-\newcommand{\nminus}{{n_{-}}}                   % Ingoing null normal
-\newcommand{\Pproj}{P^{A}{}_{B}}              % NPR projector
 \newcommand{\sgn}{\operatorname{sgn}}
 
-% -------- 6) Quantum mechanics helpers -----------------------------
+% Null normals & NPR projector
+\newcommand{\nplus}{{n_{+}}}                  % Outgoing null normal
+\newcommand{\nminus}{{n_{-}}}                 % Ingoing null normal
+\newcommand{\Pproj}{P^{A}{}_{B}}              % NPR projector
+
+% -------- 6) Quantum / Hilbert space & algorithm helpers ----------
+% Hilbert and manifold symbols
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cC}{\mathcal{C}}
+
+% Parent / child phase labels
+\newcommand{\Parent}{\mathcal{P}}
+\newcommand{\Child}{\mathcal{C}}
+
+% Basic quantum operators
 \newcommand{\Hhat}{\widehat{H}}
 \newcommand{\Uhat}{\widehat{U}}
+\newcommand{\Wop}{\widehat{W}}                % Wilson/write operator on ledger
+\newcommand{\QES}{\mathrm{QES}}               % Quantum extremal surface label
+\newcommand{\NPR}{\mathrm{NPR}}               % Null–Pair Removal label
 
 % -------- 7) Dimensional tagging helpers ---------------------------
 % Usage: \dimtag{D}{R} -> ^{(D)}\!R
@@ -162,17 +204,20 @@
 \newcommand{\Rreflb}{\Rrefl_{b,\ell}}
 \newcommand{\Tw}{\mathsf{T}_{\mathrm w,\ell}}
 \newcommand{\Tb}{\mathsf{T}_{b,\ell}}
-% (b) Tensor networks & QEC
+
+% (b) Tensor networks & QEC on the Ledger
 \newcommand{\Viso}{V}
 \newcommand{\Xtot}{X_{\mathrm{tot}}}
 \newcommand{\Ytot}{Y_{\mathrm{tot}}}
 \newcommand{\Ztot}{Z_{\mathrm{tot}}}
+
 % (c) Dark matter & remnants
 \newcommand{\wgap}{\omega_{\mathrm{gap}}}
 \newcommand{\Mrem}{M_{\mathrm{rem}}}
 \newcommand{\gH}{\gamma_{\mathrm H}}
 \newcommand{\chiH}{\chi}
 \newcommand{\betaf}{\beta_{\!f}}
+
 % (d) Dark energy & cosmology
 \newcommand{\Hcal}{\mathcal{H}}
 \newcommand{\Cdot}{\dot{\mathcal{C}}}
@@ -183,6 +228,7 @@
 \newcommand{\OM}{\Omega_{\mathrm m}}
 \newcommand{\OL}{\Omega_{\LL}}
 \newcommand{\ORad}{\Omega_{\mathrm r}}
+
 % (e) Radion & fifth force
 \newcommand{\MD}{M_{D}}
 \newcommand{\varphiRad}{\varphi}
@@ -204,10 +250,9 @@
 \providecommand{\omegaGap}{\wgap}
 \providecommand{\Deltaecho}{\tauRT}          % if used as delta-echo time
 % Dimensional tags (legacy)
-\providecommand{\lPD}{{}^{(D)}\lp}         % legacy Planck length tag (kept)
-% If any doc used G_\mathrm D style, normalize via \GD:
-\providecommand{\GdLegacy}{G_{\mathrm D}}    % helper
-% (No-op unless referenced)
+\providecommand{\lPD}{{}^{(D)}\lp}           % legacy Planck length tag (kept)
+% Legacy G_D spelling
+\providecommand{\GdLegacy}{G_{\mathrm D}}    % helper (no-op unless referenced)
 
 % =======================================================================
 % == Notes ==

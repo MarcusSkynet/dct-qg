@@ -1,0 +1,299 @@
+\documentclass[11pt,a4paper]{article}
+
+\input{common/dct_preamble}
+
+\title{
+    \bfseries On the Necessity of Codimension-2 Reduction in Resolving Spacetime Singularities
+    }
+    
+\author{
+    Marek Hubka\, \orcidlink{0009-0003-2476-9017}
+    \thanks{
+        Independent Researcher, Czech Republic. \\
+        Website: \href{http://tidesofuncertainty.com}{tidesofuncertainty.com}.
+        Email: \href{mailto:marek@tidesofuncertainty.com}{marek@tidesofuncertainty.com}.
+    }
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+\vspace{-2ex}
+
+\begin{abstract}
+This article motivates the foundational axiom of Dimensional Collapse Theory
+(DCT/QG): that when curvature reaches a universal threshold, spacetime undergoes
+a local, codimension-2 ``snap'' which removes a null 2-plane and leaves behind
+a spacelike \((D-2)\)-dimensional surface---the Ledger~\(\LL\). The aim is not
+to derive this rule from deeper principles, but to show that it is a highly
+constrained and natural choice once we impose a small set of physical demands:
+locality, covariance, causality, boost invariance, and compatibility with
+area-based thermodynamics. We review the singularity problem as a geometric
+crisis driven by the Raychaudhuri equation, enumerate possible local geometric
+responses at a curvature threshold, and argue that a codimension-1 or higher
+codimension reduction fails to provide a stable, thermodynamic boundary. In
+contrast, deleting exactly the two null directions normal to a collapsing
+cross-section yields a unique ``Goldilocks'' option: it halts catastrophic
+focusing, preserves causal structure, creates a natural area carrier for
+entropy, and sets the stage for the detailed constructions in Papers~I--IV of
+the DCTQG series.
+\end{abstract}
+
+\tableofcontents
+
+\section{Singularities as a geometric crisis}
+
+The classical singularity theorems show that, under broad conditions, General
+Relativity predicts geodesic incompleteness and curvature blow-ups
+\cite{HawkingEllis1973}. The underlying mechanism is not mysterious: it is the
+relentless focusing of geodesic congruences.
+
+For a null congruence with tangent \(k^{a}\), expansion \(\theta\), and affine
+parameter \(\lambda\), the Raychaudhuri equation in \(D\) spacetime dimensions
+is \cite{Raychaudhuri1955,Poisson2004}
+\begin{equation}
+\frac{\dd\theta}{\dd\lambda}
+=
+-\frac{1}{D-2}\,\theta^{2}
+- \sigma_{ab}\sigma^{ab}
+- R_{ab}k^{a}k^{b},
+\qquad
+\frac{\dd \ln \Acal}{\dd\lambda} = \theta,
+\label{eq:raychaudhuri}
+\end{equation}
+where \(\sigma_{ab}\) is the shear and \(\Acal(\lambda)\) is the cross-sectional
+area of an infinitesimal bundle. Under the null energy condition (NEC),
+\(R_{ab}k^{a}k^{b}\ge 0\), so a negative \(\theta\) typically runs away to
+\(-\infty\) in finite affine parameter. The area \(\Acal\) shrinks to zero and
+curvature invariants diverge.
+
+From the perspective of effective field theory, this signals a \emph{geometric
+crisis}: the classical description runs out before we reach the regime we would
+like to probe. A satisfactory resolution should obey at least four conditions:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Locality and covariance:} the rule must be formulated locally in
+terms of tensorial quantities, without reference to global coordinates or
+boundary conditions.
+
+\item \textbf{Causality:} the resolution must not introduce superluminal
+signaling or retro-causal behavior.
+
+\item \textbf{Thermodynamic compatibility:} in the presence of horizons, any
+resolution should respect the area-entropy connection
+\cite{Bekenstein1973,Hawking1975,Wald1993} and the generalized second law
+\cite{Bousso1999}.
+
+\item \textbf{Mildness:} the modification should be as small and surgical as
+possible, leaving ordinary GR+QFT intact where curvature is subcritical.
+\end{enumerate}
+
+Dimensional Collapse Theory starts from the idea that the breakdown occurs
+because we are trying to continue the geometry \emph{through} a regime in which
+the classical dimensionality of spacetime is no longer the correct
+description. The central proposal is that spacetime carries a simple, local
+``click rule'': when a clean, dimensionless invariant
+\(\Ical[g]\) crosses a universal threshold \(\Icrit\)
+\cite{DCTQG01}, the manifold undergoes a small, discrete change in its
+effective dimensionality.
+
+\section{Local curvature triggers and click rules}
+
+The first step is to ensure that the trigger is geometric and local. In DCT we
+use a curvature scalar of the schematic form
+\begin{equation}
+\Ical \;\equiv\; K L^{4},
+\qquad
+K = R_{ABCD}R^{ABCD},
+\end{equation}
+where \(L\) is a macroscopic length scale set by the environment
+\cite{DCTQG01}. The details of the choice and the derivation of the universal
+critical value \(\Icrit\) are the subject of Paper~I. For present purposes we
+only need three qualitative properties:
+\begin{enumerate}[label=(\roman*)]
+\item \(\Ical\) is scalar and local.
+\item \(\Ical\) is dimensionless and insensitive to trivial rescalings.
+\item There exists a universal critical value \(\Icrit\) such that, in
+astrophysical black holes, \(\Ical\to\Icrit\) just inside the event horizon.
+\end{enumerate}
+
+The click rule is:
+\begin{equation}
+\Ical \;=\; \Icrit
+\quad\Longrightarrow\quad
+\text{spacetime performs a local \emph{snap}}.
+\end{equation}
+The rest of the DCTQG series works out ``what the snap does'' in detail. This
+paper focuses on one key aspect: \emph{how many dimensions are removed} and
+\emph{why}.
+
+\section{A menu of geometric responses}
+
+Suppose that in some small neighborhood the curvature grows and
+\(\Ical\to\Icrit\). What can the geometry do, locally and covariantly, to avoid
+the catastrophic focusing implied by Eq.~\eqref{eq:raychaudhuri}?
+
+At an abstract level, there are three broad classes of response:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Modify the dynamics:} change the right-hand side of the
+Raychaudhuri equation by violating the energy conditions, introducing new
+repulsive forces, or changing the Einstein equations themselves.
+
+\item \textbf{Impose nonlocal structure:} introduce global matching conditions,
+wormholes, or other topological identifications which redirect the geodesics
+elsewhere.
+
+\item \textbf{Modify the manifold structure:} change the dimensionality of the
+effective spacetime in the region where the crisis occurs.
+\end{enumerate}
+
+Options (a) and (b) are widely explored in the literature. DCT instead pursues
+option (c): keep the field equations and local energy conditions intact as long
+as possible, and let spacetime itself take a small, discrete step in
+dimensionality when the click rule fires. The question then becomes sharp:
+\emph{what codimension \(\Delta D\) is admissible?}
+
+\section{Why codimension one is not enough}
+
+A seemingly mild modification is to remove a single null direction, i.e.\ to
+replace a \(D\)-dimensional region by a \((D-1)\)-dimensional null hypersurface
+when \(\Ical=\Icrit\). This effectively projects the dynamics onto a lightfront
+and might appear to ``cap off'' the focusing.
+
+However, codimension-one reduction fails on two fronts:
+
+\paragraph{(1) Focusing persists within the null hypersurface.}
+A null hypersurface still admits null congruences tangent to it, with their own
+expansions and shears. The Raychaudhuri equation continues to drive
+\(\Acal\to 0\) \emph{within} the reduced geometry. One has simply moved the
+problem from the bulk to the boundary, not removed it.
+
+\paragraph{(2) Null surfaces do not carry a robust area entropy.}
+Bekenstein--Hawking entropy and the generalized entropy functionals used in
+quantum extremal surface (QES) constructions are built on \((D-2)\)-dimensional
+spacelike surfaces with well-defined area \cite{Bekenstein1973,Hawking1975,
+Wald1993,EngelhardtWall2015}. The ``area'' of a patch on a null hypersurface
+depends on an arbitrary choice of cross-section and affine parameter; it cannot
+serve as a stable, frame-independent measure of thermodynamic entropy. Any
+theory that aims to preserve the area--entropy connection in the spirit of
+Jacobson's derivation of Einstein's equations \cite{Jacobson1995} must treat
+null sheets as \emph{carriers} of flux, not as the fundamental storage surface
+for entropy.
+
+For DCT, which explicitly uses area quanta on a codimension-2 Ledger to
+account for information payloads \cite{DCTQG03}, a codimension-1 reduction
+would be a poor foundation.
+
+\section{Codimension-two removal as the ``Goldilocks'' option}
+
+DCT instead adopts a codimension-two operation: a local removal of the normal
+null 2-plane spanned by \((\nplus,\nminus)\). Concretely, pick null directors
+\(\nplus^{A},\nminus^{A}\) satisfying
+\begin{equation}
+\nplus\!\cdot\nminus=-1,
+\end{equation}
+and define the tangential projector
+\begin{equation}
+P^{A}{}_{B}
+=
+\delta^{A}{}_{B}
++ \nplus^{A}\nminus_{B}
++ \nminus^{A}\nplus_{B}.
+\end{equation}
+The Null--Pair Removal (NPR) map of Paper~II \cite{DCTQG02} contracts every
+index of every tensor with \(P^{A}{}_{B}\), deleting components along the normal
+null 2-plane while preserving the intrinsic \((D-2)\)-dimensional geometry.
+
+This choice satisfies the constraints listed in Sec.~1 in a remarkably tight
+way:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Minimality.} Removing exactly the two null directions normal to a
+collapsing cross-section is the smallest possible change that directly targets
+the focusing problem in Eq.~\eqref{eq:raychaudhuri}. Higher-codimension
+removals would overkill the geometry and destroy more structure than necessary.
+
+\item \textbf{Boost invariance.} A single null direction has no invariant
+normalization; rescalings \(k^{a}\to \ee^{\lambda}k^{a}\) are an exact local
+symmetry. The pair \((\nplus,\nminus)\), by contrast, carries an invariant
+boost class under \(\mathrm{SO}(1,1)\): \(\nplus\to \ee^{\lambda}\nplus\),
+\(\nminus\to \ee^{-\lambda}\nminus\). The projector \(P^{A}{}_{B}\) is built to
+be invariant under this symmetry. Any local rule that singles out one null
+direction over the other would explicitly break this gauge freedom; NPR does
+not.
+
+\item \textbf{Thermodynamic canvas.} The image of \(P^{A}{}_{B}\) is a
+spacelike \((D-2)\)-dimensional surface \(\LL\) with intrinsic metric
+\(h_{ab}\) and area \(A(\LL)\). This provides a natural ``canvas'' for
+area-based entropy. In Paper~I, this surface is placed at a universal radius
+inside a Schwarzschild black hole via the curvature trigger \(\Ical=\Icrit\)
+\cite{DCTQG01}, and in Paper~III its area is quantized by the rules of
+Transdimensional Thermodynamics (TDT) \cite{DCTQG03}.
+
+\item \textbf{Information accounting and reversibility.} Removing a null
+2-plane is not purely topological: it deletes geometric data (orientation,
+shear alignment, twist) that can, in principle, be recorded. This is precisely
+what the Infinity bits \(\{W,X,Y,Z\}\) of Paper~IV are designed to capture
+\cite{DCTQG04}. NPR plus these bits make the snap reversible up to smooth
+gauge, in the same way that recording a small set of discrete choices restores
+reversibility to a coarse-grained map.
+\end{enumerate}
+
+In this sense, codimension-two reduction is a ``Goldilocks'' operation: any
+less and the singularity problem persists; any more and one loses the geometric
+structure needed to define a thermodynamic boundary.
+
+\section{How the axiom organizes the DCTQG series}
+
+The codimension-2 snap is the only genuine axiom of DCT/QG. Everything else in
+the series is derived from, or calibrated against, this geometric choice.
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Part I.} Given the click rule~\(\Ical=\Icrit\), the
+location of \(\LL\) in Schwarzschild and more general black-hole geometries is
+computed explicitly, and the universal constant \(\T\) is derived from the
+requirement that Ledger and horizon entropies remain consistent with
+Bekenstein--Hawking and QES bounds \cite{DCTQG01}.
+
+\item \textbf{Part II.} NPR is worked out in detail: the precise
+form of \(P^{A}{}_{B}\), its boost invariance, and its action on fields of
+arbitrary rank are specified. The Raychaudhuri equation is updated to a form
+that remains finite in the presence of snaps \cite{DCTQG02}.
+
+\item \textbf{Part III.} Transdimensional Thermodynamics is
+constructed on \(\LL\): one bit of payload entropy costs a fixed quantum of
+area, and the Ledger entropy grows in a staircase fashion at snaps while
+remaining constant between them \cite{DCTQG03}.
+
+\item \textbf{Part IV.} The Infinity bits \(\{W,X,Y,Z\}\) are
+introduced as a minimal, boost-invariant register that records discrete
+kinematic information about the removed null 2-plane, making the NPR operation
+reversible up to smooth gauge and allowing a clean information-theoretic
+interpretation of snaps \cite{DCTQG04}.
+\end{itemize}
+
+Seen from this vantage point, the codimension-2 axiom is analogous to the
+Schr\"odinger equation in quantum mechanics: it is not derived from something
+deeper within the framework, but it proves to be the unique simple postulate
+from which a large, tightly constrained structure grows.
+
+\section{Conclusion}
+
+The dimensional-collapse axiom of DCT/QG can be stated in one line:
+\emph{when a local curvature invariant \(\Ical\) reaches a universal threshold
+\(\Icrit\), spacetime undergoes a codimension-2 snap that removes the normal
+null 2-plane and leaves a spacelike Ledger surface \(\LL\) behind.} This
+paper has argued that, once we insist on locality, covariance, causality,
+boost invariance, and compatibility with area-based thermodynamics, this is not
+a whimsical choice among many, but a highly constrained option.
+
+A codimension-1 reduction fails to halt focusing and cannot carry a stable
+entropy. Higher-codimension reductions destroy too much structure. Only the
+codimension-2 NPR operation both disarms the singularity mechanism and
+provides a natural canvas for entropy, information accounting, and reversible
+reconstruction. The success of DCT/QG as a whole---from Ledger placement and
+TDT to Infinity bits and echoes phenomenology---is, in this sense, the primary
+evidence in favor of this simple axiom.
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography/dct_refs,bibliography/external_refs}
+
+\end{document}

@@ -1,5 +1,9 @@
 # Dimensional Collapse Theory (DCT–QG): An IR-Complete Framework for Quantum Gravity
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17136167.svg)](https://doi.org/10.5281/zenodo.17136167)
+![License](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)
+
+
 Imagine a built‑in “safety catch” for spacetime. In DCT, when curvature becomes extreme, spacetime doesn’t go singular – it snaps. At a universal, dimensionless curvature threshold $I_{\text{crit}}$, two of the lightlike directions are deleted locally, and exactly one bit of information is irreversibly written on a codimension‑2 surface (the Ledger $\mathcal{L}$). The result is a finite, smooth interior instead of an infinite singularity. This single “click” rule unifies geometry, thermodynamics and quantum information: the Ledger grows by one bit ($\Delta S_{\mathcal{L}} = 1$) at the same time that its area increases by a fixed quantum ($\Delta A_{\mathcal{L}} = 4 \ln 2 \ell_P^2$). Between snaps, physics is ordinary GR+QFT on a space with an inner Robin boundary at $\mathcal{L}$, so nothing mysterious leaks in or out.
 
 This repository is the full DCT series (v1.2): a priority manifest (the “series bible”) plus a sequence of papers that lay out the theory from first principles to phenomenology. Our goal is an IR-complete, dimension-agnostic quantum gravity: a tight, falsifiable framework that solves black-hole paradoxes. In plain terms, DCT says that black holes (and other collapse scenarios) never form singularities; instead, they spawn a dynamic ledger that records information bit by bit. The long-term payoff is huge: it explains where black-hole entropy lives, it preserves unitarity, and it makes concrete predictions (from gravitational-wave echoes to possible dark matter candidates).
@@ -36,43 +40,83 @@ These principles knit together consistently: a snap is local geometry (NPR proje
 
 ---
 
-### Series Status
+### The Unified Algorithm
 
-| Paper | Status | Link |
-|------:|:------:|:-----|
-| Manifest | ✅ Released | /manifest/priority_manifest.pdf |
-| 0. Motivation | ⏳ Draft | (queued) |
-| 1. Trigger  | ✅ Released    | papers/p01_trigger/ledger_surface.pdf |
-| 2. NPR      | ✅ Released    | papers/p02_npr/npr.pdf |
-| 3. TDT      | ⏳ Draft    | (comming soon) |
-| 4. Infinity Bits | ⏳ Draft | (comming soon) |
-| 5. Focused Raychaudhuri | ⏳ Draft | (queued) |
-| 5. Ledger Paradox | ⏳ Draft | (queued) |
-| 6. EFT/Master Eq. | ⏳ Draft | (queued) |
-| 7. Tensor Networks | ⏳ Draft | (queued) |
-| 8. Phenomenology | ⏳ Draft | (queued) |
-| 9. DM Remnants | ⏳ Draft | (queued) |
-| 10. DE Ledger | ⏳ Draft | (queued) |
-| 5. Baryon Asymmetry | ⏳ Draft | (queued) |
-| 11. Radion | ⏳ Draft | (queued) |
-| 12. UV Roadmap | ⏳ Draft | (queued) |
-| 13. Kill Tests | ⏳ Draft | (queued) |
+The principles of DCT combine to form a complete, step-by-step procedure for spacetime evolution—the **Unified Algorithm**. This algorithm, detailed in **algorithm.pdf**, reveals how the DCT machinery is unified into single algorithmic process.
+
+The core discovery is that the `SU(5)` GUT is not an ingredient added to the model, but an **emergent consequence** of the ledger's quantum information structure. The HaPPY-style tensor network, required for robust information storage, naturally provides the `SU(5)` gauge symmetry, and its logical representations contain the exact matter content (`10` and `5-bar` multiplets) of the Standard Model.
+
+This means the Unified Algorithm provides a single, unified origin for:
+-   **The Structure of Spacetime:** Governed by the `D -> D-2` snaps.
+-   **The Laws of Gravity:** Emerging from the thermodynamics of the ledger.
+-   **The Forces and Particles of the Standard Model:** Emerging from the gauge and matter structure of the ledger's `SU(5)` code.
+
+This synthesis turns the abstract framework into a concrete mechanism that provide explaination for the five great anomalies of modern physics (Baryon Asymmetry, Dark Matter, Dark Energy, Proton Decay null result, and the Information Paradox) as interconnected consequences of a single, underlying process.
 
 ---
 
-## Series Roadmap (Core Papers)
+### Series Status
+
+| Paper | Title | Status | Link |
+|:---:|:---|:---:|:---|
+| Manifest | Series Bible & Cheatsheet | ✅ Released | /manifest/priority_manifest.pdf |
+| Algorithm | The Unified Algorithm | ✅ Released | papers/algorithm/algorithm.pdf |
+| 0 | Motivation | ✅ Released | papers/p00_motivation/motivation.pdf |
+| 1 | The Universal Trigger | ✅ Released | papers/p01_trigger/ledger_surface.pdf |
+| 2 | Null–Pair Removal | ✅ Released | papers/p02_npr/npr.pdf |
+| 3 | Transdimensional Thermodynamics | ✅ Released | papers/p03_tdt/tdt.pdf |
+| 4 | The Infinity Bits | ✅ Released | papers/p04_infinity_bits/infinity_bits.pdf |
+| 5 | Focused Raychaudhuri | ⏳ Draft | (comming soon) |
+| 6 | EFT/Master Eq. | ⏳ Draft | (queued) |
+| 7| Tensor Networks | ⏳ Draft | (queued) |
+| 8| Phenomenology | ⏳ Draft | (queued) |
+| 9| DM Remnants | ⏳ Draft | (queued) |
+| 10| DE Ledger | ⏳ Draft | (queued) |
+| 11| Baryon Asymmetry | ⏳ Draft | (queued) |
+| 11| Radion | ⏳ Draft | (queued) |
+| 12| UV Roadmap | ⏳ Draft | (queued) |
+| 13| Kill Tests | ⏳ Draft | (queued) |
+
+---
+
+## Series Roadmap (Core Papers & Notebooks)
 
 Each piece of the DCT framework is documented in its own paper (or notebook). Key items in this repository include:
 
--   **Manifest (v1.2)** – The overview “cheatsheet” for the whole series. It lays out definitions and big-picture claims (curvature trigger, $\mathcal{T}$, snap law, area per bit, etc.) and references all follow-ups. We recommend skimming this first: it tells you where everything fits.
+-   **Manifest (v1.2)**
 
--   **Paper I: “Universal Trigger” (`ledger_surface.pdf`)** – Derives from first principles the ledger’s location and the constant $\mathcal{T}=1/(4\ln2)$. Using quantum-extremal-surface arguments, it fixes the critical curvature $I_{\text{crit}}$ and shows in 4D that the ledger’s radius is $r_{\mathcal{L}} = \sqrt{\mathcal{T}} R_S$. (This paper gives the “Orthodox leg” derivation.)
+The overview “cheatsheet” for the whole series. It lays out definitions and big-picture claims (curvature trigger, $\mathcal{T}$, snap law, area per bit, etc.) and references all follow-ups. We recommend skimming this first: it tells you where everything fits.
 
--   **Paper II: “Null–Pair Removal” (`npr.pdf`)** – Just published in v1.2. It formalizes the snap as a local, boost-invariant projector $P$ that deletes the two normal null directions at a ledger tile. We prove that $P$ is idempotent and covariant, and we derive its implications: the ledger’s inner boundary must obey a lossless real–Robin condition, exterior evolution remains unitary, and each snap writes exactly one bit of entropy. (In other words, this paper is the geometric engine of DCT.)
+-   **Algorithm**
 
--   **Paper III: “Transdimensional Thermodynamics” (`tdt.pdf`)** – Lays out the information‐theory laws for snaps. It shows that capacity equals payload ($\Delta S = 1$) and calibrates the area‐cost per bit: in 4D $\Delta A = 4 \ln 2 \ell_P^2$. Three thermodynamic laws are proven, tying together the first law of black-hole mechanics and the Clausius relation in Rindler space.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17714030.svg)](https://doi.org/10.5281/zenodo.17714030)
 
--   **Paper IV: “Infinity Bits”** – Explains why each snap involves exactly 4 bits (1 write + 3 metadata) and how reversibility is preserved. This construction uses tensor networks to show that a minimal code (like the stabilizer code) can serve as the ledger’s microscopic ledger.
+
+The central synthesis paper of the entire series. It assembles the core mechanisms (Trigger, NPR, TDT, Infinity Bits) into a single, step-by-step algorithm for spacetime evolution. It demonstrates how the `SU(5)` Grand Unified Theory and the Standard Model of particle physics emerge naturally from the ledger's quantum-informational structure, providing a unified origin for gravity and matter. **This paper combines the full power and scope of the theory.**
+
+-   **Paper I: “Universal Trigger” (`ledger_surface.pdf`)**
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17289423.svg)](https://doi.org/10.5281/zenodo.17289423)
+
+Derives from first principles the ledger’s location and the constant $\mathcal{T}=1/(4\ln2)$. Using quantum-extremal-surface arguments, it fixes the critical curvature $\mathcal{I}_{\text{crit}}$ and shows in 4D that the ledger’s radius is $r_{\mathcal{L}} = \sqrt{\mathcal{T}} R_S$. (This paper gives the “Orthodox leg” derivation.)
+
+-   **Paper II: “Null–Pair Removal” (`npr.pdf`)**
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17433780.svg)](https://doi.org/10.5281/zenodo.17433780)
+
+It formalizes the snap as a local, boost-invariant projector $P$ that deletes the two normal null directions at a ledger tile. We prove that $P$ is idempotent and covariant, and we derive its implications: the ledger’s inner boundary must obey a lossless real–Robin condition, exterior evolution remains unitary, and each snap writes exactly one bit of entropy. (In other words, this paper is the geometric engine of DCT.)
+
+-   **Paper III: “Transdimensional Thermodynamics” (`tdt.pdf`)**
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17557149.svg)](https://doi.org/10.5281/zenodo.17557149)
+
+Lays out the information‐theory laws for snaps. It shows that capacity equals payload ($\Delta S = 1$) and calibrates the area‐cost per bit: in 4D $\Delta A = 4 \ln 2 \ell_P^2$. Three thermodynamic laws are proven, tying together the first law of black-hole mechanics and the Clausius relation in Rindler space.
+
+-   **Paper IV: “Infinity Bits”**
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17713923.svg)](https://doi.org/10.5281/zenodo.17713923)
+
+Explains why each snap involves exactly 4 bits (1 write + 3 metadata) and how reversibility is preserved. This construction uses tensor networks to show that a minimal code (like the stabilizer code) can serve as the ledger’s microscopic ledger.
 
 -   **Paper V: “Finite Focusing (Raychaudhuri)”** – Shows how the Raychaudhuri equation is modified by snaps. A delta‐function “kick” at each snap keeps the focusing of null congruences finite, preventing caustics. (Turning the snap “off” recovers ordinary GR focusing.)
 
@@ -104,12 +148,14 @@ Each of the above works builds on the others. The Priority Manifest ties them al
 
 ## Quickstart: How to Dive In
 
-1.  **Skim the Manifest (15 min).** Get the big picture and notation.
+1.  **Skim the Manifest:** Get the big picture and notation.
 
-2.  **Core Papers (1–2 hours):** Read **Paper I (Trigger)** and **Paper II (NPR)** sequentially. These derive the ledger’s location and the nature of the snap.
+2.  **Core Papers:** Read **Paper 0 (Motivation)** to **Paper IV (Infinity bits)** sequentially. These derive the ledger’s location and the nature of the snap.
 
-3.  **Branch Out:** Pick your favorite angle.
-    -   For formalists, read Paper III–VII (Thermo, Bits, Focusing, Paradox, Master Eq).
+3.  **The Unified Algorithm (30-45 min).** This provides the grand narrative and shows how all the pieces fit together to form a unified algorithmic mechanism for spacetime reduction.
+
+4.  **Branch Out:** Pick your favorite angle.
+    -   For formalists, read Paper V–VII (Focusing, Paradox, Master Eq).
     -   For phenomenologists, jump to Paper VIII (Echoes) and Paper X–XII (Dark Matter/Energy, Baryogenesis).
     -   For a concrete model, try the Tensor Network notebook (Paper IX) with Qiskit.
 
@@ -118,9 +164,9 @@ In practice, the repo layout is:
 ```
 /manifest/              Priority Manifest (PDF + source)
 /papers/                Individual papers I–XVI (LaTeX + PDF)
+    algorithm/          The Unified Algorithm (LaTeX + PDF)
     p01_trigger/        (Paper I)
     p02_npr/            (Paper II)
-    p03_tdt/            (Paper III)
     ...
 common/                 Shared macros and notation definitions
 bibliography/           .bib files for references
@@ -134,7 +180,7 @@ README.md               (you are reading it)
 
 We also provide software and notebooks to explore DCT:
 
--   **`qglib` (Tools Library):** A Python package (coming soon) with utilities for calculating DCT quantities (e.g. curvature triggers, horizon areas, echo templates, etc.). GitHub: `qglib`.
+-   **`qgledger` (Tools Library):** A Python package (coming soon) with utilities for calculating DCT quantities (e.g. curvature triggers, horizon areas, echo templates, etc.). GitHub: `qgledger`.
 
 -   **Tensor Network Demo (Quantum-Ledger-Qiskit):** An interactive Jupyter notebook that builds the Ledger tile as a quantum error-correcting code. It uses Qiskit to show how 5 qubits (boundary) encode 1 qubit (bulk) – the essence of the Infinity Bits tile. This concrete model helps one “see” how the ledger can be a physical quantum circuit.
 
@@ -146,18 +192,18 @@ We also provide software and notebooks to explore DCT:
 
 ## ✅ How to Cite
 
-If you use DCT ideas or data, please cite the series: reference the Priority Manifest and the specific paper(s) you draw from. For example:
+If you use DCT ideas or data, please reference the series and/or the specific paper(s) you draw from. For example:
 
 ```bibtex
 @misc{Hubka2025,
   author = {Hubka, Marek},
   title = {Dimensional Collapse Theory: An IR-Complete Framework for Quantum Gravity},
   year = {2025},
-  howpublished = {arXiv, Zenodo}
+  howpublished = {Zenodo}
 }
 ```
 
-Cite the whole framework or/and any relevant paper PDF(s). For example, cite Paper II (NPR) for the snap projector and Paper III (TDT) for the area–bit law.
+Cite the whole framework (v1.4) or any relevant paper PDF(s). For example, cite Paper II (NPR) for the snap projector and Paper III (TDT) for the area–bit law.
 
 ---
 
